@@ -1,0 +1,259 @@
+﻿Region;ort;gid;GENERATION;Informant;PAM-Wert_WSS;Kontrollwert_WSS;PAM-Wert_NOSO;Kontrollwert_NOSO;PAM-Wert_NOT;Kontrollwert_NOT;PAM-Wert_INT;Kontrollwert_INT;PAM-Wert_FG;Kontrollwert_FG;PAM-Wert_WSD;Kontrollwert_WSD
+Nordniederdeutsch;Alt Duvenstedt;108151;alt;RDALT;1.12;0.8;0.81;0.9;-;-;1.16;0.8;1.91;1.6;2.93;2.7
+Nordniederdeutsch;Alt Duvenstedt;108151;mittel;RD5;1.13;0.4;0.95;0.2;0.89;0.4;1.26;0.5;1.91;1.5;2.44;2.1
+Nordniederdeutsch;Alt Duvenstedt;108151;jung;RDJUNG1;0.86;0.4;0.6;0.5;-;-;1.1;0.5;1.23;0.7;2.07;n.d.
+Nordniederdeutsch;Bad Segeberg;116678;alt;SEALT2;1.09;0.7;0.84;0.4;-;-;1.61;0.7;2.72;1.9;2.67;2.2
+Nordniederdeutsch;Bad Segeberg;116678;mittel;SE2;1.34;0.5;1.22;0.4;1.33;0.46;1.57;0.7;1.53;0.9;-;n.d.
+Nordniederdeutsch;Bad Segeberg;116678;jung;SEJUNG1;1.06;0.4;0.94;0.4;-;-;1.67;0.6;1.58;0.6;-;n.d.
+Nordniederdeutsch;Flensburg;111695;alt;FLALT1;1.2;;1.1;;-;-;1.87;;2.96;;2.88;
+Nordniederdeutsch;Flensburg;111695;mittel;FL3;0.95;;0.82;;1.02;;1.27;;2;;2.43;
+Nordniederdeutsch;Flensburg;111695;jung;FLJUNG;1.34;;0.94;;-;-;1.82;;1.47;;-;n.d.
+Nordniederdeutsch;Lohne;117495;alt;CLPALT2;1.6;;1.36;;-;-;1.86;;2.69;;3.18;
+Nordniederdeutsch;Lohne;117495;mittel;CLP3;1.31;;1.05;;1.35;;1.84;;2.76;;2.84;
+Nordniederdeutsch;Lohne;117495;jung;CLPJUNG;1.2;;1.2;;-;-;1.78;;1.73;;1.68;
+Nordniederdeutsch;Oldenburg;107826;alt;OLALT3;1.33;0.71;1.26;0.5;-;-;1.57;0.7;2.93;2.28;2.84;2.58
+Nordniederdeutsch;Oldenburg;107826;mittel;OL5;1.27;0.47;0.73;0.17;1.23;0.39;1.45;0.5;1.58;0.61;-;n.d.
+Nordniederdeutsch;Oldenburg;107826;jung;OLJUNG;1;0.32;1.11;0.25;-;-;1.94;0.5;1.83;0.49;-;n.d.
+Nordniederdeutsch-Ostfälisch;Lüneburg;106563;alt;LGALT1;1.05;;0.67;;-;-;1.65;;2.31;;3.12;
+Nordniederdeutsch-Ostfälisch;Lüneburg;106563;mittel;LG5;0.9;;0.95;;-;-;1.54;;1.83;;2.73;
+Nordniederdeutsch-Ostfälisch;Lüneburg;106563;jung;LGJUNG1;0.96;;1.12;;-;-;1.9;;2.03;;1.72;
+Nordniederdeutsch-Ostfälisch;Neustadt am Rübenberge;105328;alt;HALT2;0.81;;1.23;;-;-;1.44;;2.28;;2.75;
+Nordniederdeutsch-Ostfälisch;Neustadt am Rübenberge;105328;mittel;H10;0.93;;0.97;;1.87;;1.35;;2.56;;2.6;
+Nordniederdeutsch-Ostfälisch;Neustadt am Rübenberge;105328;jung;HJUNG;1.24;;1.04;;-;-;2.26;;2.22;;2.77;
+Mecklenburgisch-Vorpommersch;Rostock;123008;mittel;HRO5;0.81;;0.83;;-;-;1.03;;0.95;;1.75;
+Mecklenburgisch-Vorpommersch;Rostock;123008;alt;HROALT1;1.02;;1.26;;-;-;1.33;;2.05;;2.61;
+Mecklenburgisch-Vorpommersch;Rostock;123008;jung;HROJUNG2;0.52;;1.02;;-;-;1.11;;1.29;;0.97;
+Mecklenburgisch-Vorpommersch;Schwerin;119248;mittel;SN2;0.83;0.4;0.78;0.3;1.15;0.46;1.34;0.5;1.38;0.7;2.73;2.2
+Mecklenburgisch-Vorpommersch;Schwerin;119248;alt;SNALT2;1.02;0.5;0.79;0.4;-;-;1.36;0.7;2.36;1.7;2.75;2.2
+Mecklenburgisch-Vorpommersch;Schwerin;119248;jung;SNJUNG1;0.66;0.3;1.28;0.5;-;-;1.65;0.7;1.7;0.7;1.04;n.d.
+Mecklenburgisch-Vorpommersch;Stralsund;118388;mittel;HST1;0.78;0.5;0.7;0.4;1.07;0.7;1.05;0.6;1.06;0.7;0.8;0.7
+Mecklenburgisch-Vorpommersch;Stralsund;118388;alt;HSTALT1;0.71;0.6;0.91;0.4;-;-;1.1;0.7;2.05;1.6;2.58;2.3
+Mecklenburgisch-Vorpommersch;Stralsund;118388;jung;HSTJUNG1;0.84;0.6;0.75;0.5;-;-;1.25;0.6;1.21;0.8;1.77;n.d.
+Mecklenburgisch-Vorpommersch;Bergen;118712;mittel;RUEG1;1.41;0.8;1.24;0.7;-;-;1.85;1.1;1.81;1.2;2.01;1.8
+Mecklenburgisch-Vorpommersch;Bergen;118712;alt;RUEGALT2;1.62;1.1;1.39;0.8;-;-;2.13;1.4;3.06;2.7;3.09;2.8
+Mecklenburgisch-Vorpommersch;Bergen;118712;jung;RUEGJUNG1;1.47;0.8;1.37;0.7;-;-;1.97;1.1;1.86;1.1;-;n.d.
+Mittelpommersch;Pasewalk;119143;mittel;OVP5;0.97;;0.68;;-;-;1.76;;1.5;;1.25;
+Mittelpommersch;Pasewalk;119143;alt;OVPALT1;0.96;;0.88;;-;-;1.23;;1.07;;2.43;
+Mittelpommersch;Pasewalk;119143;jung;OVPJUNG1;0.73;;0.75;;-;-;1.51;;1.49;;0.67;
+Brandenburgisch-Südmärkisch;Frankfurt an der Oder;125330;mittel;FF18;1.21;;0.82;;1.35;;1.88;;2.03;;1.61;
+Brandenburgisch-Südmärkisch;Frankfurt an der Oder;125330;alt;FFALT3;1.06;;0.74;0.4;-;-;1.46;;1.59;;1.26;
+Brandenburgisch-Südmärkisch;Frankfurt an der Oder;125330;jung;FFJUNG1;0.85;;1.01;;-;-;1.57;;1.77;;1.08;
+Brandenburgisch-Südmärkisch;Fürstenwalde;120740;mittel;FW21;;;;;;;;;;;;
+Brandenburgisch-Südmärkisch;Fürstenwalde;120740;alt;FWALT2;;;;;;;;;;;;
+Brandenburgisch-Südmärkisch;Fürstenwalde;120740;jung;FWJUNG1;;;;;;;;;;;;
+Brandenburgisch;Potsdam;125116;mittel;P9;0.98;0.47;1.18;0.53;-;-;1.89;1.04;1.92;1.2;1.26;0.69
+Brandenburgisch;Potsdam;125116;alt;PALT1;1.32;0.71;1.48;0.76;-;-;1.69;0.94;1.7;0.91;1.35;0.77
+Brandenburgisch;Potsdam;125116;jung;PJUNG1;1.24;0.48;0.84;0.54;-;-;1.61;0.91;1.51;0.72;1.23;0.64
+Brandenburgisch;Pritzwalk;125032;mittel;PR1;1.62;0.58;1.51;0.96;-;-;1.84;0.97;2.01;0.93;2.33;1.69
+Brandenburgisch;Pritzwalk;125032;alt;PRALT2;1.79;0.72;1.47;0.8;-;-;2.57;1.43;1.83;1;2.43;1.79
+Brandenburgisch;Pritzwalk;125032;jung;PRJUNG2;1.08;0.36;1.24;0.52;-;-;1.79;0.71;2.25;1.11;1.78;1
+Brandenburgisch;Lüderitz;124090;mittel;SDL1;;;;;;;;;;;;
+Brandenburgisch;Lüderitz;124090;alt;SDLALT1;;;;;;;;;;;;
+Brandenburgisch;Lüderitz;124090;jung;SDLJUNG1;;;;;;;;;;;;
+Brandenburgisch;Brandenburg an der Havel;123723;mittel;BRB3;;;;;;;;;;;;
+Brandenburgisch;Brandenburg an der Havel;123723;alt;BRBALT2;;;;;;;;;;;;
+Brandenburgisch;Brandenburg an der Havel;123723;jung;BRBJUNG3;;;;;;;;;;;;
+Brandenburgisch;Neuruppin;125354;mittel;OPR1;1.1;0.47;1.04;0.5;;;1.82;0.79;2.13;1.17;1.43;0.75
+Brandenburgisch;Neuruppin;125354;alt;OPRALT2;1.42;0.8;1.45;0.72;;;1.92;1.03;1.99;1.1;1.75;0.82
+Brandenburgisch;Neuruppin;125354;jung;OPRJUNG1;1.21;0.57;1.32;0.8;;;1.86;0.99;2.05;1.32;1.56;0.84
+Westfälisch;Borken;102881;mittel;BOR2;1.03;0.42;0.82;0.19;1.37;0.53;1.71;0.57;1.23;0.53;2.59;2.3
+Westfälisch;Borken;102881;alt;BORALT1;1.25;0.79;0.77;0.61;-;-;1.45;0.8;2.42;2.01;2.77;2.54
+Westfälisch;Borken;102881;jung;BORJUNG1;1.33;0.55;1.03;0.36;-;-;1.86;0.6;1.53;0.61;1.43;0.87
+Westfälisch;Hagen;103064;alt;HAALT1;1.05;0.69;0.68;0.47;-;-;1.19;0.54;1.29;0.72;2.8;2.45
+Westfälisch;Hagen;103064;mittel;HA4;0.99;0.58;0.67;0.48;1.27;0.57;1.43;0.62;1.59;0.93;1.06;0.75
+Westfälisch;Hagen;103064;jung;HAJUNG1;0.84;0.31;0.94;0.31;-;-;1.17;0.31;1.37;0.3;1.1;0.52
+Westfälisch;Gütersloh;101621;alt;GTALT2;0.79;0.36;0.88;0.43;-;-;1.75;0.61;2.2;1.84;2.83;2.68
+Westfälisch;Gütersloh;101621;mittel;GT3;1.03;0.4;0.95;0.26;-;-;1.4;0.53;1.44;0.55;0.73;0.46
+Westfälisch;Gütersloh;101621;jung;GTJUNG2;0.85;0.21;0.95;0.18;-;-;1.22;0.27;1.31;0.27;1;0.34
+Westfälisch;Horn-Bad Meinberg;102973;alt;LIPALT1;1.1;0.55;0.93;0.57;-;-;1.8;1.01;1.45;0.65;2.96;2.6
+Westfälisch;Horn-Bad Meinberg;102973;mittel;LIP5;0.78;0.45;0.97;0.4;1.29;0.48;1.18;0.55;1.47;0.62;0.87;0.39
+Westfälisch;Horn-Bad Meinberg;102973;jung;LIPJUNG2;0.71;0.2;0.82;0.11;-;-;1.13;0.23;0.82;0.2;1.29;1.07
+Westfälisch;Drolshagen;101533;alt;OEALT2;1.18;0.84;0.98;0.68;-;-;1.33;0.95;2.3;1.87;3.1;2.8
+Westfälisch;Drolshagen;101533;mittel;OE7;0.89;0.36;0.73;0.29;-;-;1.32;0.55;1.41;0.73;2.39;2.2
+Westfälisch;Drolshagen;101533;jung;OEJUNG;1.07;0.4;0.99;0.48;-;-;1.41;0.52;1.56;0.75;1.05;0.42
+Ostfälisch;Halberstadt;125017;alt;HBSALT2;0.87;0.5;0.92;0.56;-;-;1.36;0.86;1.62;0.9;1.29;0.81
+Ostfälisch;Halberstadt;125017;mittel;HBS9;1.07;0.53;1.13;0.5;-;-;1.74;0.92;1.64;0.91;0.98;0.53
+Ostfälisch;Halberstadt;125017;jung;HBSJUNG2;0.8;0.4;1.05;0.46;-;-;1.19;0.5;0.95;0.4;1.37;1.1
+Ostfälisch;Hildesheim;113469;mittel;HI3;1.33;;1.01;;1.71;;2.05;;1.66;;-;n.d.
+Ostfälisch;Hildesheim;113469;alt;HIALT3;0.62;;0.64;;-;-;1.33;;1.14;;2.59;
+Ostfälisch;Hildesheim;113469;jung;HIJUNG;1.03;;0.66;;-;-;1.35;;1.78;;-;n.d.
+Ostfälisch;Northeim;107905;mittel;NOM3;1.04;0.44;0.98;0.48;1.86;0.74;2.05;0.86;2.33;0.98;1.71;1.11
+Ostfälisch;Northeim;107905;alt;NOMALT1;1.7;0.82;1.23;0.64;-;-;2.06;0.97;2.23;1.4;2.66;1.92
+Ostfälisch;Northeim;107905;jung;NOMJUNG;1.1;0.56;0.9;0.38;-;-;1.59;0.68;1.79;0.85;1.83;1.27
+Ostfälisch-Brandenburgisch;Magdeburg;118274;mittel;MD1;0.89;;0.88;;1.1;;1.77;;1.91;;1.17;
+Ostfälisch-Brandenburgisch;Magdeburg;118274;alt;MDALT1;0.77;;1.11;;-;-;1.47;;-;-;1.17;
+Ostfälisch-Brandenburgisch;Magdeburg;118274;jung;MDJUNG2;0.78;;1.16;;-;-;1.05;;1.47;;0.88;
+Ripuarisch;Bergisch-Gladbach;135950;alt;GLALT1;1.19;1;0.79;0.6;-;-;1.66;1.3;2.2;2;2.45;2.2
+Ripuarisch;Bergisch-Gladbach;135950;mittel;GL3;0.7;0.6;0.73;0.6;2.04;;1.78;1.3;1.62;1.3;1.75;1.3
+Ripuarisch;Bergisch-Gladbach;135950;jung;GLJUNG1;1.25;1.1;0.92;0.7;-;-;1.65;1.2;1.54;1.3;1.96;1.7
+Ripuarisch;Düren;134959;alt;DNALT1;1.02;;1.11;;-;-;1.71;;2.18;;2.67;
+Ripuarisch;Düren;134959;mittel;DN1;0.96;;0.79;;-;-;1.57;;1.33;;2.36;
+Ripuarisch;Düren;134959;jung;DNJUNG1;1.14;;0.99;;-;-;1.59;;1.75;;1.41;
+Ripuarisch;Troisdorf;134279;alt;SUALT;1.11;0.8;1.42;1;-;-;1.48;1.2;2.31;2.1;2.64;2
+Ripuarisch;Troisdorf;134279;mittel;SU1;0.89;0.6;0.66;0.6;1.35;;1.48;1.3;2.11;1.8;2.23;1.8
+Ripuarisch;Troisdorf;134279;jung;SUJUNG2;1.05;0.8;0.67;0.7;-;-;1.37;0.8;1.32;1.1;1.22;1.5
+Ripuarisch-Niederfränkisch;Krefeld;135092;alt;KRALT3;1.13;0.8;1.25;0.9;-;-;1.63;1.2;2.31;2;3.11;2.6
+Ripuarisch-Niederfränkisch;Krefeld;135092;mittel;KR5;0.99;0.7;1.07;0.8;-;-;1.44;1.3;1.74;1.6;2.8;2.5
+Ripuarisch-Niederfränkisch;Krefeld;135092;jung;KRJUNG1;0.86;0.7;0.68;0.7;-;-;1.59;1.2;1.26;1.3;1.4;1.3
+Ripuarisch-Niederfränkisch;Mönchengladbach;136187;alt;MGALT;1.28;0.9;1.13;0.8;-;-;1.64;1.3;2.24;2.1;2.84;2.7
+Ripuarisch-Niederfränkisch;Mönchengladbach;136187;mittel;MG6;1.1;0.8;1.09;0.8;1.58;;1.74;1.3;1.51;1.2;1.56;1.2
+Ripuarisch-Niederfränkisch;Mönchengladbach;136187;jung;MGJUNG1;0.95;0.6;0.82;0.6;-;-;1.49;1.2;1.5;1.3;1.63;1.4
+Moselfränkisch;Montabaur;94138;mittel;MT2;0.98;;1.07;;-;-;1.46;;1.85;;2.09;
+Moselfränkisch;Montabaur;94138;alt;MTALT3;0.98;;1.23;;-;-;1.84;;1.99;;1.9;
+Moselfränkisch;Montabaur;94138;jung;MTJUNG1;0.79;;0.61;;-;-;1.23;;-;-;1.09;
+Moselfränkisch;Schweich;100353;mittel;TRSW2;1.08;;1.26;;1.37;;1.8;;1.75;;2.05;
+Moselfränkisch;Schweich;100353;alt;TRSWALT2;1.17;;0.65;;-;-;1.31;;1.72;;2.33;
+Moselfränkisch;Schweich;100353;jung;TRSWJUNG1;0.99;;0.88;;-;-;1.71;;1.89;;2.15;
+Moselfränkisch;Wittlich;100001;alt;WITALT1;0.93;0.7;0.8;0.5;-;-;1.54;1;1.72;1.4;2.21;1.9
+Moselfränkisch;Wittlich;100001;mittel;WIT10;0.55;0.4;0.52;0.4;1.34;0.7;1.31;0.7;1.48;0.9;1.3;1
+Moselfränkisch;Wittlich;100001;jung;WITJUNG2;0.72;0.6;0.82;0.5;-;-;1.16;0.6;1.34;0.9;1.98;n.d.
+Moselfränkisch-Ripuarisch;Altenkirchen;100600;alt;AKALT1;0.78;;0.83;;-;-;1.53;;2.01;;2.37;
+Moselfränkisch-Ripuarisch;Altenkirchen;100600;mittel;AK2;0.91;;0.8;;-;-;1.18;;1.85;;2.04;
+Moselfränkisch-Ripuarisch;Altenkirchen;100600;jung;AKJUNG1;0.94;;1.09;;-;-;1.76;;1.62;;1.47;
+Rheinfränkisch;Heidelberg;132828;mittel;HD7;1.07;;1.14;;1.37;;1.82;;2.12;1.47;2.31;
+Rheinfränkisch;Heidelberg;132828;alt;HDALT1;0.93;;0.97;;-;-;1.77;;2.41;;2.26;
+Rheinfränkisch;Heidelberg;132828;jung;HDJUNG1;0.97;;0.77;;-;-;1.37;;1.79;;1.86;
+Rheinfränkisch;Kaiserslautern;100327;mittel;KL3;0.72;0.6;1.09;0.8;-;-;1.35;1;2.19;1.6;2.03;1.6
+Rheinfränkisch;Kaiserslautern;100327;alt;KLALT1;1.13;0.7;1.44;1;-;-;1.87;1.4;1.69;1.2;2.24;1.9
+Rheinfränkisch;Kaiserslautern;100327;jung;KLJUNG1;0.65;0.3;0.9;0.5;-;-;1.66;0.9;2.33;1.7;2.01;1.8
+Rheinfränkisch;Erbach;98214;alt;ERBALT1;1.32;1.3;1.53;1.3;-;-;2.37;1.8;2.88;2.1;2.59;2.2
+Rheinfränkisch;Erbach;98214;mittel;ERB2;1.69;1.3;1.07;1;-;-;2.2;1.7;3.01;2.1;2.12;2.1
+Rheinfränkisch;Erbach;98214;jung;ERBJUNG1;1.49;0.9;1.21;0.7;-;-;2.18;1.6;2.67;2;2.48;2
+Rheinfränkisch;Reinheim;99678;alt;DAALT2;1.18;1.1;1.36;1.2;-;-;2.1;1.6;2.91;2;2.39;2.1
+Rheinfränkisch;Reinheim;99678;mittel;DA1;1.23;1;0.94;0.9;-;1.2;1.68;1.4;2.48;1.9;2.18;1.9
+Rheinfränkisch;Reinheim;99678;jung;DAJUNG1;0.74;0.8;0.7;0.7;-;-;2;1.3;1.81;1.3;2.02;1.5
+Rheinfränkisch-Moselfränkisch;Kirkel;98078;mittel;HOM1;1.05;;1.14;;-;-;1.45;;1.78;;1.86;
+Rheinfränkisch-Moselfränkisch;Kirkel;98078;alt;HOMALT1;-;-;1.21;;-;-;1.13;;1.75;;2;
+Rheinfränkisch-Moselfränkisch;Kirkel;98078;jung;HOMJUNG1;0.65;;0.89;;-;-;1;;1.9;;2.03;
+Rheinfränkisch-Moselfränkisch;Merzig;99773;mittel;MZG5;1.75;;1.61;;1.7;;1.87;;2.31;;2.74;
+Rheinfränkisch-Moselfränkisch;Merzig;99773;alt;MZGALT2;1.19;;1.08;;-;-;1.51;;1.84;;2.42;
+Rheinfränkisch-Moselfränkisch;Merzig;99773;jung;MZGJUNG1;1.1;;1.16;;-;-;1.42;;2;;1.36;
+Rheinfränkisch-Moselfränkisch-Zentralhessisch;Mainz;95700;mittel;MZ7;1.08;0.78;0.8;0.55;1.18;0.58;1.51;1.04;1.59;1.2;1.82;1.62
+Rheinfränkisch-Moselfränkisch-Zentralhessisch;Mainz;95700;alt;MZALT1;0.74;0.5;1.04;0.38;-;-;1.63;;2.25;;2.16;1.79
+Rheinfränkisch-Moselfränkisch-Zentralhessisch;Mainz;95700;jung;MZJUNG1;0.99;;0.58;0.32;-;-;1.81;;1.51;;1.62;
+Rheinfränkisch-Ostfränkisch-Schwäbisch;Heilbronn;128209;mittel;HN8;0.95;;1.05;;1.71;;1.68;;2.29;;2.02;
+Rheinfränkisch-Ostfränkisch-Schwäbisch;Heilbronn;128209;alt;HNALT2;1.18;;1.45;;-;-;1.7;;2.04;;2.48;
+Rheinfränkisch-Ostfränkisch-Schwäbisch;Heilbronn;128209;jung;HNJUNG1;0.9;;1.39;;-;-;1.86;;1.68;;1.91;
+Rheinfränkisch-Zentralhessisch-Moselfränkisch;Frankfurt am Main;97616;alt;FALT1;1.36;1;0.94;0.8;-;-;2.01;1.8;1.97;1.9;2.23;2
+Rheinfränkisch-Zentralhessisch-Moselfränkisch;Frankfurt am Main;97616;mittel;F1;1.21;0.9;1.01;0.7;-;1.4;1.57;1.4;2.07;1.8;1.84;1.8
+Rheinfränkisch-Zentralhessisch-Moselfränkisch;Frankfurt am Main;97616;jung;FJUNG1;0.96;0.6;1.06;0.7;-;-;1.96;1;1.78;1.1;1.5;1.3
+Niederfränkisch;Kleve;101443;mittel;KLEV3;0.58;;0.8;;1.42;;1.55;;1.86;;2.75;
+Niederfränkisch;Kleve;101443;alt;KLEVALT;1.03;;0.74;;-;-;1.45;;2.61;;3.13;
+Niederfränkisch;Kleve;101443;jung;KLEVJUNG1;0.89;;0.78;;-;-;1.38;;1.12;;-;n.d.
+Nordhessisch;Homberg;96619;mittel;HR4;1.39;0.9;1.09;0.8;-;-;1.66;1.1;1.65;1.08;2.29;1.9
+Nordhessisch;Homberg;96619;alt;HRALT2;0.96;0.7;0.88;0.8;-;-;1.18;0.8;1.22;0.9;1.93;1.7
+Nordhessisch;Homberg;96619;jung;HRJUNG1;0.8;0.4;0.78;0.4;-;-;1.65;0.9;1.49;1;1.28;1
+Nordhessisch;Kassel;95463;mittel;KS1;0.82;;0.67;;1.68;;1.75;;1.59;;-;n.d.
+Nordhessisch;Kassel;95463;alt;KSALT;0.86;;0.95;;-;-;1.61;;1.28;;1.68;
+Nordhessisch;Kassel;95463;jung;KSJUNG;0.98;;1.01;;-;-;1.39;;1.43;;-;n.d.
+Zentralhessisch;Bad Nauheim;99815;alt;FBALT2;1.32;1.2;1.24;1;-;-;2.67;2;2.54;2.1;2.53;2.2
+Zentralhessisch;Bad Nauheim;99815;mittel;FB1;0.73;0.6;0.74;0.6;-;0.9;1.5;1.1;1.74;1.3;2.28;1.8
+Zentralhessisch;Bad Nauheim;99815;jung;FBJUNG1;1.42;0.7;1.43;0.8;-;-;1.88;1;2.06;1.1;1.76;1.5
+Zentralhessisch;Büdingen;99973;alt;BÜDALT1;1.3;1.2;1.49;1.3;-;-;2.15;2.1;2.37;2.2;2.41;2.2
+Zentralhessisch;Büdingen;99973;mittel;BÜD3;1.14;0.9;1.08;0.8;-;-;1.69;1.4;1.91;1.6;2.27;2.1
+Zentralhessisch;Büdingen;99973;jung;BÜDJUNG1;1.02;0.7;0.84;0.6;-;-;1.57;0.9;1.56;1;2;1.7
+Zentralhessisch;Gießen;96713;alt;GIALT1;1.55;1.1;1.36;1;-;-;1.94;1.3;-;-;2.41;2
+Zentralhessisch;Gießen;96713;mittel;GI11;1.53;1.1;1.44;0.8;-;-;2.23;1.2;2.08;1.3;2.93;2.2
+Zentralhessisch;Gießen;96713;jung;GIJUNG;1.31;0.6;1.45;0.7;-;-;2.06;1;2.14;1.1;1.97;1.7
+Zentralhessisch;Ulrichstein;94901;alt;VBALT2;2.1;1.4;1.97;1.4;-;-;2.16;1.7;3.08;2.5;3.24;2.9
+Zentralhessisch;Ulrichstein;94901;mittel;VB2;1.4;1;1.44;1;-;-;1.8;1.4;2.87;2.5;3.08;2.6
+Zentralhessisch;Ulrichstein;94901;jung;VBJUNG1;1.48;1.1;1.56;1;-;-;2.23;1.3;3.01;2.5;2.93;2.6
+Osthessisch;Hofbieber;100236;alt;FDALT3;1.05;1;1.06;0.9;-;-;1.44;1.1;2.34;2;2.47;2.3
+Osthessisch;Hofbieber;100236;mittel;FD4;0.72;0.5;0.84;0.63;1.48;1;1.08;0.9;2.1;2;2.37;2.3
+Osthessisch;Hofbieber;100236;jung;FDJUNG1;0.93;0.32;1;0.25;-;-;1.49;1;1.42;0.9;2.01;1.9
+Thüringisch;Erfurt;138764;alt;(EFALT2);1.1;0.7;1.15;0.8;-;-;1.58;1;1.62;1;1.69;1.3
+Thüringisch;Erfurt;138764;mittel;(EF2);1.01;0.8;1.34;1;-;-;1.83;1.2;1.78;1.4;1.38;1
+Thüringisch;Erfurt;138764;jung;(EFJUNG2);0.79;0.6;1.05;0.8;-;-;1.35;1.1;1.43;1.1;1.31;1.1
+Thüringisch;Heilbad Heiligenstadt;142955;mittel;EIC1;0.94;0.46;1.04;;1.38;;1.7;;1.81;;0.99;
+Thüringisch;Heilbad Heiligenstadt;142955;alt;EICALT1;1.28;;1.27;;-;-;1.97;;2.48;;1.96;
+Thüringisch;Heilbad Heiligenstadt;142955;jung;EICJUNG;0.73;;1.06;;-;-;1.67;;1.79;;1.68;
+Thüringisch;Sondershausen;141165;alt;KYFALT2;1.93;1.8;1.96;1.6;-;-;2.54;2;2.56;2.4;2.81;2.5
+Thüringisch;Sondershausen;141165;mittel;KYF5;1.42;1.1;1.83;1.2;-;-;2.11;1.7;2.08;1.6;1.82;1.3
+Thüringisch;Sondershausen;141165;jung;KYFJUNG1;0.88;;1.01;;-;-;1.93;;1.76;;1.54;
+Thüringisch-Obersächsisch;Gera;139192;alt;GALT1;1.39;1.1;1.28;1;-;-;1.54;1.3;1.56;1.2;1.18;1
+Thüringisch-Obersächsisch;Gera;139192;mittel;G2;1.71;1.1;1.36;1.1;-;1.2;2.14;1.4;2.35;1.3;1.77;1.4
+Thüringisch-Obersächsisch;Gera;139192;jung;GJUNG1;1.24;;0.95;;-;-;1.66;;2;;1.46;
+Thüringisch-Obersächsisch;Halle;125052;mittel;HAL3;1.1;;1.15;;1.67;;1.47;;1.83;;1.38;
+Thüringisch-Obersächsisch;Halle;125052;alt;HALALT;1.52;;1.63;;-;-;2.02;;2.05;;1.91;
+Thüringisch-Obersächsisch;Halle;125052;jung;HALJUNG4;1.02;;0.91;;-;-;1.31;;1.43;;1.76;
+Obersächsisch;Dresden;137577;alt;DDALT;1.07;0.9;1.33;1;-;-;2.03;1.2;1.82;1.3;1.28;1
+Obersächsisch;Dresden;137577;mittel;DD4;1.27;0.9;1.3;0.8;1.93;1;1.84;1;2.06;1.1;1.43;1
+Obersächsisch;Dresden;137577;jung;DDJUNG2;0.81;0.9;0.7;0.8;-;-;1.55;0.9;1.51;1;1.62;1.3
+Obersächsisch;Reichenbach;137668;alt;ZALT1;1.85;1.4;1.88;1.5;-;-;2.6;1.9;2.24;1.8;2.39;1.8
+Obersächsisch;Reichenbach;137668;mittel;Z9;1.51;1.3;1.94;1.5;-;1.8;2.35;2;2.83;2;2.43;2.2
+Obersächsisch;Reichenbach;137668;jung;ZJUNG1;1.13;;1.35;;-;-;1.86;;2.17;;2.21;
+Nordobersächsisch;Dessau;120091;alt;DEALT3;1.58;;1.31;;-;-;1.76;;1.8;;1.73;
+Nordobersächsisch;Dessau;120091;mittel;DE3;0.95;;1.04;;1.72;;1.56;;1.62;;1.74;
+Nordobersächsisch;Dessau;120091;jung;DEJUNG1;0.91;0.4;0.99;;-;-;1.92;;1.66;0.3;1.12;
+Ostfränkisch;Ansbach;92718;alt;ANALT2;1.68;1.1;1.57;1.1;-;-;1.91;1.4;2.24;1.7;2.39;1.9
+Ostfränkisch;Ansbach;92718;mittel;AN3;1.06;0.6;1.36;0.8;2.03;1;2.17;1.3;2.24;1.7;2.3;1.8
+Ostfränkisch;Ansbach;92718;jung;ANJUNG;1.46;0.8;1.48;1.2;-;-;2.08;1.3;2.42;1.6;2.47;1.9
+Ostfränkisch;Bamberg;85574;alt;BAALT;1.12;0.9;1.23;1;-;-;1.95;1.5;2.04;1.6;1.91;1.7
+Ostfränkisch;Bamberg;85574;mittel;BA1;0.96;0.8;1.25;0.9;1.77;1.2;1.67;1.4;1.82;1.5;1.82;1.7
+Ostfränkisch;Bamberg;85574;jung;BAJUNG2;0.88;0.7;1.06;0.7;-;-;1.1;0.8;1.21;0.8;1.26;1.1
+Ostfränkisch;Würzburg;92553;mittel;WUE1;1.08;;1.23;;1.52;;1.93;;2.11;;2.83;
+Ostfränkisch;Würzburg;92553;alt;WUEALT;1.35;;1.48;;-;-;1.95;;2.31;;2.38;
+Ostfränkisch;Würzburg;92553;jung;WUEJUNG;1.16;;1.34;;-;-;2.44;;2.2;;1.59;
+Nordbairisch;Hirschau;82073;alt;AMALT1;1.63;1.3;1.93;1.7;-;-;2.43;2;2.93;2.6;2.65;2.5
+Nordbairisch;Hirschau;82073;mittel;AM3;1.35;1;1.17;1;-;-;2.46;1.9;2.75;2.4;2.47;2.1
+Nordbairisch;Hirschau;82073;jung;AMJUNG2;1.58;1.2;1.71;1.3;-;-;2.24;1.3;2.22;1.7;2.42;2.3
+Nordbairisch;Weiden;73125;alt;WENALT2;1.22;1.1;1.55;1.4;-;-;2.04;1.7;2.54;2.4;2.4;2.4
+Nordbairisch;Weiden;73125;mittel;WEN2;1.48;1.1;1.42;1.2;-;-;2.47;1.9;2.41;2;2.58;2
+Nordbairisch;Weiden;73125;jung;WENJUNG2;1.61;1.2;1.7;1.3;-;-;2.57;1.9;2.05;1.8;2.2;2.1
+Nordbairisch-Mittelbairisch;Ingolstadt;89888;alt;INALT1;1.34;1.1;1.33;1.2;-;-;1.83;1.7;2.56;2.2;2.59;2.4
+Nordbairisch-Mittelbairisch;Ingolstadt;89888;mittel;IN6;1.47;1.2;1.6;1.3;-;-;2.33;2;2.76;2.5;2.77;2.5
+Nordbairisch-Mittelbairisch;Ingolstadt;89888;jung;INJUNG1;1.47;1.1;1.45;1;-;-;2.21;1.7;2.36;2;2.54;2.3
+Nordbairisch-Mittelbairisch;Regensburg;77282;alt;RALT1;1.28;0.9;1.35;1.2;-;-;2.19;1.5;2.6;2.1;2.21;2.2
+Nordbairisch-Mittelbairisch;Regensburg;77282;mittel;R3;1.31;1;1.16;1.1;2;1.6;2.6;2.3;2.73;2.4;2.49;2.3
+Nordbairisch-Mittelbairisch;Regensburg;77282;jung;RJUNG1;1.11;0.6;1.1;0.6;-;-;2.13;0.9;1.73;1.1;2.35;2.1
+Mittelbairisch;München;73556;alt;MALT1;1.64;1.3;1.46;1.2;-;-;2.37;1.9;2.46;2;2.8;2.4
+Mittelbairisch;München;73556;mittel;M9;1.31;1.1;1.49;1.2;-;-;2.66;2.2;2.53;2.3;2.65;2.4
+Mittelbairisch;München;73556;jung;MJUNG1;0.98;0.4;0.99;0.5;-;-;2.27;0.9;1.99;0.8;1.23;0.6
+Mittelbairisch;Passau;74960;mittel;PA2;1.07;;1.41;;-;-;2.68;;2.42;;2.32;
+Mittelbairisch;Passau;74960;alt;PAALT2;1.39;;1.34;;-;-;2.13;;2.54;;2.74;
+Mittelbairisch;Passau;74960;jung;PAJUNG;1.21;;1.65;;-;-;2.51;;2.06;;2.67;
+Mittelbairisch;Trostberg;75512;alt;TSALT1;1.19;1;1.2;1.1;-;-;2.56;1.8;2.9;2.3;2.73;2.4
+Mittelbairisch;Trostberg;75512;mittel;TS2;0.96;0.8;1.14;0.9;-;-;2.19;1.8;2.91;2.1;2.35;2.2
+Mittelbairisch;Trostberg;75512;jung;TSJUNG1;1.19;0.9;1.07;1;-;-;1.54;1.1;2.17;2;2.29;2.1
+Südbairisch-Schwäbisch;Farchant;78503;alt;GAPALT2;1.62;;2.02;;-;-;-;;2.61;;2.63;
+Südbairisch-Schwäbisch;Farchant;78503;mittel;GAP1;1.08;;1.32;;-;-;2.76;;2.29;;2.27;
+Südbairisch-Schwäbisch;Farchant;78503;jung;GAPJUNG1;0.97;;1.12;;-;-;1.71;;2.13;;2.6;
+Schwäbisch-Mittelbairisch;Augsburg;81689;alt;AALT4;1.46;;1.77;;-;-;2.77;;2.42;;2.72;
+Schwäbisch-Mittelbairisch;Augsburg;81689;mittel;A3;0.97;;1.46;;-;-;2.32;;2.85;;2.28;
+Schwäbisch-Mittelbairisch;Augsburg;81689;jung;AJUNG2;-;-;-;-;-;-;-;-;-;-;-;-
+Schwäbisch;Calw;132846;alt;CWALT;1.02;;1.28;;-;-;1.65;;2.4;;2.37;
+Schwäbisch;Calw;132846;mittel;CW2;1.09;;1.32;;1.92;;2.02;;2.55;;2.36;
+Schwäbisch;Calw;132846;jung;CWJUNG4;0.94;;0.8;;-;-;1.65;;1.8;;2.09;
+Schwäbisch;Kaufbeuren;83571;alt;KFALT3;1.29;1.1;1.21;1.1;-;-;1.91;1.5;2.69;2.5;2.98;2.7
+Schwäbisch;Kaufbeuren;83571;mittel;KF1;1.15;1;1.42;1.1;-;-;2.09;1.8;2.2;1.9;2.83;2.6
+Schwäbisch;Kaufbeuren;83571;jung;KFJUNG1;1;0.7;1.14;0.8;-;-;1.5;1.1;1.36;1;2.27;2.2
+Schwäbisch;Ulm;127525;alt;ULALT1;1.63;1.4;1.67;1.1;-;-;2.5;2.1;2.78;2.4;2.68;2.6
+Schwäbisch;Ulm;127525;mittel;UL1;1.12;0.9;1.45;1.1;1.69;Bettina?;2.22;1.7;2.82;2.3;2.59;2.3
+Schwäbisch;Ulm;127525;jung;ULJUNG2;1.23;1.1;1.2;1;-;-;1.94;1.9;2.3;2.1;2.42;2.4
+Schwäbisch;Balingen;129371;alt;BLALT1;1.46;1.3;1.67;1.5;-;-;2.53;2.2;2.49;2.4;2.69;2.7
+Schwäbisch;Balingen;129371;mittel;BL2;1.08;0.8;1.31;1.1;-;-;2.34;2;2.52;2.2;2.6;2.5
+Schwäbisch;Balingen;129371;jung;BLJUNG1;1.12;0.9;1.21;1;-;-;1.42;1.2;1.37;1.4;2.31;2.2
+Schwäbisch;Rudersberg;131121;alt;WNALT1;1.29;1.1;1.49;1.3;-;-;1.61;1.4;2.69;2.5;2.49;2.5
+Schwäbisch;Rudersberg;131121;mittel;WN3;1.12;0.8;1.25;1;1.51;Bettina?;2.07;2;2.56;2.3;2.45;2.5
+Schwäbisch;Rudersberg;131121;jung;WNJUNG1;1.19;1;1.25;1.1;-;-;1.83;1.2;1.54;1.4;2.41;2.3
+Schwäbisch;Blindheim;78986;alt;DLGALT2;1.7;1.4;1.18;1;-;-;1.81;1.6;2.42;2.3;2.46;2.3
+Schwäbisch;Blindheim;78986;mittel;DLG1;1.55;1.3;1.46;1.5;2.16;Bettina?;2.08;1.8;2.49;2.1;2.53;2.6
+Schwäbisch;Blindheim;78986;jung;DLGJUNG2;1.29;1;1.4;1.1;-;-;1.67;1.5;2.04;1.6;2.6;2.5
+Hochalemannisch;Waldshut;129900;alt;WTALT1;0.83;0.7;0.69;0.6;-;-;1.32;1;1.95;1.6;2.12;2.1
+Hochalemannisch;Waldshut;129900;mittel;WT1;0.93;0.7;0.92;0.7;-;0.9;1.84;1.1;2.38;1.6;1.75;1.7
+Hochalemannisch;Waldshut;129900;jung;WTJUNG1;0.72;0.3;0.81;0.4;-;-;1.12;0.4;1.3;0.4;1.59;n.d.
+Hochalemannisch/Niederalemannisch;Steinen;131433;mittel;LOE6;1.07;;1.31;;1.01;;1.71;;2.37;;2.44;
+Hochalemannisch/Niederalemannisch;Steinen;131433;alt;LOEALT;1.24;;1.32;;-;-;1.64;;2.64;;2.67;
+Hochalemannisch/Niederalemannisch;Steinen;131433;jung;LOEJUNG1;0.8;;1.11;;-;-;1.02;;2.13;;2.25;
+Mittelalemannisch;Bräunlingen;127324;mittel;VS3;0.99;0.6;0.95;0.7;-;-;1.99;1.3;2.11;1.5;2.63;2.3
+Mittelalemannisch;Bräunlingen;127324;alt;VSALT2;1.17;0.8;1.09;0.8;-;-;2;1.5;2.26;1.8;2.69;2.4
+Mittelalemannisch;Bräunlingen;127324;jung;VSJUNG1;1.05;0.6;1.19;0.5;-;-;1.86;1.4;2.19;1.8;2.59;2.3
+Mittelalemannisch;Ravensburg;132509;alt;RVALT;1.07;0.78;1.07;0.9;-;-;2.15;1.61;2.42;1.89;2.58;2.07
+Mittelalemannisch;Ravensburg;132509;jung;RVJUNG1;1.24;0.9;1.14;0.88;-;-;1.94;1.18;2.56;1.86;2.37;
+Mittelalemannisch;Ravensburg;132509;mittel;RV2;1.09;0.79;1.19;0.91;-;-;2.06;1.73;2.47;1.83;2.29;1.96
+Mittelalemannisch;Tuttlingen;130272;mittel;TUT3;1.3;0.77;1.46;1.01;1.84;1.32;2.26;1.63;2.23;1.82;2.61;2.07
+Mittelalemannisch;Tuttlingen;130272;alt;TUTALT2;1.07;0.66;1.26;0.95;-;-;1.72;1.15;2.32;1.65;2;1.81
+Mittelalemannisch;Tuttlingen;130272;jung;TUTJUNG1;0.73;0.5;0.77;0.5;-;-;1.19;0.64;1.58;0.83;2.2;1.83
+Niederalemannisch;Ohlsbach;128482;mittel;OG2;1.09;0.7;1.34;0.9;1.61;1.09;1.99;1.4;2.19;2;2.42;2.2
+Niederalemannisch;Ohlsbach;128482;alt;OGALT;1.3;0.8;1.31;1.1;-;-;2.54;2;2.81;2.3;2.5;2.2
+Niederalemannisch;Ohlsbach;128482;jung;OGJUNG2;0.95;0.5;0.88;0.6;-;-;1.75;1.26;2.22;1.9;2;1.6
