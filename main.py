@@ -16,25 +16,25 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
 
-        with open("chart.js_Beipiel.html", "r") as f:
+        with open("chart.js_Beipiel.html", "r", encoding="utf-8") as f:
             html_content = f.read()
 
-        with open("leaflat_draw_example.html", "r") as f:
+        with open("leaflat_draw_example.html", "r", encoding="utf-8") as f:
             draw = f.read()
 
-        with open("leaflat.nex.html", "r") as f:
+        with open("leaflat.nex.html", "r", encoding="utf-8") as f:
             karte = f.read()
 
-        with open("leaflet.js_regions.html", "r") as f:
+        with open("leaflet.js_regions.html", "r", encoding="utf-8") as f:
             regions = f.read()
 
-        with open("tabular.html", "r") as f:
+        with open("tabular.html", "r", encoding="utf-8") as f:
             tabular = f.read()
 
         print(self.path)
         # Setze den Response-Code auf 200 (OK)
         self.send_response(200)
-        self.send_header('Content-type', 'text/html')
+        self.send_header('Content-type', 'text/html; charset=utf-8')
         self.end_headers()
         if self.path in my_endpoints:
             self.wfile.write(locals().get(f"{self.path.replace('/', '')}").encode('utf-8'))

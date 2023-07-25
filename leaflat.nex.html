@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Deutsche Karte</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 
@@ -151,7 +152,7 @@
                 fillOpacity: 0.5,
                 radius: 5000 // Setzen Sie den Radius je nach Bedarf
             }).addTo(map).bindPopup(`
-        <h2>${cities[i].name}</h2>
+        <h2><a href="http://localhost:8000/data/${cities[i].name}">${cities[i].name}</a></h2>
         <p><strong>Latitude:</strong> ${cities[i].lat}</p>
         <p><strong>Longitude:</strong> ${cities[i].lng}</p>
         <p><strong>PAM_Wert_Alt:</strong> ${cities[i].PAM_Wert_Alt}</p>
