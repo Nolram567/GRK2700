@@ -7,56 +7,44 @@ from flask import Flask, render_template_string
 
 # Definiere den Handler für den HTTP-Server
 class MyHTTPRequestHandler(BaseHTTPRequestHandler):
-    global my_headers
-    global my_endpoints
-
-    my_headers = ["test"]
-    my_endpoints = ["/karte", "/html_content", "/draw", "/regions", "/tabular"]
-
+    # Definieren Sie eine explizite Zuordnung der Endpunkte zu den Dateien
+    endpoints_to_files = {
+        "/karte": "leaflat.nex.html",
+        "/html_content": "chart.js_Beipiel.html",
+        "/draw": "leaflat_draw_example.html",
+        "/regions": "leaflet.js_regions.html",
+        "/tabular": "tabular.html",
+    }
 
     def do_GET(self):
+        # Überprüfen Sie, ob der Pfad ein gültiger Endpunkt ist
+        if self.path in self.endpoints_to_files:
+            file_name = self.endpoints_to_files[self.path]
 
-        with open("chart.js_Beipiel.html", "r", encoding="utf-8") as f:
-            html_content = f.read()
+            # Öffnen und lesen Sie die Datei nur, wenn der Pfad ein gültiger Endpunkt ist
+            with open(file_name, "r", encoding="utf-8") as f:
+                content = f.read()
 
-        with open("leaflat_draw_example.html", "r", encoding="utf-8") as f:
-            draw = f.read()
+            self.send_response(200)
+            self.send_header('Content-type', 'text/html; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(content.encode('utf-8'))
+        else:
+            self.send_response(404)  # sende "Not Found" Antwort, wenn der Pfad nicht gültig ist
 
-        with open("leaflat.nex.html", "r", encoding="utf-8") as f:
-            karte = f.read()
-
-        with open("leaflet.js_regions.html", "r", encoding="utf-8") as f:
-            regions = f.read()
-
-        with open("tabular.html", "r", encoding="utf-8") as f:
-            tabular = f.read()
-
-        print(self.path)
-        # Setze den Response-Code auf 200 (OK)
-        self.send_response(200)
-        self.send_header('Content-type', 'text/html; charset=utf-8')
-        self.end_headers()
-        if self.path in my_endpoints:
-            self.wfile.write(locals().get(f"{self.path.replace('/', '')}").encode('utf-8'))
-
-# Hauptfunktion
 def run_server():
-
     server_address = ('', 8000)
     httpd = HTTPServer(server_address, MyHTTPRequestHandler)
     print('Server läuft auf Port 8000...')
 
-    # Starte den Server und halte ihn aktiv, bis er unterbrochen wird
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
         pass
 
-    # Stoppe den Server
     httpd.server_close()
     print('Server gestoppt.')
 
-# Führe die Hauptfunktion aus
 if __name__ == '__main__':
     run_server()
 
