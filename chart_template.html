@@ -77,6 +77,20 @@
     var full_dataset = {{full_dataset}};
     var city = {{city}};
 
+    function getEntrysfromCity(ort) {
+    var result = datenListe.filter(function(entry) {
+        return entry.ort === ort;
+    });
+    return result;
+    }
+
+    function getEntrysfromRegion(region) {
+    var result = datenListe.filter(function(entry) {
+        return entry.Region === region;
+    });
+    return result;
+    }
+
     var ctx1 = document.getElementById('diagramm1').getContext('2d');
     var myChart = new Chart(ctx1, {
     type: 'bar',
