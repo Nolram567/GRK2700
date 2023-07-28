@@ -1,3 +1,4 @@
+import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import pandas as pd
 import matplotlib
@@ -16,11 +17,15 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         "/tabular": "tabular.html",
     }
 
-    def do_GET(self):
+    df = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
+
+    def do_GET(self) -> None:
         # Überprüfen Sie, ob der Pfad ein gültiger Endpunkt ist
+        if self.path.startswith("/data"):
+            self.handle_data_endpoint()
         if self.path in self.endpoints_to_files:
             file_name = self.endpoints_to_files[self.path]
-
+            print(self.path)
             # Öffnen und lesen Sie die Datei nur, wenn der Pfad ein gültiger Endpunkt ist
             with open(file_name, "r", encoding="utf-8") as f:
                 content = f.read()
@@ -31,6 +36,39 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             self.wfile.write(content.encode('utf-8'))
         else:
             self.send_response(404)  # sende "Not Found" Antwort, wenn der Pfad nicht gültig ist
+
+    def handle_data_endpoint(self) -> None:
+        path_parts = self.path.split('/')
+        if len(path_parts) < 3:
+            self.send_error(400, 'Stadtname muss angegeben werden')
+            return
+
+        city_name = path_parts[2]
+        filtered_df = self.df[self.df['ort'] == city_name]
+        if filtered_df.empty:
+            self.send_response(404)
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps({'error': 'Stadt nicht gefunden'}).encode())
+        else:
+            # Konvertiere den DataFrame in eine Liste von Dictionaries
+            data = filtered_df.to_dict('records')
+
+            # Öffne die Chart.js HTML-Datei
+            with open("chart_template.html", "r", encoding="utf-8") as f:
+                html_template = f.read()
+
+            # Ersetze die Datenplatzhalter in der HTML-Datei durch die tatsächlichen Daten
+            html_content = html_template.replace("{{city}}", f"\"{city_name}\"")
+            html_content = html_content.replace("{{full_dataset}}", json.dumps(self.df.to_dict("records"), ensure_ascii=False))
+
+            print(html_content)
+
+            self.send_response(200)
+            self.send_header('Content-type', 'text/html; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(html_content.encode('utf-8'))
+
 
 def run_server():
     server_address = ('', 8000)
