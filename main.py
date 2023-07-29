@@ -59,8 +59,9 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
                 html_template = f.read()
 
             # Ersetze die Datenplatzhalter in der HTML-Datei durch die tatsächlichen Daten
-            html_content = html_template.replace("{{city}}", f"\"{city_name}\"")
-            html_content = html_content.replace("{{full_dataset}}", json.dumps(self.df.to_dict("records"), ensure_ascii=False))
+            html_content = html_template.replace("{{city}}", f"\"{city_name}\"")\
+                .replace("{{current_dataset}}", json.dumps(data, ensure_ascii=False)) \
+                #.replace("{{full_dataset}}", json.dumps(self.df.to_dict("records"), ensure_ascii=False)) \
 
             print(html_content)
 
@@ -68,8 +69,6 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             self.send_header('Content-type', 'text/html; charset=utf-8')
             self.end_headers()
             self.wfile.write(html_content.encode('utf-8'))
-
-
 def run_server():
     server_address = ('', 8000)
     httpd = HTTPServer(server_address, MyHTTPRequestHandler)

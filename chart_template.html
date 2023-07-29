@@ -74,7 +74,8 @@
 
   <script>
 
-    var full_dataset = {{full_dataset}};
+    //var full_dataset = {{full_dataset}};
+    var current_dataset = {{current_dataset}};
     var city = {{city}};
 
     function getEntrysfromCity(ort) {
@@ -84,12 +85,22 @@
     return result;
     }
 
-    function getEntrysfromRegion(region) {
+    function getEntrysFromRegion(region) {
     var result = datenListe.filter(function(entry) {
         return entry.Region === region;
     });
     return result;
     }
+
+    function getPAMFromGeneration(generation, PAMType) {
+        for (let i = 0; i < current_dataset.length; i++) {
+        if (current_dataset[i].GENERATION === generation) {
+            return current_dataset[i][PAMType];
+        }
+    }
+    return null; // Falls keine Übereinstimmung gefunden wird
+    }
+
 
     var ctx1 = document.getElementById('diagramm1').getContext('2d');
     var myChart = new Chart(ctx1, {
@@ -167,22 +178,22 @@
     var myStackedBarChart = new Chart(ctx3, {
         type: 'bar',
         data: {
-            labels: ['Bad Nauheim', 'Buedingen', 'Giessen', 'Ulrichstein'],
+            labels: ['PAM-Wert_WSS', 'PAM-Wert_NOSO', 'PAM-Wert_NOT', 'PAM-Wert_INT', 'PAM-Wert_FG', 'PAM-Wert_WSD'],
             datasets: [{
                 label: 'Jung',
-                data: [1.42, 1.02, 1.31, 1.48],
+                data: [getPAMFromGeneration("jung", "PAM-Wert_WSS"), getPAMFromGeneration("jung", "PAM-Wert_NOSO"), getPAMFromGeneration("jung", "PAM-Wert_NOT"), 2.0, 2.4 ,getPAMFromGeneration("jung", "PAM-Wert_WSD")],
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 1
             },{
                 label: 'Mittel',
-                data: [0.73, 1.14, 1.53, 1.4],
+                data: [getPAMFromGeneration("mittel", "PAM-Wert_WSS"), getPAMFromGeneration("mittel", "PAM-Wert_NOSO"), getPAMFromGeneration("mittel", "PAM-Wert_NOT"), 1.6, 1.8, getPAMFromGeneration("mittel", "PAM-Wert_WSD")],
                 backgroundColor: 'rgba(54, 162, 235, 0.5)',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 1
             },{
                 label: 'Alt',
-                data: [1.32, 1.3, 1.55, 2.1],
+                data: [getPAMFromGeneration("alt", "PAM-Wert_WSS"), getPAMFromGeneration("alt", "PAM-Wert_NOSO"), getPAMFromGeneration("alt", "PAM-Wert_NOT"), 1.4, 1.3, getPAMFromGeneration("alt", "PAM-Wert_WSD")],
                 backgroundColor: 'rgba(255, 206, 86, 0.5)',
                 borderColor: 'rgba(255, 206, 86, 1)',
                 borderWidth: 1
@@ -198,13 +209,13 @@
                     ticks: {
                         beginAtZero: true,
                         max: 5,
-                        stepSize: 1
+                        stepSize: 0.2
                     }
                 }]
             },
             title:{
             display: true,
-            text: 'Stacked Bar Chart von Mittelhessen (Bad Nauheim, Buedingen, Giessen, Ulrichstein)'
+            text: 'Stacked Bar Chart der PAM-Werte von ${city}'
             }
         }
     });
