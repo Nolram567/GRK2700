@@ -45,22 +45,24 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
 
         city_name = path_parts[2]
         filtered_df = self.df[self.df['ort'] == city_name]
+        region = self.df[self.df['ort'] == city_name]['Region'].iloc[0]
+        filtered_df2 = self.df[self.df['Region'] == region]
         if filtered_df.empty:
             self.send_response(404)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
             self.wfile.write(json.dumps({'error': 'Stadt nicht gefunden'}).encode())
         else:
-            # Konvertiere den DataFrame in eine Liste von Dictionaries
             data = filtered_df.to_dict('records')
+            data2 = filtered_df2.to_dict('records')
 
-            # Öffne die Chart.js HTML-Datei
             with open("chart_template.html", "r", encoding="utf-8") as f:
                 html_template = f.read()
 
             # Ersetze die Datenplatzhalter in der HTML-Datei durch die tatsächlichen Daten
             html_content = html_template.replace("{{city}}", f"\"{city_name}\"")\
                 .replace("{{current_dataset}}", json.dumps(data, ensure_ascii=False)) \
+                .replace("{{region}}", json.dumps(data2, ensure_ascii=False))
                 #.replace("{{full_dataset}}", json.dumps(self.df.to_dict("records"), ensure_ascii=False)) \
 
             print(html_content)

@@ -76,8 +76,9 @@
     //var full_dataset = {{full_dataset}};
     var current_dataset = {{current_dataset}};
     var city = {{city}};
-    //var chart_labelI = `Stacked Bar Chart der PAM-Werte von ${city}`;
+    var region = {{region}};
 
+    console.log(region)
 
     function getEntrysfromCity(ort) {
     var result = datenListe.filter(function(entry) {
@@ -104,52 +105,23 @@
 
 
     var ctx1 = document.getElementById('diagramm1').getContext('2d');
-    var myChart = new Chart(ctx1, {
-    type: 'bar',
-    data: {
-        labels: ['Bad Nauheim', 'Buedingen', 'Giessen', 'Ulrichstein'],
-        datasets: [{
-            label: 'Jung',
-            data: [1.42, 1.02, 1.31, 1.48],
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1
-        },{
-            label: 'Mittel',
-            data: [0.73, 1.14, 1.53, 1.4],
-            backgroundColor: 'rgba(54, 162, 235, 0.5)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1
-        },{
-            label: 'Alt',
-            data: [1.32, 1.3, 1.55, 2.1],
-            backgroundColor: 'rgba(255, 206, 86, 0.5)',
-            borderColor: 'rgba(255, 206, 86, 1)',
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        },
-    title: {
-                display: true,
-                text: 'Barchart von Mittelhessen (Bad Nauheim, Buedingen, Giessen, Ulrichstein)'
-            }
-    }
-    });
-
-
-    var ctx2 = document.getElementById('diagramm2').getContext('2d');
-    var myBoxPlot = new Chart(ctx2, {
+    var myBoxPlot = new Chart(ctx1, {
         type: 'boxplot',
         data: {
             labels: ['Jung', 'Mittel', 'Alt'],
             datasets: [{
                 label: 'Altergruppen',
-                data: [[1.42, 1.02, 1.31, 1.48], [0.73, 1.14, 1.53, 1.4], [1.32, 1.3, 1.55, 2.1]],
+                data: [[getPAMFromGeneration("jung", "PAM-Wert_WSS"), getPAMFromGeneration("jung", "PAM-Wert_NOSO"),
+                 getPAMFromGeneration("jung", "PAM-Wert_NOT"), getPAMFromGeneration("jung", "PAM-Wert_INT"),
+                  getPAMFromGeneration("jung", "PAM-Wert_FG") ,getPAMFromGeneration("jung", "PAM-Wert_WSD")],
+                   [getPAMFromGeneration("mittel", "PAM-Wert_WSS"), getPAMFromGeneration("mittel", "PAM-Wert_NOSO"),
+                       getPAMFromGeneration("mittel", "PAM-Wert_NOT"), getPAMFromGeneration("mittel", "PAM-Wert_INT"),
+                       getPAMFromGeneration("mittel", "PAM-Wert_FG"), getPAMFromGeneration("mittel", "PAM-Wert_WSD")],
+                        [getPAMFromGeneration("alt", "PAM-Wert_WSS"), getPAMFromGeneration("alt", "PAM-Wert_NOSO"),
+                 getPAMFromGeneration("alt", "PAM-Wert_NOT"), getPAMFromGeneration("alt", "PAM-Wert_INT"),
+                  getPAMFromGeneration("alt", "PAM-Wert_FG"), getPAMFromGeneration("alt", "PAM-Wert_WSD")],
+                  []
+                  ],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.5)',
                     'rgba(54, 162, 235, 0.5)',
@@ -170,7 +142,48 @@
             },
             title: {
                 display: true,
-                text: 'Boxplot von Mittelhessen (Bad Nauheim, Buedingen, Giessen, Ulrichstein)'
+                text: `Boxplot von ${city}: Bildet die PAM-Werte 'WSS', 'NOSO', 'NOT', 'INT', 'FG', 'WSD' nach Generation ab.`
+            }
+        }
+    });
+
+    var ctx2 = document.getElementById('diagramm2').getContext('2d');
+    var myBoxPlot = new Chart(ctx2, {
+        type: 'boxplot',
+        data: {
+            labels: ['Jung', 'Mittel', 'Alt'],
+            datasets: [{
+                label: 'Altergruppen',
+                data: [[getPAMFromGeneration("jung", "PAM-Wert_WSS"), getPAMFromGeneration("jung", "PAM-Wert_NOSO"),
+                 getPAMFromGeneration("jung", "PAM-Wert_NOT"), getPAMFromGeneration("jung", "PAM-Wert_INT"),
+                  getPAMFromGeneration("jung", "PAM-Wert_FG") ,getPAMFromGeneration("jung", "PAM-Wert_WSD")],
+                   [getPAMFromGeneration("mittel", "PAM-Wert_WSS"), getPAMFromGeneration("mittel", "PAM-Wert_NOSO"),
+                       getPAMFromGeneration("mittel", "PAM-Wert_NOT"), getPAMFromGeneration("mittel", "PAM-Wert_INT"),
+                       getPAMFromGeneration("mittel", "PAM-Wert_FG"), getPAMFromGeneration("mittel", "PAM-Wert_WSD")],
+                        [getPAMFromGeneration("alt", "PAM-Wert_WSS"), getPAMFromGeneration("alt", "PAM-Wert_NOSO"),
+                 getPAMFromGeneration("alt", "PAM-Wert_NOT"), getPAMFromGeneration("alt", "PAM-Wert_INT"),
+                  getPAMFromGeneration("alt", "PAM-Wert_FG"), getPAMFromGeneration("alt", "PAM-Wert_WSD")]],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: `Boxplot von ${city}: Bildet die PAM-Werte 'WSS', 'NOSO', 'NOT', 'INT', 'FG', 'WSD' nach Generation ab.`
             }
         }
     });
