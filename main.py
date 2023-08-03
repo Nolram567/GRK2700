@@ -1,6 +1,7 @@
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import pandas as pd
+import numpy as np
 import matplotlib
 from geopy.geocoders import Nominatim
 import time
@@ -45,8 +46,9 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
 
         city_name = path_parts[2]
         filtered_df = self.df[self.df['ort'] == city_name]
-        region = self.df[self.df['ort'] == city_name]['Region'].iloc[0]
-        filtered_df2 = self.df[self.df['Region'] == region]
+        region = self.df[self.df['ort'] == city_name]['Region'].iloc[0].lower()
+        #filtered_df2 = self.df[self.df['Region'] == region]
+
         if filtered_df.empty:
             self.send_response(404)
             self.send_header('Content-type', 'application/json')
@@ -54,7 +56,14 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             self.wfile.write(json.dumps({'error': 'Stadt nicht gefunden'}).encode())
         else:
             data = filtered_df.to_dict('records')
-            data2 = filtered_df2.to_dict('records')
+            #data2 = filtered_df2.to_dict('records')
+            means = Statistics.calculate_means_for_regions(city_name)
+            means[0].reset_index(drop=True, inplace=True)
+            print(means[0])
+            print(means[1])
+            regional_intragenerational_mean = means[0].to_dict('records')
+            regional_intergenerational_mean = means[1].to_dict()
+            print(means[0])
 
             with open("chart_template.html", "r", encoding="utf-8") as f:
                 html_template = f.read()
@@ -62,15 +71,36 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             # Ersetze die Datenplatzhalter in der HTML-Datei durch die tatsächlichen Daten
             html_content = html_template.replace("{{city}}", f"\"{city_name}\"")\
                 .replace("{{current_dataset}}", json.dumps(data, ensure_ascii=False)) \
-                .replace("{{region}}", json.dumps(data2, ensure_ascii=False))
+                .replace("{{region}}", f"\"{region}\"") \
+                .replace("{{regional_intragenerational_mean}}", json.dumps(regional_intragenerational_mean, ensure_ascii=False)) \
+                .replace("{{regional_intergenerational_mean}}", json.dumps(regional_intergenerational_mean, ensure_ascii=False))
                 #.replace("{{full_dataset}}", json.dumps(self.df.to_dict("records"), ensure_ascii=False)) \
 
-            print(html_content)
+            #print(html_content)
 
             self.send_response(200)
             self.send_header('Content-type', 'text/html; charset=utf-8')
             self.end_headers()
             self.wfile.write(html_content.encode('utf-8'))
+
+
+
+class Statistics():
+    @staticmethod
+    def calculate_means_for_regions(city_name):
+        df = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
+
+        filtered_df = df[df['ort'] == city_name]
+        region = df[df['ort'] == city_name]['Region'].iloc[0]
+        df = df[df['Region'] == region]
+
+        df = df.drop(columns=["gid", "ort", "Informant"])
+
+        mean_df = df.groupby('GENERATION').mean(numeric_only=True).reset_index()
+
+        mean_all = mean_df.mean(numeric_only=True)
+
+        return [mean_df, mean_all]
 def run_server():
     server_address = ('', 8000)
     httpd = HTTPServer(server_address, MyHTTPRequestHandler)
@@ -86,6 +116,21 @@ def run_server():
 
 if __name__ == '__main__':
     run_server()
+
+    '''df = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
+
+    filtered_df = df[df['ort'] == "Kassel"]
+    region = df[df['ort'] == "Kassel"]['Region'].iloc[0]
+    df = df[df['Region'] == region]
+
+    df = df.drop(columns=["gid", "ort", "Informant"])
+
+    mean_df = df.groupby('GENERATION').mean(numeric_only=True).reset_index()
+
+    mean_all = mean_df.mean(numeric_only=True)
+
+    print([mean_df, mean_all])
+    print(type([mean_df, mean_all][0]))'''
 
 
     '''#print(str(data["ort"].unique()).replace("\'", "").replace("[", "").replace("]", ""). replace(" ", ", "))

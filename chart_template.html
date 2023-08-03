@@ -77,6 +77,8 @@
     var current_dataset = {{current_dataset}};
     var city = {{city}};
     var region = {{region}};
+    var mean_region_intragenerational = {{regional_intragenerational_mean}};
+    var mean_region_intergenerational = {{regional_intergenerational_mean}};
 
     console.log(region)
 
@@ -100,28 +102,42 @@
             return current_dataset[i][PAMType];
         }
     }
-    return null; // Falls keine Übereinstimmung gefunden wird
+    return null;
     }
 
+    function getIntragenerationalRegionalPAMFromGeneration(generation, PAMType) {
+        for (let i = 0; i < mean_region_intragenerational.length; i++) {
+        if (mean_region_intragenerational[i].GENERATION === generation) {
+            return mean_region_intragenerational[i][PAMType];
+        }
+    }
+    return null;
+    }
 
     var ctx1 = document.getElementById('diagramm1').getContext('2d');
     var myBoxPlot = new Chart(ctx1, {
         type: 'boxplot',
         data: {
-            labels: ['Jung', 'Mittel', 'Alt'],
+            labels: ['Jung', 'Mittel', 'Alt', 'Regionaler intergenerationaler Schnitt'],
             datasets: [{
                 label: 'Altergruppen',
-                data: [[getPAMFromGeneration("jung", "PAM-Wert_WSS"), getPAMFromGeneration("jung", "PAM-Wert_NOSO"),
-                 getPAMFromGeneration("jung", "PAM-Wert_NOT"), getPAMFromGeneration("jung", "PAM-Wert_INT"),
-                  getPAMFromGeneration("jung", "PAM-Wert_FG") ,getPAMFromGeneration("jung", "PAM-Wert_WSD")],
-                   [getPAMFromGeneration("mittel", "PAM-Wert_WSS"), getPAMFromGeneration("mittel", "PAM-Wert_NOSO"),
-                       getPAMFromGeneration("mittel", "PAM-Wert_NOT"), getPAMFromGeneration("mittel", "PAM-Wert_INT"),
-                       getPAMFromGeneration("mittel", "PAM-Wert_FG"), getPAMFromGeneration("mittel", "PAM-Wert_WSD")],
-                        [getPAMFromGeneration("alt", "PAM-Wert_WSS"), getPAMFromGeneration("alt", "PAM-Wert_NOSO"),
-                 getPAMFromGeneration("alt", "PAM-Wert_NOT"), getPAMFromGeneration("alt", "PAM-Wert_INT"),
-                  getPAMFromGeneration("alt", "PAM-Wert_FG"), getPAMFromGeneration("alt", "PAM-Wert_WSD")],
-                  []
-                  ],
+                data: [[getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_NOSO"),
+                 getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_INT"),
+                  getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_WSD")],
+                   [getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_NOSO"),
+                    getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_INT"),
+                       getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_WSD")],
+                        [getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_NOSO"),
+                 getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_INT"),
+                  getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_WSD")],
+                  [
+                  mean_region_intergenerational["PAM-Wert_WSS"],
+                  mean_region_intergenerational["PAM-Wert_NOSO"],
+                  mean_region_intergenerational["PAM-Wert_NOT"],
+                  mean_region_intergenerational["PAM-Wert_INT"],
+                  mean_region_intergenerational["PAM-Wert_FG"],
+                  mean_region_intergenerational["PAM-Wert_WSD"]
+                  ]],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.5)',
                     'rgba(54, 162, 235, 0.5)',
@@ -142,7 +158,7 @@
             },
             title: {
                 display: true,
-                text: `Boxplot von ${city}: Bildet die PAM-Werte 'WSS', 'NOSO', 'NOT', 'INT', 'FG', 'WSD' nach Generation ab.`
+                text: `Boxplot der mittleren PAM-Werte aller ${region}en Städte: Bildet die inter-, und intragenerationalen regionalen PAM-Werte 'WSS', 'NOSO', 'NOT', 'INT', 'FG', 'WSD' ab.`
             }
         }
     });
