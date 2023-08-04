@@ -3,9 +3,6 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import pandas as pd
 import numpy as np
 import matplotlib
-from geopy.geocoders import Nominatim
-import time
-from flask import Flask, render_template_string
 
 # Definiere den Handler für den HTTP-Server
 class MyHTTPRequestHandler(BaseHTTPRequestHandler):
@@ -16,6 +13,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         "/draw": "leaflat_draw_example.html",
         "/regions": "leaflet.js_regions.html",
         "/tabular": "tabular.html",
+        "": "leaflat.nex.html"
     }
 
     df = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
@@ -57,13 +55,18 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         else:
             data = filtered_df.to_dict('records')
             #data2 = filtered_df2.to_dict('records')
-            means = Statistics.calculate_means_for_regions(city_name)
-            means[0].reset_index(drop=True, inplace=True)
-            print(means[0])
-            print(means[1])
-            regional_intragenerational_mean = means[0].to_dict('records')
-            regional_intergenerational_mean = means[1].to_dict()
-            print(means[0])
+            regional_means = Statistics.calculate_means_for_regions(city_name)
+            local_means = Statistics.calculate_means_for_citys(city_name)
+            regional_means[0].reset_index(drop=True, inplace=True)
+            local_means[0].reset_index(drop=True, inplace=True)
+            local_mean_PAM = Statistics.calculate_mean_PAM(local_means[1])
+            print(local_mean_PAM)
+            regional_intragenerational_mean = regional_means[0].to_dict('records')
+            regional_intergenerational_mean = regional_means[1].to_dict()
+            local_intragenerational_mean = local_means[0].to_dict('records')
+            local_intergenerational_mean = local_means[1].to_dict()
+            local_mean_PAM = local_mean_PAM.to_dict()
+            print(local_mean_PAM)
 
             with open("chart_template.html", "r", encoding="utf-8") as f:
                 html_template = f.read()
@@ -73,7 +76,10 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
                 .replace("{{current_dataset}}", json.dumps(data, ensure_ascii=False)) \
                 .replace("{{region}}", f"\"{region}\"") \
                 .replace("{{regional_intragenerational_mean}}", json.dumps(regional_intragenerational_mean, ensure_ascii=False)) \
-                .replace("{{regional_intergenerational_mean}}", json.dumps(regional_intergenerational_mean, ensure_ascii=False))
+                .replace("{{regional_intergenerational_mean}}", json.dumps(regional_intergenerational_mean, ensure_ascii=False)) \
+                .replace("{{local_intragenerational_mean}}", json.dumps(local_intragenerational_mean, ensure_ascii=False)) \
+                .replace("{{local_intergenerational_mean}}", json.dumps(local_intergenerational_mean, ensure_ascii=False)) \
+                .replace("{{local_mean_PAM}}", json.dumps(local_mean_PAM, ensure_ascii=False))
                 #.replace("{{full_dataset}}", json.dumps(self.df.to_dict("records"), ensure_ascii=False)) \
 
             #print(html_content)
@@ -90,7 +96,6 @@ class Statistics():
     def calculate_means_for_regions(city_name):
         df = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
 
-        filtered_df = df[df['ort'] == city_name]
         region = df[df['ort'] == city_name]['Region'].iloc[0]
         df = df[df['Region'] == region]
 
@@ -101,6 +106,37 @@ class Statistics():
         mean_all = mean_df.mean(numeric_only=True)
 
         return [mean_df, mean_all]
+
+    @staticmethod
+    def calculate_means_for_citys(city_name):
+        df = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
+
+        df = df[df['ort'] == city_name]
+
+        df = df.drop(columns=["gid", "ort", "Informant"])
+
+        mean_df = df.groupby('GENERATION').mean(numeric_only=True).reset_index()
+
+        mean_all = mean_df.mean(numeric_only=True)
+
+        return [mean_df, mean_all]
+
+    @staticmethod
+    def calculate_mean_PAM(s, region=False):
+        # Entferne die Kontrollwert-Elemente
+        s = s.dropna()
+
+        s = s.drop(columns=["Kontrollwert_WSS", "Kontrollwert_NOSO", "Kontrollwert_NOT", "Kontrollwert_INT", "Kontrollwert_FG", "Kontrollwert_WSD"])
+
+        # Berechne den Mittelwert
+        mean_PAM = s.mean()
+
+        # Erstelle eine neue Series mit dem berechneten Mittelwert
+        mean_series = pd.Series({'Mean_PAM': mean_PAM})
+
+        return mean_series
+
+
 def run_server():
     server_address = ('', 8000)
     httpd = HTTPServer(server_address, MyHTTPRequestHandler)
@@ -113,6 +149,7 @@ def run_server():
 
     httpd.server_close()
     print('Server gestoppt.')
+
 
 if __name__ == '__main__':
     run_server()

@@ -16,6 +16,13 @@
         grid-auto-rows: auto;
         gap: 10px;
     }
+    .special-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Zwei Spalten */
+    grid-auto-rows: auto;
+    width: 48%;
+    gap: 10px;
+    }
     body {
         font-family: Arial, sans-serif;
     }
@@ -58,10 +65,8 @@
   <div class="chart-container">
     <canvas id="diagramm2"></canvas>
   </div>
-  <div class="chart-container">
+  <div class="special-container">
     <canvas id="diagramm3"></canvas>
-  </div>
-  <div class="chart-container">
     <canvas id="diagramm4"></canvas>
   </div>
   <div class="chart-container">
@@ -79,6 +84,10 @@
     var region = {{region}};
     var mean_region_intragenerational = {{regional_intragenerational_mean}};
     var mean_region_intergenerational = {{regional_intergenerational_mean}};
+    var mean_local_intragenerational = {{local_intragenerational_mean}};
+    var mean_local_intergenerational = {{local_intergenerational_mean}};
+    var mean_local = {{local_mean_PAM}};
+
 
     console.log(region)
 
@@ -109,6 +118,15 @@
         for (let i = 0; i < mean_region_intragenerational.length; i++) {
         if (mean_region_intragenerational[i].GENERATION === generation) {
             return mean_region_intragenerational[i][PAMType];
+        }
+    }
+    return null;
+    }
+
+    function getIntragenerationalLocalPAMFromGeneration(generation, PAMType) {
+        for (let i = 0; i < mean_local_intragenerational.length; i++) {
+        if (mean_local_intragenerational[i].GENERATION === generation) {
+            return mean_local_intragenerational[i][PAMType];
         }
     }
     return null;
@@ -155,6 +173,7 @@
             responsive: true,
             legend: {
                 position: 'top',
+                display: false
             },
             title: {
                 display: true,
@@ -167,7 +186,7 @@
     var myBoxPlot = new Chart(ctx2, {
         type: 'boxplot',
         data: {
-            labels: ['Jung', 'Mittel', 'Alt'],
+            labels: ['Jung', 'Mittel', 'Alt', 'Lokaler intergenerationaler Schnitt'],
             datasets: [{
                 label: 'Altergruppen',
                 data: [[getPAMFromGeneration("jung", "PAM-Wert_WSS"), getPAMFromGeneration("jung", "PAM-Wert_NOSO"),
@@ -178,7 +197,15 @@
                        getPAMFromGeneration("mittel", "PAM-Wert_FG"), getPAMFromGeneration("mittel", "PAM-Wert_WSD")],
                         [getPAMFromGeneration("alt", "PAM-Wert_WSS"), getPAMFromGeneration("alt", "PAM-Wert_NOSO"),
                  getPAMFromGeneration("alt", "PAM-Wert_NOT"), getPAMFromGeneration("alt", "PAM-Wert_INT"),
-                  getPAMFromGeneration("alt", "PAM-Wert_FG"), getPAMFromGeneration("alt", "PAM-Wert_WSD")]],
+                  getPAMFromGeneration("alt", "PAM-Wert_FG"), getPAMFromGeneration("alt", "PAM-Wert_WSD")],
+                  [
+                  mean_local_intergenerational["PAM-Wert_WSS"],
+                  mean_local_intergenerational["PAM-Wert_NOSO"],
+                  mean_local_intergenerational["PAM-Wert_NOT"],
+                  mean_local_intergenerational["PAM-Wert_INT"],
+                  mean_local_intergenerational["PAM-Wert_FG"],
+                  mean_local_intergenerational["PAM-Wert_WSD"]
+                  ]],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.5)',
                     'rgba(54, 162, 235, 0.5)',
@@ -196,6 +223,7 @@
             responsive: true,
             legend: {
                 position: 'top',
+                display: false
             },
             title: {
                 display: true,
@@ -208,7 +236,7 @@
     var myStackedBarChart = new Chart(ctx3, {
         type: 'bar',
         data: {
-            labels: ['PAM-Wert_WSS', 'PAM-Wert_NOSO', 'PAM-Wert_NOT', 'PAM-Wert_INT', 'PAM-Wert_FG', 'PAM-Wert_WSD'],
+            labels: ['PAM-Wert_WSS', 'PAM-Wert_NOSO', 'PAM-Wert_NOT', 'PAM-Wert_INT', 'PAM-Wert_FG', 'PAM-Wert_WSD', 'Mittlerer lokaler PAM-Wert'],
             datasets: [{
                 label: 'Jung',
                 data: [getPAMFromGeneration("jung", "PAM-Wert_WSS"), getPAMFromGeneration("jung", "PAM-Wert_NOSO"),
@@ -245,7 +273,7 @@
                     ticks: {
                         beginAtZero: true,
                         max: 2.5,
-                        stepSize: 0.2
+                        stepSize: 0.25
                     }
                 }]
             },
@@ -258,39 +286,48 @@
 
     var ctx4 = document.getElementById('diagramm4').getContext('2d');
     var myChart = new Chart(ctx4, {
-      type: 'bar',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    type: 'bar',
+    data: {
+        labels: [
+            'Mittlerer lokaler PAM-Wert',
+            'Mittlerer regionaler PAM-Wert',
+            'Mittlerer lokaler PAM-Wert (Jung)',
+            'Mittlerer lokaler PAM-Wert (Mittel)',
+            'Mittlerer lokaler PAM-Wert (Alt)'
+        ],
         datasets: [{
-            data: [12, 19, 3, 5, 2, 3],
+            label: '# PAM-Werte',
+            data: [1.6, 1.7, 1, 1.5, 2],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(255, 99, 132, 0.2)',  // Rot
+                'rgba(75, 192, 192, 0.2)',  // Grün
+                'rgba(255, 205, 86, 0.2)',  // Gelb
+                'rgba(54, 162, 235, 0.2)',  // Blau
+                'rgba(153, 102, 255, 0.2)'  // Violett
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                'rgba(255, 99, 132, 1)',  // Rot
+                'rgba(75, 192, 192, 1)',  // Grün
+                'rgba(255, 205, 86, 1)',  // Gelb
+                'rgba(54, 162, 235, 1)',  // Blau
+                'rgba(153, 102, 255, 1)'  // Violett
             ],
             borderWidth: 1
         }]
     },
     options: {
         scales: {
-            y: {
-                beginAtZero: true
-            },
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    max: 2.5,
+                    stepSize: 0.25
+                }
+            }]
         },
-        title: {
+        title:{
             display: true,
-            text: 'Bar Chart'
+            text: `Bar Chart mittlerer, lokaler und regionaler Werte von ${city}`
         }
     }
 });
