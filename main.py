@@ -1,8 +1,12 @@
 import json
+import time
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import pandas as pd
+from urllib.parse import unquote
 import numpy as np
 import matplotlib
+from geopy import Nominatim
+
 
 # Definiere den Handler für den HTTP-Server
 class MyHTTPRequestHandler(BaseHTTPRequestHandler):
@@ -20,11 +24,12 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
 
     def do_GET(self) -> None:
         # Überprüfen Sie, ob der Pfad ein gültiger Endpunkt ist
+        print(self.path)
         if self.path.startswith("/data"):
             self.handle_data_endpoint()
         if self.path in self.endpoints_to_files:
             file_name = self.endpoints_to_files[self.path]
-            print(self.path)
+            #print(self.path)
             # Öffnen und lesen Sie die Datei nur, wenn der Pfad ein gültiger Endpunkt ist
             with open(file_name, "r", encoding="utf-8") as f:
                 content = f.read()
@@ -42,7 +47,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             self.send_error(400, 'Stadtname muss angegeben werden')
             return
 
-        city_name = path_parts[2]
+        city_name = unquote(path_parts[2])
         filtered_df = self.df[self.df['ort'] == city_name]
         region = self.df[self.df['ort'] == city_name]['Region'].iloc[0].lower()
         #filtered_df2 = self.df[self.df['Region'] == region]
@@ -91,6 +96,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
 
 
 
+
 class Statistics():
     @staticmethod
     def calculate_means_for_regions(city_name):
@@ -122,7 +128,7 @@ class Statistics():
         return [mean_df, mean_all]
 
     @staticmethod
-    def calculate_mean_PAM(s, region=False):
+    def calculate_mean_PAM(s):
         # Entferne die Kontrollwert-Elemente
         s = s.dropna()
 
@@ -154,7 +160,7 @@ def run_server():
 if __name__ == '__main__':
     run_server()
 
-    '''df = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
+    '''data = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
 
     filtered_df = df[df['ort'] == "Kassel"]
     region = df[df['ort'] == "Kassel"]['Region'].iloc[0]
@@ -167,10 +173,10 @@ if __name__ == '__main__':
     mean_all = mean_df.mean(numeric_only=True)
 
     print([mean_df, mean_all])
-    print(type([mean_df, mean_all][0]))'''
+    print(type([mean_df, mean_all][0]))
 
 
-    '''#print(str(data["ort"].unique()).replace("\'", "").replace("[", "").replace("]", ""). replace(" ", ", "))
+    #print(str(data["ort"].unique()).replace("\'", "").replace("[", "").replace("]", ""). replace(" ", ", "))
     print(data.loc[(data["ort"] == "Alt Duvenstedt") & (data["GENERATION"] == "alt"), "PAM-Wert_WSS"])
     geolocator = Nominatim(user_agent="geoapiExercises")
 
@@ -200,14 +206,12 @@ if __name__ == '__main__':
         location = geolocator.geocode(city + ", Deutschland")
         #print(f"{{name: '{city}', lat: {location.latitude}, lng: {location.longitude}}},")
         try:
-            PAM_Alt = data.loc[(data["ort"] == city) & (data["GENERATION"] == "alt"), "PAM-Wert_WSS"].item()
-            PAM_Mittel = data.loc[(data["ort"] == city) & (data["GENERATION"] == "mittel"), "PAM-Wert_WSS"].item()
-            PAM_Jung = data.loc[(data["ort"] == city) & (data["GENERATION"] == "jung"), "PAM-Wert_WSS"].item()
+            local_means = Statistics.calculate_means_for_citys(city)
+            local_mean_PAM = Statistics.calculate_mean_PAM(local_means[1])
+            Mean_PAM = local_mean_PAM['Mean_PAM']
         except KeyError:
-            PAM_Alt = ""
-            PAM_Mittel = ""
-            PAM_Jung = ""
-        my_cities.append(f"{{name: '{city}', lat: {location.latitude}, lng: {location.longitude}, PAM_Wert_Alt: {PAM_Alt}, PAM_Wert_Mittel: {PAM_Mittel}, PAM_Wert_Jung: {PAM_Jung}}}")
+            Mean_PAM = ""
+        my_cities.append(f"{{name: '{city}', lat: {location.latitude}, lng: {location.longitude}, PAM_Mittelwert: {Mean_PAM}}}")
         print(f"{my_cities[-1]}, ")
         time.sleep(1)'''
 
