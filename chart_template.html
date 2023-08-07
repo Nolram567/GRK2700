@@ -87,7 +87,8 @@
     var mean_local_intragenerational = {{local_intragenerational_mean}};
     var mean_local_intergenerational = {{local_intergenerational_mean}};
     var mean_local = {{local_mean_PAM}};
-
+    var mean_regional = {{regional_mean_PAM}};
+    var mean_national = 1.48384;
 
     console.log(region)
 
@@ -291,13 +292,14 @@
         labels: [
             'Mittlerer lokaler PAM-Wert',
             'Mittlerer regionaler PAM-Wert',
+            'Mittlerer nationaler PAM-Wert',
             'Mittlerer lokaler PAM-Wert (Jung)',
             'Mittlerer lokaler PAM-Wert (Mittel)',
             'Mittlerer lokaler PAM-Wert (Alt)'
         ],
         datasets: [{
-            label: '# PAM-Werte',
-            data: [1.6, 1.7, 1, 1.5, 2],
+            label: 'PAM-Werte',
+            data: [1.6, 1.7, 1.48384, 1, 1.5, 2],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',  // Rot
                 'rgba(75, 192, 192, 0.2)',  // Grün
@@ -327,7 +329,7 @@
         },
         title:{
             display: true,
-            text: `Bar Chart mittlerer, lokaler und regionaler Werte von ${city}`
+            text: `Bar Chart lokaler und regionaler und nationaler Werte von ${city}`
         }
     }
 });
@@ -420,7 +422,7 @@ var myRadarChart = new Chart(ctx6, {
         scale: {
             ticks: {
                 beginAtZero: true,
-                max: 2.0,
+                max: 3.0,
                 stepSize: 0.2
             }
         },

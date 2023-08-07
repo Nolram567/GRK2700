@@ -17,7 +17,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         "/draw": "leaflat_draw_example.html",
         "/regions": "leaflet.js_regions.html",
         "/tabular": "tabular.html",
-        "": "leaflat.nex.html"
+        "/": "leaflat.nex.html"
     }
 
     df = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
@@ -68,6 +68,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             print(local_mean_PAM)
             regional_intragenerational_mean = regional_means[0].to_dict('records')
             regional_intergenerational_mean = regional_means[1].to_dict()
+            regional_mean_PAM = Statistics.calculate_mean_PAM(regional_means[1]).to_dict()
             local_intragenerational_mean = local_means[0].to_dict('records')
             local_intergenerational_mean = local_means[1].to_dict()
             local_mean_PAM = local_mean_PAM.to_dict()
@@ -84,7 +85,8 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
                 .replace("{{regional_intergenerational_mean}}", json.dumps(regional_intergenerational_mean, ensure_ascii=False)) \
                 .replace("{{local_intragenerational_mean}}", json.dumps(local_intragenerational_mean, ensure_ascii=False)) \
                 .replace("{{local_intergenerational_mean}}", json.dumps(local_intergenerational_mean, ensure_ascii=False)) \
-                .replace("{{local_mean_PAM}}", json.dumps(local_mean_PAM, ensure_ascii=False))
+                .replace("{{local_mean_PAM}}", json.dumps(local_mean_PAM, ensure_ascii=False)) \
+                .replace("{{regional_mean_PAM}}", json.dumps(regional_mean_PAM, ensure_ascii=False))
                 #.replace("{{full_dataset}}", json.dumps(self.df.to_dict("records"), ensure_ascii=False)) \
 
             #print(html_content)
@@ -178,9 +180,9 @@ if __name__ == '__main__':
 
     #print(str(data["ort"].unique()).replace("\'", "").replace("[", "").replace("]", ""). replace(" ", ", "))
     print(data.loc[(data["ort"] == "Alt Duvenstedt") & (data["GENERATION"] == "alt"), "PAM-Wert_WSS"])
-    geolocator = Nominatim(user_agent="geoapiExercises")
+    geolocator = Nominatim(user_agent="geoapiExercises")'''
 
-    cities = ["Alt Duvenstedt", "Bad Segeberg", "Flensburg", "Lohne",
+    '''cities = ["Alt Duvenstedt", "Bad Segeberg", "Flensburg", "Lohne",
               "Oldenburg", "Lüneburg", "Neustadt am Rübenberge", "Rostock",
               "Schwerin", "Stralsund", "Bergen", "Pasewalk",
               "Frankfurt an der Oder", "Fürstenwalde", "Potsdam", "Pritzwalk",
@@ -201,18 +203,15 @@ if __name__ == '__main__':
               "Ulm", "Balingen", "Rudersberg", "Blindheim", "Waldshut",
               "Steinen", "Bräunlingen", "Ravensburg", "Tuttlingen", "Ohlsbach"]
 
-    my_cities = []
+    my_mean_values = []
     for city in cities:
-        location = geolocator.geocode(city + ", Deutschland")
+        #location = geolocator.geocode(city + ", Deutschland")
         #print(f"{{name: '{city}', lat: {location.latitude}, lng: {location.longitude}}},")
-        try:
-            local_means = Statistics.calculate_means_for_citys(city)
-            local_mean_PAM = Statistics.calculate_mean_PAM(local_means[1])
-            Mean_PAM = local_mean_PAM['Mean_PAM']
-        except KeyError:
-            Mean_PAM = ""
-        my_cities.append(f"{{name: '{city}', lat: {location.latitude}, lng: {location.longitude}, PAM_Mittelwert: {Mean_PAM}}}")
-        print(f"{my_cities[-1]}, ")
+        local_means = Statistics.calculate_means_for_citys(city)
+        New_value = Statistics.calculate_mean_PAM(Statistics.calculate_mean_PAM(local_means[1]))['Mean_PAM']
+        if not np.isnan(New_value):
+            my_mean_values.append(New_value)
+        print(np.mean(my_mean_values))
         time.sleep(1)'''
 
     #print(data["ort"].unique())
