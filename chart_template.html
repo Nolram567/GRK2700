@@ -86,8 +86,11 @@
     var mean_region_intergenerational = {{regional_intergenerational_mean}};
     var mean_local_intragenerational = {{local_intragenerational_mean}};
     var mean_local_intergenerational = {{local_intergenerational_mean}};
+    var mean_local_young = {{local_young_mean}};
+    var mean_local_intermediate = {{local_intermediate_mean}};
+    var mean_local_old = {{local_old_mean}};
     var mean_local = {{local_mean_PAM}};
-    var mean_regional = {{regional_mean_PAM}};
+    //var mean_regional = {{regional_mean_PAM}};
     var mean_national = 1.48384;
 
     console.log(region)
@@ -273,7 +276,7 @@
                     stacked: false,
                     ticks: {
                         beginAtZero: true,
-                        max: 2.5,
+                        max: 3.0,
                         stepSize: 0.25
                     }
                 }]
@@ -299,7 +302,7 @@
         ],
         datasets: [{
             label: 'PAM-Werte',
-            data: [1.6, 1.7, 1.48384, 1, 1.5, 2],
+            data: [mean_local, 2, mean_national, mean_local_young, mean_local_intermediate, mean_local_old],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',  // Rot
                 'rgba(75, 192, 192, 0.2)',  // Grün
@@ -322,7 +325,7 @@
             yAxes: [{
                 ticks: {
                     beginAtZero: true,
-                    max: 2.5,
+                    max: 3.0,
                     stepSize: 0.25
                 }
             }]

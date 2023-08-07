@@ -65,14 +65,14 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             regional_means[0].reset_index(drop=True, inplace=True)
             local_means[0].reset_index(drop=True, inplace=True)
             local_mean_PAM = Statistics.calculate_mean_PAM(local_means[1])
-            print(local_mean_PAM)
             regional_intragenerational_mean = regional_means[0].to_dict('records')
             regional_intergenerational_mean = regional_means[1].to_dict()
-            regional_mean_PAM = Statistics.calculate_mean_PAM(regional_means[1]).to_dict()
+            #regional_mean_PAM = Statistics.calculate_mean_PAM(regional_means[1]).to_dict()
             local_intragenerational_mean = local_means[0].to_dict('records')
             local_intergenerational_mean = local_means[1].to_dict()
-            local_mean_PAM = local_mean_PAM.to_dict()
-            print(local_mean_PAM)
+
+            local_general_PAM = Statistics.calculate_mean_local_generation(filtered_df)
+            local_general_PAM_intergenerational = np.mean([local_general_PAM['jung'], local_general_PAM['mittel'], local_general_PAM['alt']])
 
             with open("chart_template.html", "r", encoding="utf-8") as f:
                 html_template = f.read()
@@ -85,8 +85,11 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
                 .replace("{{regional_intergenerational_mean}}", json.dumps(regional_intergenerational_mean, ensure_ascii=False)) \
                 .replace("{{local_intragenerational_mean}}", json.dumps(local_intragenerational_mean, ensure_ascii=False)) \
                 .replace("{{local_intergenerational_mean}}", json.dumps(local_intergenerational_mean, ensure_ascii=False)) \
-                .replace("{{local_mean_PAM}}", json.dumps(local_mean_PAM, ensure_ascii=False)) \
-                .replace("{{regional_mean_PAM}}", json.dumps(regional_mean_PAM, ensure_ascii=False))
+                .replace("{{local_mean_PAM}}", f"{local_general_PAM_intergenerational}") \
+                .replace("{{local_young_mean}}", f"{local_general_PAM['jung']}") \
+                .replace("{{local_intermediate_mean}}", f"{local_general_PAM['mittel']}") \
+                .replace("{{local_old_mean}}", f"{local_general_PAM['alt']}") \
+
                 #.replace("{{full_dataset}}", json.dumps(self.df.to_dict("records"), ensure_ascii=False)) \
 
             #print(html_content)
@@ -130,6 +133,17 @@ class Statistics():
         return [mean_df, mean_all]
 
     @staticmethod
+    def calculate_mean_local_generation(df):
+
+        df = df[[col for col in df.columns if 'PAM-Wert' in col or 'GENERATION' in col]]
+
+        mean_pam_values = df.groupby('GENERATION').mean()
+
+        mean_pam_values = mean_pam_values.mean(axis=1)
+
+        return mean_pam_values
+
+    @staticmethod
     def calculate_mean_PAM(s):
         # Entferne die Kontrollwert-Elemente
         s = s.dropna()
@@ -161,6 +175,31 @@ def run_server():
 
 if __name__ == '__main__':
     run_server()
+
+    '''data = [{'GENERATION': 'alt', 'PAM-Wert_WSS': 1.1, 'Kontrollwert_WSS': 0.7, 'PAM-Wert_NOSO': 1.15,
+             'Kontrollwert_NOSO': 0.8, 'PAM-Wert_NOT': np.nan, 'PAM-Wert_INT': 1.58, 'Kontrollwert_INT': 1.0,
+             'PAM-Wert_FG': 1.62, 'Kontrollwert_FG': 1.0, 'PAM-Wert_WSD': 1.69, 'Kontrollwert_WSD': 1.3},
+            {'GENERATION': 'jung', 'PAM-Wert_WSS': 0.79, 'Kontrollwert_WSS': 0.6, 'PAM-Wert_NOSO': 1.05,
+             'Kontrollwert_NOSO': 0.8, 'PAM-Wert_NOT': np.nan, 'PAM-Wert_INT': 1.35, 'Kontrollwert_INT': 1.1,
+             'PAM-Wert_FG': 1.43, 'Kontrollwert_FG': 1.1, 'PAM-Wert_WSD': 1.31, 'Kontrollwert_WSD': 1.1},
+            {'GENERATION': 'mittel', 'PAM-Wert_WSS': 1.01, 'Kontrollwert_WSS': 0.8, 'PAM-Wert_NOSO': 1.34,
+             'Kontrollwert_NOSO': 1.0, 'PAM-Wert_NOT': np.nan, 'PAM-Wert_INT': 1.83, 'Kontrollwert_INT': 1.2,
+             'PAM-Wert_FG': 1.78, 'Kontrollwert_FG': 1.4, 'PAM-Wert_WSD': 1.38, 'Kontrollwert_WSD': 1.0}]
+    # Erzeugen des DataFrames
+    # Erzeugen des DataFrames
+    df = pd.DataFrame(data)
+
+    # Behalten nur der Spalten, die 'PAM-Wert' oder 'GENERATION' enthalten
+    df = df[[col for col in df.columns if 'PAM-Wert' in col or 'GENERATION' in col]]
+
+    # Berechnen des Durchschnitts der 'PAM-Wert'-Spalten für jede 'GENERATION'
+    mean_pam_values = df.groupby('GENERATION').mean()
+
+    # Berechnen des Durchschnitts dieser Mittelwerte für jede 'GENERATION'
+    mean_pam_values = mean_pam_values.mean(axis=1)
+
+    # Ausgabe der Ergebnisse
+    print(mean_pam_values)'''
 
     '''data = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
 
