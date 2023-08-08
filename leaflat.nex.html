@@ -46,6 +46,8 @@
     <a href="http://127.0.0.1:8000/karte">Karte</a>
     <a href="http://127.0.0.1:8000/tabular">Tabelle</a>
     </div>
+
+
     <div id="mapid"></div>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -176,6 +178,8 @@
         <p><strong>Longitude:</strong> ${cities[i].PAM_Mittelwert}</p>
     `);
         }
+
+
     document.getElementById('citySearch').addEventListener('input', function() {
     var searchTerm = this.value.toLowerCase();
 
@@ -198,6 +202,7 @@
         }
     }
     });
+
     </script>
 </body>
 </html>

@@ -70,9 +70,10 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             #regional_mean_PAM = Statistics.calculate_mean_PAM(regional_means[1]).to_dict()
             local_intragenerational_mean = local_means[0].to_dict('records')
             local_intergenerational_mean = local_means[1].to_dict()
-
             local_general_PAM = Statistics.calculate_mean_local_generation(filtered_df)
             local_general_PAM_intergenerational = np.mean([local_general_PAM['jung'], local_general_PAM['mittel'], local_general_PAM['alt']])
+            regional_general_PAM_intergenerational = Statistics.calculate_regional_general_PAM_intergenerational(local_intergenerational_mean)
+            print(regional_general_PAM_intergenerational)
 
             with open("chart_template.html", "r", encoding="utf-8") as f:
                 html_template = f.read()
@@ -89,7 +90,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
                 .replace("{{local_young_mean}}", f"{local_general_PAM['jung']}") \
                 .replace("{{local_intermediate_mean}}", f"{local_general_PAM['mittel']}") \
                 .replace("{{local_old_mean}}", f"{local_general_PAM['alt']}") \
-
+                .replace("{{regional_general_mean}}", f"{json.dumps(regional_general_PAM_intergenerational, ensure_ascii=False)}")
                 #.replace("{{full_dataset}}", json.dumps(self.df.to_dict("records"), ensure_ascii=False)) \
 
             #print(html_content)
@@ -158,6 +159,12 @@ class Statistics():
 
         return mean_series
 
+    @staticmethod
+    def calculate_regional_general_PAM_intergenerational(d: dict) -> dict:
+        filtered_values = [value for key, value in d.items() if
+                           not key.startswith('Kontrollwert') and not np.isnan(value)]
+        average_pam = np.mean(filtered_values)
+        return average_pam
 
 def run_server():
     server_address = ('', 8000)

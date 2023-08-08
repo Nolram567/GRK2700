@@ -68,13 +68,10 @@
   <div class="special-container">
     <canvas id="diagramm3"></canvas>
     <canvas id="diagramm4"></canvas>
-  </div>
-  <div class="chart-container">
     <canvas id="diagramm5"></canvas>
-  </div>
-  <div class="chart-container">
     <canvas id="diagramm6"></canvas>
   </div>
+
 
   <script>
 
@@ -90,7 +87,7 @@
     var mean_local_intermediate = {{local_intermediate_mean}};
     var mean_local_old = {{local_old_mean}};
     var mean_local = {{local_mean_PAM}};
-    //var mean_regional = {{regional_mean_PAM}};
+    var mean_regional = {{regional_general_mean}};
     var mean_national = 1.48384;
 
     console.log(region)
@@ -140,56 +137,6 @@
     var myBoxPlot = new Chart(ctx1, {
         type: 'boxplot',
         data: {
-            labels: ['Jung', 'Mittel', 'Alt', 'Regionaler intergenerationaler Schnitt'],
-            datasets: [{
-                label: 'Altergruppen',
-                data: [[getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_NOSO"),
-                 getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_INT"),
-                  getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_WSD")],
-                   [getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_NOSO"),
-                    getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_INT"),
-                       getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_WSD")],
-                        [getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_NOSO"),
-                 getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_INT"),
-                  getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_WSD")],
-                  [
-                  mean_region_intergenerational["PAM-Wert_WSS"],
-                  mean_region_intergenerational["PAM-Wert_NOSO"],
-                  mean_region_intergenerational["PAM-Wert_NOT"],
-                  mean_region_intergenerational["PAM-Wert_INT"],
-                  mean_region_intergenerational["PAM-Wert_FG"],
-                  mean_region_intergenerational["PAM-Wert_WSD"]
-                  ]],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.5)',
-                    'rgba(54, 162, 235, 0.5)',
-                    'rgba(255, 206, 86, 0.5)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            legend: {
-                position: 'top',
-                display: false
-            },
-            title: {
-                display: true,
-                text: `Boxplot der mittleren PAM-Werte aller ${region}en Städte: Bildet die inter-, und intragenerationalen regionalen PAM-Werte 'WSS', 'NOSO', 'NOT', 'INT', 'FG', 'WSD' ab.`
-            }
-        }
-    });
-
-    var ctx2 = document.getElementById('diagramm2').getContext('2d');
-    var myBoxPlot = new Chart(ctx2, {
-        type: 'boxplot',
-        data: {
             labels: ['Jung', 'Mittel', 'Alt', 'Lokaler intergenerationaler Schnitt'],
             datasets: [{
                 label: 'Altergruppen',
@@ -232,6 +179,56 @@
             title: {
                 display: true,
                 text: `Boxplot von ${city}: Bildet die PAM-Werte 'WSS', 'NOSO', 'NOT', 'INT', 'FG', 'WSD' nach Generation ab.`
+            }
+        }
+    });
+
+    var ctx2 = document.getElementById('diagramm2').getContext('2d');
+    var myBoxPlot = new Chart(ctx2, {
+        type: 'boxplot',
+        data: {
+            labels: ['Jung', 'Mittel', 'Alt', 'Regionaler intergenerationaler Schnitt'],
+            datasets: [{
+                label: 'Altergruppen',
+                data: [[getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_NOSO"),
+                 getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_INT"),
+                  getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_WSD")],
+                   [getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_NOSO"),
+                    getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_INT"),
+                       getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_WSD")],
+                        [getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_NOSO"),
+                 getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_INT"),
+                  getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_WSD")],
+                  [
+                  mean_region_intergenerational["PAM-Wert_WSS"],
+                  mean_region_intergenerational["PAM-Wert_NOSO"],
+                  mean_region_intergenerational["PAM-Wert_NOT"],
+                  mean_region_intergenerational["PAM-Wert_INT"],
+                  mean_region_intergenerational["PAM-Wert_FG"],
+                  mean_region_intergenerational["PAM-Wert_WSD"]
+                  ]],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            legend: {
+                position: 'top',
+                display: false
+            },
+            title: {
+                display: true,
+                text: `Boxplot der mittleren PAM-Werte aller ${region}en Städte: Bildet die inter-, und intragenerationalen regionalen PAM-Werte 'WSS', 'NOSO', 'NOT', 'INT', 'FG', 'WSD' ab.`
             }
         }
     });
@@ -302,7 +299,7 @@
         ],
         datasets: [{
             label: 'PAM-Werte',
-            data: [mean_local, 2, mean_national, mean_local_young, mean_local_intermediate, mean_local_old],
+            data: [mean_local, mean_regional, mean_national, mean_local_young, mean_local_intermediate, mean_local_old],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',  // Rot
                 'rgba(75, 192, 192, 0.2)',  // Grün
@@ -339,35 +336,80 @@
 
 var ctx5 = document.getElementById('diagramm5').getContext('2d');
 var myBubbleChart = new Chart(ctx5, {
-    type: 'bubble',
+    type: 'radar',
     data: {
+        labels: ['PAM-Wert_WSS', 'PAM-Wert_NOSO', 'PAM-Wert_NOT', 'PAM-Wert_INT', 'PAM-Wert_FG', 'PAM-Wert_WSD'],
         datasets: [{
-            label: 'First Dataset',
-            data: [
-                {x: 20, y: 30, r: 15},
-                {x: 40, y: 10, r: 10}
-            ],
+            label: 'alt',
+            data: [getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_NOSO"),
+                    getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_INT"),
+                       getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_WSD")],
+            fill: true,
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
             borderColor: 'rgb(255, 99, 132)',
+            pointBackgroundColor: 'rgb(255, 99, 132)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(255, 99, 132)'
         }, {
-            label: 'Second Dataset',
-            data: [
-                {x: 10, y: 20, r: 5},
-                {x: 15, y: 10, r: 10}
-            ],
+            label: 'mittel',
+            data: [getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_NOSO"),
+                    getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_INT"),
+                       getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_WSD")],
+            fill: true,
             backgroundColor: 'rgba(54, 162, 235, 0.2)',
             borderColor: 'rgb(54, 162, 235)',
+            pointBackgroundColor: 'rgb(54, 162, 235)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(54, 162, 235)'
+        },{
+            label: 'jung',
+            data: [getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_NOSO"),
+                 getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_INT"),
+                  getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_WSD")],
+            fill: true,
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',  // Veränderte Farbwerte
+            borderColor: 'rgb(75, 192, 192)',            // Veränderte Farbwerte
+            pointBackgroundColor: 'rgb(75, 192, 192)',   // Veränderte Farbwerte
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(75, 192, 192)'   // Veränderte Farbwerte
+        },{
+            label: 'Intergenerational',
+            data: [
+                  mean_region_intergenerational["PAM-Wert_WSS"],
+                  mean_region_intergenerational["PAM-Wert_NOSO"],
+                  mean_region_intergenerational["PAM-Wert_NOT"],
+                  mean_region_intergenerational["PAM-Wert_INT"],
+                  mean_region_intergenerational["PAM-Wert_FG"],
+                  mean_region_intergenerational["PAM-Wert_WSD"]
+                  ],
+            fill: true,
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',  // Veränderte Farbwerte
+            borderColor: 'rgb(75, 192, 192)',            // Veränderte Farbwerte
+            pointBackgroundColor: 'rgb(75, 192, 192)',   // Veränderte Farbwerte
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(75, 192, 192)'   // Veränderte Farbwerte
         }]
     },
     options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            },
+        elements: {
+            line: {
+                borderWidth: 3
+            }
         },
-        title: {
+        scale: {
+            ticks: {
+                beginAtZero: true,
+                max: 3.0,
+                stepSize: 0.5
+            }
+        },
+          title: {
             display: true,
-            text: 'Bubble Chart'
+            text: `Radardiagramm der ${region}en Region`
         }
     }
 });
@@ -426,7 +468,7 @@ var myRadarChart = new Chart(ctx6, {
             ticks: {
                 beginAtZero: true,
                 max: 3.0,
-                stepSize: 0.2
+                stepSize: 0.5
             }
         },
           title: {
