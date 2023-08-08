@@ -42,9 +42,9 @@
 </head>
 <body>
     <div class="header">
-        <a href="http://127.0.0.1:8000/html_content">Charts</a>
-        <a href="http://127.0.0.1:8000/karte">Karte</a>
-        <a href="http://127.0.0.1:8000/tabular">Tabelle</a>
+    <input type="text" id="citySearch" placeholder="Stadt suchen...">
+    <a href="http://127.0.0.1:8000/karte">Karte</a>
+    <a href="http://127.0.0.1:8000/tabular">Tabelle</a>
     </div>
     <div id="mapid"></div>
 
@@ -176,6 +176,28 @@
         <p><strong>Longitude:</strong> ${cities[i].PAM_Mittelwert}</p>
     `);
         }
+    document.getElementById('citySearch').addEventListener('input', function() {
+    var searchTerm = this.value.toLowerCase();
+
+    for (var i = 0; i < cities.length; i++) {
+        if (cities[i].name.toLowerCase().includes(searchTerm)) {
+            var circle = L.circle([cities[i].lat, cities[i].lng], {
+                color: getColor(cities[i].PAM_Mittelwert),
+                fillColor: getColor(cities[i].PAM_Mittelwert),
+                fillOpacity: getOpacity(cities[i].PAM_Mittelwert),
+                radius: 5000 // Setzen Sie den Radius je nach Bedarf
+            }).addTo(map).bindPopup(`
+                <h2><a href="http://localhost:8000/data/${cities[i].name}">${cities[i].name}</a></h2>
+                <p><strong>Latitude:</strong> ${cities[i].lat}</p>
+                <p><strong>Longitude:</strong> ${cities[i].lng}</p>
+                <p><strong>Mittlerer PAM-Wert:</strong> ${cities[i].PAM_Mittelwert}</p>
+            `);
+            circle.openPopup();
+            map.setView([cities[i].lat, cities[i].lng], 6);
+            break; // Bei einem Treffer Schleife verlassen
+        }
+    }
+    });
     </script>
 </body>
 </html>
