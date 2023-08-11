@@ -72,7 +72,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             local_intergenerational_mean = local_means[1].to_dict()
             local_general_PAM = Statistics.calculate_mean_local_generation(filtered_df)
             local_general_PAM_intergenerational = np.mean([local_general_PAM['jung'], local_general_PAM['mittel'], local_general_PAM['alt']])
-            regional_general_PAM_intergenerational = Statistics.calculate_regional_general_PAM_intergenerational(local_intergenerational_mean)
+            regional_general_PAM_intergenerational = Statistics.calculate_regional_general_PAM_intergenerational(regional_intergenerational_mean)
             print(regional_general_PAM_intergenerational)
 
             with open("chart_template.html", "r", encoding="utf-8") as f:
@@ -182,6 +182,20 @@ def run_server():
 
 if __name__ == '__main__':
     run_server()
+
+
+
+    '''# Beispiel DataFrame erstellen
+    df = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
+
+    df.replace(['n. d.', np.nan], '-', inplace=True)
+
+    # DataFrame als HTML exportieren
+    html_string = df.to_html(index=False, escape=False)
+
+    # Die HTML-String in eine Datei schreiben mit utf-8 Encoding
+    with open('tabelle.html', 'w', encoding='utf-8') as f:
+        f.write(html_string)'''
 
     '''data = [{'GENERATION': 'alt', 'PAM-Wert_WSS': 1.1, 'Kontrollwert_WSS': 0.7, 'PAM-Wert_NOSO': 1.15,
              'Kontrollwert_NOSO': 0.8, 'PAM-Wert_NOT': np.nan, 'PAM-Wert_INT': 1.58, 'Kontrollwert_INT': 1.0,
