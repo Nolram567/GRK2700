@@ -5006,11 +5006,11 @@
                 let region = row.querySelector('td:nth-child(1)').textContent;
                 let ort = row.querySelector('td:nth-child(2)').textContent;
                 if (region === value || ort === value) {
-                    row.style.display = "";
-                } else {
-                    row.style.display = "none";
+                    row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    return;
                 }
             });
         });
     });
-</script></body></html>
+</script>
+</body></html>
