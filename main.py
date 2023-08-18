@@ -8,9 +8,8 @@ import matplotlib
 from geopy import Nominatim
 
 
-# Definiere den Handler für den HTTP-Server
 class MyHTTPRequestHandler(BaseHTTPRequestHandler):
-    # Definieren Sie eine explizite Zuordnung der Endpunkte zu den Dateien
+
     endpoints_to_files = {
         "/karte": "leaflat.nex.html",
         "/html_content": "chart.js_Beipiel.html",
@@ -23,14 +22,12 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
     df = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
 
     def do_GET(self) -> None:
-        # Überprüfen Sie, ob der Pfad ein gültiger Endpunkt ist
         print(self.path)
         if self.path.startswith("/data"):
             self.handle_data_endpoint()
         if self.path in self.endpoints_to_files:
             file_name = self.endpoints_to_files[self.path]
             #print(self.path)
-            # Öffnen und lesen Sie die Datei nur, wenn der Pfad ein gültiger Endpunkt ist
             with open(file_name, "r", encoding="utf-8") as f:
                 content = f.read()
 
@@ -39,7 +36,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(content.encode('utf-8'))
         else:
-            self.send_response(404)  # sende "Not Found" Antwort, wenn der Pfad nicht gültig ist
+            self.send_response(404)
 
     def handle_data_endpoint(self) -> None:
         path_parts = self.path.split('/')
@@ -194,9 +191,8 @@ if __name__ == '__main__':
     html_string = df.to_html(index=False, escape=False)
 
     # Die HTML-String in eine Datei schreiben mit utf-8 Encoding
-    with open('tabelle.html', 'w', encoding='utf-8') as f:
+    with open('', 'w', encoding='utf-8') as f:
         f.write(html_string)'''
-
     '''data = [{'GENERATION': 'alt', 'PAM-Wert_WSS': 1.1, 'Kontrollwert_WSS': 0.7, 'PAM-Wert_NOSO': 1.15,
              'Kontrollwert_NOSO': 0.8, 'PAM-Wert_NOT': np.nan, 'PAM-Wert_INT': 1.58, 'Kontrollwert_INT': 1.0,
              'PAM-Wert_FG': 1.62, 'Kontrollwert_FG': 1.0, 'PAM-Wert_WSD': 1.69, 'Kontrollwert_WSD': 1.3},

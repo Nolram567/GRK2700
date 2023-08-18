@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="de">
     <head>
       <meta charset="UTF-8">
@@ -48,14 +48,17 @@
             background-color: #333;
         }
       </style>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.css" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.js" async></script>
     </head>
     <body>
     <div class="header">
-        <a href="http://127.0.0.1:8000/html_content">Charts</a>
-        <a href="http://127.0.0.1:8000/karte">Karte</a>
-        <a href="http://127.0.0.1:8000/tabular">Tabelle</a>
+      <input class="awesomplete" id="search-input" placeholder="Region oder Ort suchen..." />
+      <a href="http://127.0.0.1:8000/karte">Karte</a>
+      <a href="http://127.0.0.1:8000/tabular">Tabelle</a>
     </div>
-    <table border="1" class="dataframe">
+
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Region</th>
@@ -133,7 +136,7 @@
       <td>1.23</td>
       <td>0.7</td>
       <td>2.07</td>
-      <td>n.d.</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Nordniederdeutsch</td>
@@ -171,7 +174,7 @@
       <td>1.53</td>
       <td>0.9</td>
       <td>-</td>
-      <td>n.d.</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Nordniederdeutsch</td>
@@ -190,7 +193,7 @@
       <td>1.58</td>
       <td>0.6</td>
       <td>-</td>
-      <td>n.d.</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Nordniederdeutsch</td>
@@ -199,17 +202,17 @@
       <td>alt</td>
       <td>FLALT1</td>
       <td>1.2</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.1</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.87</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.96</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.88</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Nordniederdeutsch</td>
@@ -218,17 +221,17 @@
       <td>mittel</td>
       <td>FL3</td>
       <td>0.95</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.82</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.02</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.27</td>
-      <td>NaN</td>
-      <td>2</td>
-      <td>NaN</td>
+      <td>-</td>
+      <td>2.0</td>
+      <td>-</td>
       <td>2.43</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Nordniederdeutsch</td>
@@ -237,17 +240,17 @@
       <td>jung</td>
       <td>FLJUNG</td>
       <td>1.34</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.94</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.82</td>
-      <td>NaN</td>
-      <td>1.47</td>
-      <td>NaN</td>
       <td>-</td>
-      <td>n.d.</td>
+      <td>1.47</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Nordniederdeutsch</td>
@@ -256,17 +259,17 @@
       <td>alt</td>
       <td>CLPALT2</td>
       <td>1.6</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.36</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.86</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.69</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>3.18</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Nordniederdeutsch</td>
@@ -275,17 +278,17 @@
       <td>mittel</td>
       <td>CLP3</td>
       <td>1.31</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.05</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.35</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.84</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.76</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.84</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Nordniederdeutsch</td>
@@ -294,17 +297,17 @@
       <td>jung</td>
       <td>CLPJUNG</td>
       <td>1.2</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.2</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.78</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.73</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.68</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Nordniederdeutsch</td>
@@ -342,7 +345,7 @@
       <td>1.58</td>
       <td>0.61</td>
       <td>-</td>
-      <td>n.d.</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Nordniederdeutsch</td>
@@ -350,7 +353,7 @@
       <td>107826</td>
       <td>jung</td>
       <td>OLJUNG</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>0.32</td>
       <td>1.11</td>
       <td>0.25</td>
@@ -361,7 +364,7 @@
       <td>1.83</td>
       <td>0.49</td>
       <td>-</td>
-      <td>n.d.</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Nordniederdeutsch-Ostfälisch</td>
@@ -370,112 +373,112 @@
       <td>alt</td>
       <td>LGALT1</td>
       <td>1.05</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.67</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.65</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.31</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>3.12</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Nordniederdeutsch-Ostf�lisch</td>
-      <td>L�neburg</td>
+      <td>Nordniederdeutsch-Ostfälisch</td>
+      <td>Lüneburg</td>
       <td>106563</td>
       <td>mittel</td>
       <td>LG5</td>
       <td>0.9</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.95</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.54</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.83</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.73</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Nordniederdeutsch-Ostf�lisch</td>
-      <td>L�neburg</td>
+      <td>Nordniederdeutsch-Ostfälisch</td>
+      <td>Lüneburg</td>
       <td>106563</td>
       <td>jung</td>
       <td>LGJUNG1</td>
       <td>0.96</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.12</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.9</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.03</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.72</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Nordniederdeutsch-Ostf�lisch</td>
-      <td>Neustadt am R�benberge</td>
+      <td>Nordniederdeutsch-Ostfälisch</td>
+      <td>Neustadt am Rübenberge</td>
       <td>105328</td>
       <td>alt</td>
       <td>HALT2</td>
       <td>0.81</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.23</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.44</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.28</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.75</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Nordniederdeutsch-Ostf�lisch</td>
-      <td>Neustadt am R�benberge</td>
+      <td>Nordniederdeutsch-Ostfälisch</td>
+      <td>Neustadt am Rübenberge</td>
       <td>105328</td>
       <td>mittel</td>
       <td>H10</td>
       <td>0.93</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.97</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.87</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.35</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.56</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.6</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Nordniederdeutsch-Ostf�lisch</td>
-      <td>Neustadt am R�benberge</td>
+      <td>Nordniederdeutsch-Ostfälisch</td>
+      <td>Neustadt am Rübenberge</td>
       <td>105328</td>
       <td>jung</td>
       <td>HJUNG</td>
       <td>1.24</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.04</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>2.26</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.22</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.77</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Mecklenburgisch-Vorpommersch</td>
@@ -484,17 +487,17 @@
       <td>mittel</td>
       <td>HRO5</td>
       <td>0.81</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.83</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.03</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.95</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.75</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Mecklenburgisch-Vorpommersch</td>
@@ -503,17 +506,17 @@
       <td>alt</td>
       <td>HROALT1</td>
       <td>1.02</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.26</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.33</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.05</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.61</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Mecklenburgisch-Vorpommersch</td>
@@ -522,17 +525,17 @@
       <td>jung</td>
       <td>HROJUNG2</td>
       <td>0.52</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.02</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.11</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.29</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.97</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Mecklenburgisch-Vorpommersch</td>
@@ -589,7 +592,7 @@
       <td>1.7</td>
       <td>0.7</td>
       <td>1.04</td>
-      <td>n.d.</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Mecklenburgisch-Vorpommersch</td>
@@ -646,7 +649,7 @@
       <td>1.21</td>
       <td>0.8</td>
       <td>1.77</td>
-      <td>n.d.</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Mecklenburgisch-Vorpommersch</td>
@@ -703,7 +706,7 @@
       <td>1.86</td>
       <td>1.1</td>
       <td>-</td>
-      <td>n.d.</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Mittelpommersch</td>
@@ -712,17 +715,17 @@
       <td>mittel</td>
       <td>OVP5</td>
       <td>0.97</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.68</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.76</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.5</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.25</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Mittelpommersch</td>
@@ -731,17 +734,17 @@
       <td>alt</td>
       <td>OVPALT1</td>
       <td>0.96</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.88</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.23</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.07</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.43</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Mittelpommersch</td>
@@ -750,131 +753,131 @@
       <td>jung</td>
       <td>OVPJUNG1</td>
       <td>0.73</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.75</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.51</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.49</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.67</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Brandenburgisch-S�dm�rkisch</td>
+      <td>Brandenburgisch-Südmärkisch</td>
       <td>Frankfurt an der Oder</td>
       <td>125330</td>
       <td>mittel</td>
       <td>FF18</td>
       <td>1.21</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.82</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.35</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.88</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.03</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.61</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Brandenburgisch-S�dm�rkisch</td>
+      <td>Brandenburgisch-Südmärkisch</td>
       <td>Frankfurt an der Oder</td>
       <td>125330</td>
       <td>alt</td>
       <td>FFALT3</td>
       <td>1.06</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.74</td>
       <td>0.4</td>
       <td>-</td>
       <td>-</td>
       <td>1.46</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.59</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.26</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Brandenburgisch-S�dm�rkisch</td>
+      <td>Brandenburgisch-Südmärkisch</td>
       <td>Frankfurt an der Oder</td>
       <td>125330</td>
       <td>jung</td>
       <td>FFJUNG1</td>
       <td>0.85</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.01</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.57</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.77</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.08</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Brandenburgisch-S�dm�rkisch</td>
-      <td>F�rstenwalde</td>
+      <td>Brandenburgisch-Südmärkisch</td>
+      <td>Fürstenwalde</td>
       <td>120740</td>
       <td>mittel</td>
       <td>FW21</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Brandenburgisch-S�dm�rkisch</td>
-      <td>F�rstenwalde</td>
+      <td>Brandenburgisch-Südmärkisch</td>
+      <td>Fürstenwalde</td>
       <td>120740</td>
       <td>alt</td>
       <td>FWALT2</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Brandenburgisch-S�dm�rkisch</td>
-      <td>F�rstenwalde</td>
+      <td>Brandenburgisch-Südmärkisch</td>
+      <td>Fürstenwalde</td>
       <td>120740</td>
       <td>jung</td>
       <td>FWJUNG1</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Brandenburgisch</td>
@@ -967,7 +970,7 @@
       <td>2.57</td>
       <td>1.43</td>
       <td>1.83</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>2.43</td>
       <td>1.79</td>
     </tr>
@@ -988,64 +991,64 @@
       <td>2.25</td>
       <td>1.11</td>
       <td>1.78</td>
-      <td>1</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <td>Brandenburgisch</td>
-      <td>L�deritz</td>
+      <td>Lüderitz</td>
       <td>124090</td>
       <td>mittel</td>
       <td>SDL1</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Brandenburgisch</td>
-      <td>L�deritz</td>
+      <td>Lüderitz</td>
       <td>124090</td>
       <td>alt</td>
       <td>SDLALT1</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Brandenburgisch</td>
-      <td>L�deritz</td>
+      <td>Lüderitz</td>
       <td>124090</td>
       <td>jung</td>
       <td>SDLJUNG1</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Brandenburgisch</td>
@@ -1053,18 +1056,18 @@
       <td>123723</td>
       <td>mittel</td>
       <td>BRB3</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Brandenburgisch</td>
@@ -1072,18 +1075,18 @@
       <td>123723</td>
       <td>alt</td>
       <td>BRBALT2</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Brandenburgisch</td>
@@ -1091,18 +1094,18 @@
       <td>123723</td>
       <td>jung</td>
       <td>BRBJUNG3</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Brandenburgisch</td>
@@ -1114,8 +1117,8 @@
       <td>0.47</td>
       <td>1.04</td>
       <td>0.5</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>-</td>
+      <td>-</td>
       <td>1.82</td>
       <td>0.79</td>
       <td>2.13</td>
@@ -1133,8 +1136,8 @@
       <td>0.8</td>
       <td>1.45</td>
       <td>0.72</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>-</td>
+      <td>-</td>
       <td>1.92</td>
       <td>1.03</td>
       <td>1.99</td>
@@ -1152,8 +1155,8 @@
       <td>0.57</td>
       <td>1.32</td>
       <td>0.8</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>-</td>
+      <td>-</td>
       <td>1.86</td>
       <td>0.99</td>
       <td>2.05</td>
@@ -1162,7 +1165,7 @@
       <td>0.84</td>
     </tr>
     <tr>
-      <td>Westf�lisch</td>
+      <td>Westfälisch</td>
       <td>Borken</td>
       <td>102881</td>
       <td>mittel</td>
@@ -1181,7 +1184,7 @@
       <td>2.3</td>
     </tr>
     <tr>
-      <td>Westf�lisch</td>
+      <td>Westfälisch</td>
       <td>Borken</td>
       <td>102881</td>
       <td>alt</td>
@@ -1200,7 +1203,7 @@
       <td>2.54</td>
     </tr>
     <tr>
-      <td>Westf�lisch</td>
+      <td>Westfälisch</td>
       <td>Borken</td>
       <td>102881</td>
       <td>jung</td>
@@ -1219,7 +1222,7 @@
       <td>0.87</td>
     </tr>
     <tr>
-      <td>Westf�lisch</td>
+      <td>Westfälisch</td>
       <td>Hagen</td>
       <td>103064</td>
       <td>alt</td>
@@ -1238,7 +1241,7 @@
       <td>2.45</td>
     </tr>
     <tr>
-      <td>Westf�lisch</td>
+      <td>Westfälisch</td>
       <td>Hagen</td>
       <td>103064</td>
       <td>mittel</td>
@@ -1257,7 +1260,7 @@
       <td>0.75</td>
     </tr>
     <tr>
-      <td>Westf�lisch</td>
+      <td>Westfälisch</td>
       <td>Hagen</td>
       <td>103064</td>
       <td>jung</td>
@@ -1276,8 +1279,8 @@
       <td>0.52</td>
     </tr>
     <tr>
-      <td>Westf�lisch</td>
-      <td>G�tersloh</td>
+      <td>Westfälisch</td>
+      <td>Gütersloh</td>
       <td>101621</td>
       <td>alt</td>
       <td>GTALT2</td>
@@ -1295,8 +1298,8 @@
       <td>2.68</td>
     </tr>
     <tr>
-      <td>Westf�lisch</td>
-      <td>G�tersloh</td>
+      <td>Westfälisch</td>
+      <td>Gütersloh</td>
       <td>101621</td>
       <td>mittel</td>
       <td>GT3</td>
@@ -1314,8 +1317,8 @@
       <td>0.46</td>
     </tr>
     <tr>
-      <td>Westf�lisch</td>
-      <td>G�tersloh</td>
+      <td>Westfälisch</td>
+      <td>Gütersloh</td>
       <td>101621</td>
       <td>jung</td>
       <td>GTJUNG2</td>
@@ -1329,11 +1332,11 @@
       <td>0.27</td>
       <td>1.31</td>
       <td>0.27</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>0.34</td>
     </tr>
     <tr>
-      <td>Westf�lisch</td>
+      <td>Westfälisch</td>
       <td>Horn-Bad Meinberg</td>
       <td>102973</td>
       <td>alt</td>
@@ -1352,7 +1355,7 @@
       <td>2.6</td>
     </tr>
     <tr>
-      <td>Westf�lisch</td>
+      <td>Westfälisch</td>
       <td>Horn-Bad Meinberg</td>
       <td>102973</td>
       <td>mittel</td>
@@ -1371,7 +1374,7 @@
       <td>0.39</td>
     </tr>
     <tr>
-      <td>Westf�lisch</td>
+      <td>Westfälisch</td>
       <td>Horn-Bad Meinberg</td>
       <td>102973</td>
       <td>jung</td>
@@ -1390,7 +1393,7 @@
       <td>1.07</td>
     </tr>
     <tr>
-      <td>Westf�lisch</td>
+      <td>Westfälisch</td>
       <td>Drolshagen</td>
       <td>101533</td>
       <td>alt</td>
@@ -1409,7 +1412,7 @@
       <td>2.8</td>
     </tr>
     <tr>
-      <td>Westf�lisch</td>
+      <td>Westfälisch</td>
       <td>Drolshagen</td>
       <td>101533</td>
       <td>mittel</td>
@@ -1428,7 +1431,7 @@
       <td>2.2</td>
     </tr>
     <tr>
-      <td>Westf�lisch</td>
+      <td>Westfälisch</td>
       <td>Drolshagen</td>
       <td>101533</td>
       <td>jung</td>
@@ -1447,7 +1450,7 @@
       <td>0.42</td>
     </tr>
     <tr>
-      <td>Ostf�lisch</td>
+      <td>Ostfälisch</td>
       <td>Halberstadt</td>
       <td>125017</td>
       <td>alt</td>
@@ -1466,7 +1469,7 @@
       <td>0.81</td>
     </tr>
     <tr>
-      <td>Ostf�lisch</td>
+      <td>Ostfälisch</td>
       <td>Halberstadt</td>
       <td>125017</td>
       <td>mittel</td>
@@ -1485,7 +1488,7 @@
       <td>0.53</td>
     </tr>
     <tr>
-      <td>Ostf�lisch</td>
+      <td>Ostfälisch</td>
       <td>Halberstadt</td>
       <td>125017</td>
       <td>jung</td>
@@ -1504,64 +1507,64 @@
       <td>1.1</td>
     </tr>
     <tr>
-      <td>Ostf�lisch</td>
+      <td>Ostfälisch</td>
       <td>Hildesheim</td>
       <td>113469</td>
       <td>mittel</td>
       <td>HI3</td>
       <td>1.33</td>
-      <td>NaN</td>
-      <td>1.01</td>
-      <td>NaN</td>
-      <td>1.71</td>
-      <td>NaN</td>
-      <td>2.05</td>
-      <td>NaN</td>
-      <td>1.66</td>
-      <td>NaN</td>
       <td>-</td>
-      <td>n.d.</td>
+      <td>1.01</td>
+      <td>-</td>
+      <td>1.71</td>
+      <td>-</td>
+      <td>2.05</td>
+      <td>-</td>
+      <td>1.66</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Ostf�lisch</td>
+      <td>Ostfälisch</td>
       <td>Hildesheim</td>
       <td>113469</td>
       <td>alt</td>
       <td>HIALT3</td>
       <td>0.62</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.64</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.33</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.14</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.59</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Ostf�lisch</td>
+      <td>Ostfälisch</td>
       <td>Hildesheim</td>
       <td>113469</td>
       <td>jung</td>
       <td>HIJUNG</td>
       <td>1.03</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.66</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.35</td>
-      <td>NaN</td>
-      <td>1.78</td>
-      <td>NaN</td>
       <td>-</td>
-      <td>n.d.</td>
+      <td>1.78</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Ostf�lisch</td>
+      <td>Ostfälisch</td>
       <td>Northeim</td>
       <td>107905</td>
       <td>mittel</td>
@@ -1580,7 +1583,7 @@
       <td>1.11</td>
     </tr>
     <tr>
-      <td>Ostf�lisch</td>
+      <td>Ostfälisch</td>
       <td>Northeim</td>
       <td>107905</td>
       <td>alt</td>
@@ -1599,7 +1602,7 @@
       <td>1.92</td>
     </tr>
     <tr>
-      <td>Ostf�lisch</td>
+      <td>Ostfälisch</td>
       <td>Northeim</td>
       <td>107905</td>
       <td>jung</td>
@@ -1618,61 +1621,61 @@
       <td>1.27</td>
     </tr>
     <tr>
-      <td>Ostf�lisch-Brandenburgisch</td>
+      <td>Ostfälisch-Brandenburgisch</td>
       <td>Magdeburg</td>
       <td>118274</td>
       <td>mittel</td>
       <td>MD1</td>
       <td>0.89</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.88</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.1</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.77</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.91</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.17</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Ostf�lisch-Brandenburgisch</td>
+      <td>Ostfälisch-Brandenburgisch</td>
       <td>Magdeburg</td>
       <td>118274</td>
       <td>alt</td>
       <td>MDALT1</td>
       <td>0.77</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.11</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.47</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.17</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Ostf�lisch-Brandenburgisch</td>
+      <td>Ostfälisch-Brandenburgisch</td>
       <td>Magdeburg</td>
       <td>118274</td>
       <td>jung</td>
       <td>MDJUNG2</td>
       <td>0.78</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.16</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.05</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.47</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.88</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Ripuarisch</td>
@@ -1681,7 +1684,7 @@
       <td>alt</td>
       <td>GLALT1</td>
       <td>1.19</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>0.79</td>
       <td>0.6</td>
       <td>-</td>
@@ -1689,7 +1692,7 @@
       <td>1.66</td>
       <td>1.3</td>
       <td>2.2</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>2.45</td>
       <td>2.2</td>
     </tr>
@@ -1704,7 +1707,7 @@
       <td>0.73</td>
       <td>0.6</td>
       <td>2.04</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.78</td>
       <td>1.3</td>
       <td>1.62</td>
@@ -1733,60 +1736,60 @@
     </tr>
     <tr>
       <td>Ripuarisch</td>
-      <td>D�ren</td>
+      <td>Düren</td>
       <td>134959</td>
       <td>alt</td>
       <td>DNALT1</td>
       <td>1.02</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.11</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.71</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.18</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.67</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Ripuarisch</td>
-      <td>D�ren</td>
+      <td>Düren</td>
       <td>134959</td>
       <td>mittel</td>
       <td>DN1</td>
       <td>0.96</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.79</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.57</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.33</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.36</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Ripuarisch</td>
-      <td>D�ren</td>
+      <td>Düren</td>
       <td>134959</td>
       <td>jung</td>
       <td>DNJUNG1</td>
       <td>1.14</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.99</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.59</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.75</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.41</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Ripuarisch</td>
@@ -1797,7 +1800,7 @@
       <td>1.11</td>
       <td>0.8</td>
       <td>1.42</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>-</td>
       <td>-</td>
       <td>1.48</td>
@@ -1805,7 +1808,7 @@
       <td>2.31</td>
       <td>2.1</td>
       <td>2.64</td>
-      <td>2</td>
+      <td>2.0</td>
     </tr>
     <tr>
       <td>Ripuarisch</td>
@@ -1818,7 +1821,7 @@
       <td>0.66</td>
       <td>0.6</td>
       <td>1.35</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.48</td>
       <td>1.3</td>
       <td>2.11</td>
@@ -1846,7 +1849,7 @@
       <td>1.5</td>
     </tr>
     <tr>
-      <td>Ripuarisch-Niederfr�nkisch</td>
+      <td>Ripuarisch-Niederfränkisch</td>
       <td>Krefeld</td>
       <td>135092</td>
       <td>alt</td>
@@ -1860,12 +1863,12 @@
       <td>1.63</td>
       <td>1.2</td>
       <td>2.31</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>3.11</td>
       <td>2.6</td>
     </tr>
     <tr>
-      <td>Ripuarisch-Niederfr�nkisch</td>
+      <td>Ripuarisch-Niederfränkisch</td>
       <td>Krefeld</td>
       <td>135092</td>
       <td>mittel</td>
@@ -1884,7 +1887,7 @@
       <td>2.5</td>
     </tr>
     <tr>
-      <td>Ripuarisch-Niederfr�nkisch</td>
+      <td>Ripuarisch-Niederfränkisch</td>
       <td>Krefeld</td>
       <td>135092</td>
       <td>jung</td>
@@ -1903,8 +1906,8 @@
       <td>1.3</td>
     </tr>
     <tr>
-      <td>Ripuarisch-Niederfr�nkisch</td>
-      <td>M�nchengladbach</td>
+      <td>Ripuarisch-Niederfränkisch</td>
+      <td>Mönchengladbach</td>
       <td>136187</td>
       <td>alt</td>
       <td>MGALT</td>
@@ -1922,8 +1925,8 @@
       <td>2.7</td>
     </tr>
     <tr>
-      <td>Ripuarisch-Niederfr�nkisch</td>
-      <td>M�nchengladbach</td>
+      <td>Ripuarisch-Niederfränkisch</td>
+      <td>Mönchengladbach</td>
       <td>136187</td>
       <td>mittel</td>
       <td>MG6</td>
@@ -1932,7 +1935,7 @@
       <td>1.09</td>
       <td>0.8</td>
       <td>1.58</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.74</td>
       <td>1.3</td>
       <td>1.51</td>
@@ -1941,8 +1944,8 @@
       <td>1.2</td>
     </tr>
     <tr>
-      <td>Ripuarisch-Niederfr�nkisch</td>
-      <td>M�nchengladbach</td>
+      <td>Ripuarisch-Niederfränkisch</td>
+      <td>Mönchengladbach</td>
       <td>136187</td>
       <td>jung</td>
       <td>MGJUNG1</td>
@@ -1960,121 +1963,121 @@
       <td>1.4</td>
     </tr>
     <tr>
-      <td>Moselfr�nkisch</td>
+      <td>Moselfränkisch</td>
       <td>Montabaur</td>
       <td>94138</td>
       <td>mittel</td>
       <td>MT2</td>
       <td>0.98</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.07</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.46</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.85</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.09</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Moselfr�nkisch</td>
+      <td>Moselfränkisch</td>
       <td>Montabaur</td>
       <td>94138</td>
       <td>alt</td>
       <td>MTALT3</td>
       <td>0.98</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.23</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.84</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.99</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.9</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Moselfr�nkisch</td>
+      <td>Moselfränkisch</td>
       <td>Montabaur</td>
       <td>94138</td>
       <td>jung</td>
       <td>MTJUNG1</td>
       <td>0.79</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.61</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.23</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.09</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Moselfr�nkisch</td>
+      <td>Moselfränkisch</td>
       <td>Schweich</td>
       <td>100353</td>
       <td>mittel</td>
       <td>TRSW2</td>
       <td>1.08</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.26</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.37</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.8</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.75</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.05</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Moselfr�nkisch</td>
+      <td>Moselfränkisch</td>
       <td>Schweich</td>
       <td>100353</td>
       <td>alt</td>
       <td>TRSWALT2</td>
       <td>1.17</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.65</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.31</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.72</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.33</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Moselfr�nkisch</td>
+      <td>Moselfränkisch</td>
       <td>Schweich</td>
       <td>100353</td>
       <td>jung</td>
       <td>TRSWJUNG1</td>
       <td>0.99</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.88</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.71</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.89</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.15</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Moselfr�nkisch</td>
+      <td>Moselfränkisch</td>
       <td>Wittlich</td>
       <td>100001</td>
       <td>alt</td>
@@ -2086,14 +2089,14 @@
       <td>-</td>
       <td>-</td>
       <td>1.54</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>1.72</td>
       <td>1.4</td>
       <td>2.21</td>
       <td>1.9</td>
     </tr>
     <tr>
-      <td>Moselfr�nkisch</td>
+      <td>Moselfränkisch</td>
       <td>Wittlich</td>
       <td>100001</td>
       <td>mittel</td>
@@ -2109,10 +2112,10 @@
       <td>1.48</td>
       <td>0.9</td>
       <td>1.3</td>
-      <td>1</td>
+      <td>1.0</td>
     </tr>
     <tr>
-      <td>Moselfr�nkisch</td>
+      <td>Moselfränkisch</td>
       <td>Wittlich</td>
       <td>100001</td>
       <td>jung</td>
@@ -2128,124 +2131,124 @@
       <td>1.34</td>
       <td>0.9</td>
       <td>1.98</td>
-      <td>n.d.</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Moselfr�nkisch-Ripuarisch</td>
+      <td>Moselfränkisch-Ripuarisch</td>
       <td>Altenkirchen</td>
       <td>100600</td>
       <td>alt</td>
       <td>AKALT1</td>
       <td>0.78</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.83</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.53</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.01</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.37</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Moselfr�nkisch-Ripuarisch</td>
+      <td>Moselfränkisch-Ripuarisch</td>
       <td>Altenkirchen</td>
       <td>100600</td>
       <td>mittel</td>
       <td>AK2</td>
       <td>0.91</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.8</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.18</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.85</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.04</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Moselfr�nkisch-Ripuarisch</td>
+      <td>Moselfränkisch-Ripuarisch</td>
       <td>Altenkirchen</td>
       <td>100600</td>
       <td>jung</td>
       <td>AKJUNG1</td>
       <td>0.94</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.09</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.76</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.62</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.47</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch</td>
+      <td>Rheinfränkisch</td>
       <td>Heidelberg</td>
       <td>132828</td>
       <td>mittel</td>
       <td>HD7</td>
       <td>1.07</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.14</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.37</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.82</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.12</td>
       <td>1.47</td>
       <td>2.31</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch</td>
+      <td>Rheinfränkisch</td>
       <td>Heidelberg</td>
       <td>132828</td>
       <td>alt</td>
       <td>HDALT1</td>
       <td>0.93</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.97</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.77</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.41</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.26</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch</td>
+      <td>Rheinfränkisch</td>
       <td>Heidelberg</td>
       <td>132828</td>
       <td>jung</td>
       <td>HDJUNG1</td>
       <td>0.97</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.77</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.37</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.79</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.86</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch</td>
+      <td>Rheinfränkisch</td>
       <td>Kaiserslautern</td>
       <td>100327</td>
       <td>mittel</td>
@@ -2257,14 +2260,14 @@
       <td>-</td>
       <td>-</td>
       <td>1.35</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>2.19</td>
       <td>1.6</td>
       <td>2.03</td>
       <td>1.6</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch</td>
+      <td>Rheinfränkisch</td>
       <td>Kaiserslautern</td>
       <td>100327</td>
       <td>alt</td>
@@ -2272,7 +2275,7 @@
       <td>1.13</td>
       <td>0.7</td>
       <td>1.44</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>-</td>
       <td>-</td>
       <td>1.87</td>
@@ -2283,7 +2286,7 @@
       <td>1.9</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch</td>
+      <td>Rheinfränkisch</td>
       <td>Kaiserslautern</td>
       <td>100327</td>
       <td>jung</td>
@@ -2302,7 +2305,7 @@
       <td>1.8</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch</td>
+      <td>Rheinfränkisch</td>
       <td>Erbach</td>
       <td>98214</td>
       <td>alt</td>
@@ -2321,7 +2324,7 @@
       <td>2.2</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch</td>
+      <td>Rheinfränkisch</td>
       <td>Erbach</td>
       <td>98214</td>
       <td>mittel</td>
@@ -2329,7 +2332,7 @@
       <td>1.69</td>
       <td>1.3</td>
       <td>1.07</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>-</td>
       <td>-</td>
       <td>2.2</td>
@@ -2340,7 +2343,7 @@
       <td>2.1</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch</td>
+      <td>Rheinfränkisch</td>
       <td>Erbach</td>
       <td>98214</td>
       <td>jung</td>
@@ -2354,12 +2357,12 @@
       <td>2.18</td>
       <td>1.6</td>
       <td>2.67</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>2.48</td>
-      <td>2</td>
+      <td>2.0</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch</td>
+      <td>Rheinfränkisch</td>
       <td>Reinheim</td>
       <td>99678</td>
       <td>alt</td>
@@ -2373,18 +2376,18 @@
       <td>2.1</td>
       <td>1.6</td>
       <td>2.91</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>2.39</td>
       <td>2.1</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch</td>
+      <td>Rheinfränkisch</td>
       <td>Reinheim</td>
       <td>99678</td>
       <td>mittel</td>
       <td>DA1</td>
       <td>1.23</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>0.94</td>
       <td>0.9</td>
       <td>-</td>
@@ -2397,7 +2400,7 @@
       <td>1.9</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch</td>
+      <td>Rheinfränkisch</td>
       <td>Reinheim</td>
       <td>99678</td>
       <td>jung</td>
@@ -2408,7 +2411,7 @@
       <td>0.7</td>
       <td>-</td>
       <td>-</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>1.3</td>
       <td>1.81</td>
       <td>1.3</td>
@@ -2416,26 +2419,26 @@
       <td>1.5</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch-Moselfr�nkisch</td>
+      <td>Rheinfränkisch-Moselfränkisch</td>
       <td>Kirkel</td>
       <td>98078</td>
       <td>mittel</td>
       <td>HOM1</td>
       <td>1.05</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.14</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.45</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.78</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.86</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch-Moselfr�nkisch</td>
+      <td>Rheinfränkisch-Moselfränkisch</td>
       <td>Kirkel</td>
       <td>98078</td>
       <td>alt</td>
@@ -2443,94 +2446,94 @@
       <td>-</td>
       <td>-</td>
       <td>1.21</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.13</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.75</td>
-      <td>NaN</td>
-      <td>2</td>
-      <td>NaN</td>
+      <td>-</td>
+      <td>2.0</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch-Moselfr�nkisch</td>
+      <td>Rheinfränkisch-Moselfränkisch</td>
       <td>Kirkel</td>
       <td>98078</td>
       <td>jung</td>
       <td>HOMJUNG1</td>
       <td>0.65</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.89</td>
-      <td>NaN</td>
       <td>-</td>
       <td>-</td>
-      <td>1</td>
-      <td>NaN</td>
+      <td>-</td>
+      <td>1.0</td>
+      <td>-</td>
       <td>1.9</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.03</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch-Moselfr�nkisch</td>
+      <td>Rheinfränkisch-Moselfränkisch</td>
       <td>Merzig</td>
       <td>99773</td>
       <td>mittel</td>
       <td>MZG5</td>
       <td>1.75</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.61</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.7</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.87</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.31</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.74</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch-Moselfr�nkisch</td>
+      <td>Rheinfränkisch-Moselfränkisch</td>
       <td>Merzig</td>
       <td>99773</td>
       <td>alt</td>
       <td>MZGALT2</td>
       <td>1.19</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.08</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.51</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.84</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.42</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch-Moselfr�nkisch</td>
+      <td>Rheinfränkisch-Moselfränkisch</td>
       <td>Merzig</td>
       <td>99773</td>
       <td>jung</td>
       <td>MZGJUNG1</td>
       <td>1.1</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.16</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.42</td>
-      <td>NaN</td>
-      <td>2</td>
-      <td>NaN</td>
+      <td>-</td>
+      <td>2.0</td>
+      <td>-</td>
       <td>1.36</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch-Moselfr�nkisch-Zentralhessisch</td>
+      <td>Rheinfränkisch-Moselfränkisch-Zentralhessisch</td>
       <td>Mainz</td>
       <td>95700</td>
       <td>mittel</td>
@@ -2549,7 +2552,7 @@
       <td>1.62</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch-Moselfr�nkisch-Zentralhessisch</td>
+      <td>Rheinfränkisch-Moselfränkisch-Zentralhessisch</td>
       <td>Mainz</td>
       <td>95700</td>
       <td>alt</td>
@@ -2561,96 +2564,96 @@
       <td>-</td>
       <td>-</td>
       <td>1.63</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.25</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.16</td>
       <td>1.79</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch-Moselfr�nkisch-Zentralhessisch</td>
+      <td>Rheinfränkisch-Moselfränkisch-Zentralhessisch</td>
       <td>Mainz</td>
       <td>95700</td>
       <td>jung</td>
       <td>MZJUNG1</td>
       <td>0.99</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.58</td>
       <td>0.32</td>
       <td>-</td>
       <td>-</td>
       <td>1.81</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.51</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.62</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch-Ostfr�nkisch-Schw�bisch</td>
+      <td>Rheinfränkisch-Ostfränkisch-Schwäbisch</td>
       <td>Heilbronn</td>
       <td>128209</td>
       <td>mittel</td>
       <td>HN8</td>
       <td>0.95</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.05</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.71</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.68</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.29</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.02</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch-Ostfr�nkisch-Schw�bisch</td>
+      <td>Rheinfränkisch-Ostfränkisch-Schwäbisch</td>
       <td>Heilbronn</td>
       <td>128209</td>
       <td>alt</td>
       <td>HNALT2</td>
       <td>1.18</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.45</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.7</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.04</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.48</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch-Ostfr�nkisch-Schw�bisch</td>
+      <td>Rheinfränkisch-Ostfränkisch-Schwäbisch</td>
       <td>Heilbronn</td>
       <td>128209</td>
       <td>jung</td>
       <td>HNJUNG1</td>
       <td>0.9</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.39</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.86</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.68</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.91</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch-Zentralhessisch-Moselfr�nkisch</td>
+      <td>Rheinfränkisch-Zentralhessisch-Moselfränkisch</td>
       <td>Frankfurt am Main</td>
       <td>97616</td>
       <td>alt</td>
       <td>FALT1</td>
       <td>1.36</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>0.94</td>
       <td>0.8</td>
       <td>-</td>
@@ -2660,10 +2663,10 @@
       <td>1.97</td>
       <td>1.9</td>
       <td>2.23</td>
-      <td>2</td>
+      <td>2.0</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch-Zentralhessisch-Moselfr�nkisch</td>
+      <td>Rheinfränkisch-Zentralhessisch-Moselfränkisch</td>
       <td>Frankfurt am Main</td>
       <td>97616</td>
       <td>mittel</td>
@@ -2682,7 +2685,7 @@
       <td>1.8</td>
     </tr>
     <tr>
-      <td>Rheinfr�nkisch-Zentralhessisch-Moselfr�nkisch</td>
+      <td>Rheinfränkisch-Zentralhessisch-Moselfränkisch</td>
       <td>Frankfurt am Main</td>
       <td>97616</td>
       <td>jung</td>
@@ -2694,68 +2697,68 @@
       <td>-</td>
       <td>-</td>
       <td>1.96</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>1.78</td>
       <td>1.1</td>
       <td>1.5</td>
       <td>1.3</td>
     </tr>
     <tr>
-      <td>Niederfr�nkisch</td>
+      <td>Niederfränkisch</td>
       <td>Kleve</td>
       <td>101443</td>
       <td>mittel</td>
       <td>KLEV3</td>
       <td>0.58</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.8</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.42</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.55</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.86</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.75</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Niederfr�nkisch</td>
+      <td>Niederfränkisch</td>
       <td>Kleve</td>
       <td>101443</td>
       <td>alt</td>
       <td>KLEVALT</td>
       <td>1.03</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.74</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.45</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.61</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>3.13</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Niederfr�nkisch</td>
+      <td>Niederfränkisch</td>
       <td>Kleve</td>
       <td>101443</td>
       <td>jung</td>
       <td>KLEVJUNG1</td>
       <td>0.89</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.78</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.38</td>
-      <td>NaN</td>
-      <td>1.12</td>
-      <td>NaN</td>
       <td>-</td>
-      <td>n.d.</td>
+      <td>1.12</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Nordhessisch</td>
@@ -2810,9 +2813,9 @@
       <td>1.65</td>
       <td>0.9</td>
       <td>1.49</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>1.28</td>
-      <td>1</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <td>Nordhessisch</td>
@@ -2821,17 +2824,17 @@
       <td>mittel</td>
       <td>KS1</td>
       <td>0.82</td>
-      <td>NaN</td>
-      <td>0.67</td>
-      <td>NaN</td>
-      <td>1.68</td>
-      <td>NaN</td>
-      <td>1.75</td>
-      <td>NaN</td>
-      <td>1.59</td>
-      <td>NaN</td>
       <td>-</td>
-      <td>n.d.</td>
+      <td>0.67</td>
+      <td>-</td>
+      <td>1.68</td>
+      <td>-</td>
+      <td>1.75</td>
+      <td>-</td>
+      <td>1.59</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Nordhessisch</td>
@@ -2840,17 +2843,17 @@
       <td>alt</td>
       <td>KSALT</td>
       <td>0.86</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.95</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.61</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.28</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.68</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Nordhessisch</td>
@@ -2859,17 +2862,17 @@
       <td>jung</td>
       <td>KSJUNG</td>
       <td>0.98</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.01</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.39</td>
-      <td>NaN</td>
-      <td>1.43</td>
-      <td>NaN</td>
       <td>-</td>
-      <td>n.d.</td>
+      <td>1.43</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Zentralhessisch</td>
@@ -2880,11 +2883,11 @@
       <td>1.32</td>
       <td>1.2</td>
       <td>1.24</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>-</td>
       <td>-</td>
       <td>2.67</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>2.54</td>
       <td>2.1</td>
       <td>2.53</td>
@@ -2922,7 +2925,7 @@
       <td>-</td>
       <td>-</td>
       <td>1.88</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>2.06</td>
       <td>1.1</td>
       <td>1.76</td>
@@ -2930,10 +2933,10 @@
     </tr>
     <tr>
       <td>Zentralhessisch</td>
-      <td>B�dingen</td>
+      <td>Büdingen</td>
       <td>99973</td>
       <td>alt</td>
-      <td>B�DALT1</td>
+      <td>BÜDALT1</td>
       <td>1.3</td>
       <td>1.2</td>
       <td>1.49</td>
@@ -2949,10 +2952,10 @@
     </tr>
     <tr>
       <td>Zentralhessisch</td>
-      <td>B�dingen</td>
+      <td>Büdingen</td>
       <td>99973</td>
       <td>mittel</td>
-      <td>B�D3</td>
+      <td>BÜD3</td>
       <td>1.14</td>
       <td>0.9</td>
       <td>1.08</td>
@@ -2968,10 +2971,10 @@
     </tr>
     <tr>
       <td>Zentralhessisch</td>
-      <td>B�dingen</td>
+      <td>Büdingen</td>
       <td>99973</td>
       <td>jung</td>
-      <td>B�DJUNG1</td>
+      <td>BÜDJUNG1</td>
       <td>1.02</td>
       <td>0.7</td>
       <td>0.84</td>
@@ -2981,20 +2984,20 @@
       <td>1.57</td>
       <td>0.9</td>
       <td>1.56</td>
-      <td>1</td>
-      <td>2</td>
+      <td>1.0</td>
+      <td>2.0</td>
       <td>1.7</td>
     </tr>
     <tr>
       <td>Zentralhessisch</td>
-      <td>Gie�en</td>
+      <td>Gießen</td>
       <td>96713</td>
       <td>alt</td>
       <td>GIALT1</td>
       <td>1.55</td>
       <td>1.1</td>
       <td>1.36</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>-</td>
       <td>-</td>
       <td>1.94</td>
@@ -3002,11 +3005,11 @@
       <td>-</td>
       <td>-</td>
       <td>2.41</td>
-      <td>2</td>
+      <td>2.0</td>
     </tr>
     <tr>
       <td>Zentralhessisch</td>
-      <td>Gie�en</td>
+      <td>Gießen</td>
       <td>96713</td>
       <td>mittel</td>
       <td>GI11</td>
@@ -3025,7 +3028,7 @@
     </tr>
     <tr>
       <td>Zentralhessisch</td>
-      <td>Gie�en</td>
+      <td>Gießen</td>
       <td>96713</td>
       <td>jung</td>
       <td>GIJUNG</td>
@@ -3036,7 +3039,7 @@
       <td>-</td>
       <td>-</td>
       <td>2.06</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>2.14</td>
       <td>1.1</td>
       <td>1.97</td>
@@ -3068,9 +3071,9 @@
       <td>mittel</td>
       <td>VB2</td>
       <td>1.4</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>1.44</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>-</td>
       <td>-</td>
       <td>1.8</td>
@@ -3089,7 +3092,7 @@
       <td>1.48</td>
       <td>1.1</td>
       <td>1.56</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>-</td>
       <td>-</td>
       <td>2.23</td>
@@ -3106,7 +3109,7 @@
       <td>alt</td>
       <td>FDALT3</td>
       <td>1.05</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>1.06</td>
       <td>0.9</td>
       <td>-</td>
@@ -3114,7 +3117,7 @@
       <td>1.44</td>
       <td>1.1</td>
       <td>2.34</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>2.47</td>
       <td>2.3</td>
     </tr>
@@ -3133,7 +3136,7 @@
       <td>1.08</td>
       <td>0.9</td>
       <td>2.1</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>2.37</td>
       <td>2.3</td>
     </tr>
@@ -3145,19 +3148,19 @@
       <td>FDJUNG1</td>
       <td>0.93</td>
       <td>0.32</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>0.25</td>
       <td>-</td>
       <td>-</td>
       <td>1.49</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>1.42</td>
       <td>0.9</td>
       <td>2.01</td>
       <td>1.9</td>
     </tr>
     <tr>
-      <td>Th�ringisch</td>
+      <td>Thüringisch</td>
       <td>Erfurt</td>
       <td>138764</td>
       <td>alt</td>
@@ -3169,14 +3172,14 @@
       <td>-</td>
       <td>-</td>
       <td>1.58</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>1.62</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>1.69</td>
       <td>1.3</td>
     </tr>
     <tr>
-      <td>Th�ringisch</td>
+      <td>Thüringisch</td>
       <td>Erfurt</td>
       <td>138764</td>
       <td>mittel</td>
@@ -3184,7 +3187,7 @@
       <td>1.01</td>
       <td>0.8</td>
       <td>1.34</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>-</td>
       <td>-</td>
       <td>1.83</td>
@@ -3192,10 +3195,10 @@
       <td>1.78</td>
       <td>1.4</td>
       <td>1.38</td>
-      <td>1</td>
+      <td>1.0</td>
     </tr>
     <tr>
-      <td>Th�ringisch</td>
+      <td>Thüringisch</td>
       <td>Erfurt</td>
       <td>138764</td>
       <td>jung</td>
@@ -3214,7 +3217,7 @@
       <td>1.1</td>
     </tr>
     <tr>
-      <td>Th�ringisch</td>
+      <td>Thüringisch</td>
       <td>Heilbad Heiligenstadt</td>
       <td>142955</td>
       <td>mittel</td>
@@ -3222,56 +3225,56 @@
       <td>0.94</td>
       <td>0.46</td>
       <td>1.04</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.38</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.7</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.81</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.99</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Th�ringisch</td>
+      <td>Thüringisch</td>
       <td>Heilbad Heiligenstadt</td>
       <td>142955</td>
       <td>alt</td>
       <td>EICALT1</td>
       <td>1.28</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.27</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.97</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.48</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.96</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Th�ringisch</td>
+      <td>Thüringisch</td>
       <td>Heilbad Heiligenstadt</td>
       <td>142955</td>
       <td>jung</td>
       <td>EICJUNG</td>
       <td>0.73</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.06</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.67</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.79</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.68</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Th�ringisch</td>
+      <td>Thüringisch</td>
       <td>Sondershausen</td>
       <td>141165</td>
       <td>alt</td>
@@ -3283,14 +3286,14 @@
       <td>-</td>
       <td>-</td>
       <td>2.54</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>2.56</td>
       <td>2.4</td>
       <td>2.81</td>
       <td>2.5</td>
     </tr>
     <tr>
-      <td>Th�ringisch</td>
+      <td>Thüringisch</td>
       <td>Sondershausen</td>
       <td>141165</td>
       <td>mittel</td>
@@ -3309,26 +3312,26 @@
       <td>1.3</td>
     </tr>
     <tr>
-      <td>Th�ringisch</td>
+      <td>Thüringisch</td>
       <td>Sondershausen</td>
       <td>141165</td>
       <td>jung</td>
       <td>KYFJUNG1</td>
       <td>0.88</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.01</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.93</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.76</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.54</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Th�ringisch-Obers�chsisch</td>
+      <td>Thüringisch-Obersächsisch</td>
       <td>Gera</td>
       <td>139192</td>
       <td>alt</td>
@@ -3336,7 +3339,7 @@
       <td>1.39</td>
       <td>1.1</td>
       <td>1.28</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>-</td>
       <td>-</td>
       <td>1.54</td>
@@ -3344,10 +3347,10 @@
       <td>1.56</td>
       <td>1.2</td>
       <td>1.18</td>
-      <td>1</td>
+      <td>1.0</td>
     </tr>
     <tr>
-      <td>Th�ringisch-Obers�chsisch</td>
+      <td>Thüringisch-Obersächsisch</td>
       <td>Gera</td>
       <td>139192</td>
       <td>mittel</td>
@@ -3366,83 +3369,83 @@
       <td>1.4</td>
     </tr>
     <tr>
-      <td>Th�ringisch-Obers�chsisch</td>
+      <td>Thüringisch-Obersächsisch</td>
       <td>Gera</td>
       <td>139192</td>
       <td>jung</td>
       <td>GJUNG1</td>
       <td>1.24</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.95</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.66</td>
-      <td>NaN</td>
-      <td>2</td>
-      <td>NaN</td>
+      <td>-</td>
+      <td>2.0</td>
+      <td>-</td>
       <td>1.46</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Th�ringisch-Obers�chsisch</td>
+      <td>Thüringisch-Obersächsisch</td>
       <td>Halle</td>
       <td>125052</td>
       <td>mittel</td>
       <td>HAL3</td>
       <td>1.1</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.15</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.67</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.47</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.83</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.38</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Th�ringisch-Obers�chsisch</td>
+      <td>Thüringisch-Obersächsisch</td>
       <td>Halle</td>
       <td>125052</td>
       <td>alt</td>
       <td>HALALT</td>
       <td>1.52</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.63</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>2.02</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.05</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.91</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Th�ringisch-Obers�chsisch</td>
+      <td>Thüringisch-Obersächsisch</td>
       <td>Halle</td>
       <td>125052</td>
       <td>jung</td>
       <td>HALJUNG4</td>
       <td>1.02</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.91</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.31</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.43</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.76</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Obers�chsisch</td>
+      <td>Obersächsisch</td>
       <td>Dresden</td>
       <td>137577</td>
       <td>alt</td>
@@ -3450,7 +3453,7 @@
       <td>1.07</td>
       <td>0.9</td>
       <td>1.33</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>-</td>
       <td>-</td>
       <td>2.03</td>
@@ -3458,10 +3461,10 @@
       <td>1.82</td>
       <td>1.3</td>
       <td>1.28</td>
-      <td>1</td>
+      <td>1.0</td>
     </tr>
     <tr>
-      <td>Obers�chsisch</td>
+      <td>Obersächsisch</td>
       <td>Dresden</td>
       <td>137577</td>
       <td>mittel</td>
@@ -3473,14 +3476,14 @@
       <td>1.93</td>
       <td>1</td>
       <td>1.84</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>2.06</td>
       <td>1.1</td>
       <td>1.43</td>
-      <td>1</td>
+      <td>1.0</td>
     </tr>
     <tr>
-      <td>Obers�chsisch</td>
+      <td>Obersächsisch</td>
       <td>Dresden</td>
       <td>137577</td>
       <td>jung</td>
@@ -3494,12 +3497,12 @@
       <td>1.55</td>
       <td>0.9</td>
       <td>1.51</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>1.62</td>
       <td>1.3</td>
     </tr>
     <tr>
-      <td>Obers�chsisch</td>
+      <td>Obersächsisch</td>
       <td>Reichenbach</td>
       <td>137668</td>
       <td>alt</td>
@@ -3518,7 +3521,7 @@
       <td>1.8</td>
     </tr>
     <tr>
-      <td>Obers�chsisch</td>
+      <td>Obersächsisch</td>
       <td>Reichenbach</td>
       <td>137668</td>
       <td>mittel</td>
@@ -3530,71 +3533,71 @@
       <td>-</td>
       <td>1.8</td>
       <td>2.35</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>2.83</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>2.43</td>
       <td>2.2</td>
     </tr>
     <tr>
-      <td>Obers�chsisch</td>
+      <td>Obersächsisch</td>
       <td>Reichenbach</td>
       <td>137668</td>
       <td>jung</td>
       <td>ZJUNG1</td>
       <td>1.13</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.35</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.86</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.17</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.21</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Nordobers�chsisch</td>
+      <td>Nordobersächsisch</td>
       <td>Dessau</td>
       <td>120091</td>
       <td>alt</td>
       <td>DEALT3</td>
       <td>1.58</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.31</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.76</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.8</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.73</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Nordobers�chsisch</td>
+      <td>Nordobersächsisch</td>
       <td>Dessau</td>
       <td>120091</td>
       <td>mittel</td>
       <td>DE3</td>
       <td>0.95</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.04</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.72</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.56</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.62</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.74</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Nordobers�chsisch</td>
+      <td>Nordobersächsisch</td>
       <td>Dessau</td>
       <td>120091</td>
       <td>jung</td>
@@ -3602,18 +3605,18 @@
       <td>0.91</td>
       <td>0.4</td>
       <td>0.99</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.92</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.66</td>
       <td>0.3</td>
       <td>1.12</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Ostfr�nkisch</td>
+      <td>Ostfränkisch</td>
       <td>Ansbach</td>
       <td>92718</td>
       <td>alt</td>
@@ -3632,7 +3635,7 @@
       <td>1.9</td>
     </tr>
     <tr>
-      <td>Ostfr�nkisch</td>
+      <td>Ostfränkisch</td>
       <td>Ansbach</td>
       <td>92718</td>
       <td>mittel</td>
@@ -3651,7 +3654,7 @@
       <td>1.8</td>
     </tr>
     <tr>
-      <td>Ostfr�nkisch</td>
+      <td>Ostfränkisch</td>
       <td>Ansbach</td>
       <td>92718</td>
       <td>jung</td>
@@ -3670,7 +3673,7 @@
       <td>1.9</td>
     </tr>
     <tr>
-      <td>Ostfr�nkisch</td>
+      <td>Ostfränkisch</td>
       <td>Bamberg</td>
       <td>85574</td>
       <td>alt</td>
@@ -3678,7 +3681,7 @@
       <td>1.12</td>
       <td>0.9</td>
       <td>1.23</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>-</td>
       <td>-</td>
       <td>1.95</td>
@@ -3689,7 +3692,7 @@
       <td>1.7</td>
     </tr>
     <tr>
-      <td>Ostfr�nkisch</td>
+      <td>Ostfränkisch</td>
       <td>Bamberg</td>
       <td>85574</td>
       <td>mittel</td>
@@ -3708,7 +3711,7 @@
       <td>1.7</td>
     </tr>
     <tr>
-      <td>Ostfr�nkisch</td>
+      <td>Ostfränkisch</td>
       <td>Bamberg</td>
       <td>85574</td>
       <td>jung</td>
@@ -3727,61 +3730,61 @@
       <td>1.1</td>
     </tr>
     <tr>
-      <td>Ostfr�nkisch</td>
-      <td>W�rzburg</td>
+      <td>Ostfränkisch</td>
+      <td>Würzburg</td>
       <td>92553</td>
       <td>mittel</td>
       <td>WUE1</td>
       <td>1.08</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.23</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.52</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.93</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.11</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.83</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Ostfr�nkisch</td>
-      <td>W�rzburg</td>
+      <td>Ostfränkisch</td>
+      <td>Würzburg</td>
       <td>92553</td>
       <td>alt</td>
       <td>WUEALT</td>
       <td>1.35</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.48</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.95</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.31</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.38</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Ostfr�nkisch</td>
-      <td>W�rzburg</td>
+      <td>Ostfränkisch</td>
+      <td>Würzburg</td>
       <td>92553</td>
       <td>jung</td>
       <td>WUEJUNG</td>
       <td>1.16</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.34</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>2.44</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.2</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.59</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Nordbairisch</td>
@@ -3796,7 +3799,7 @@
       <td>-</td>
       <td>-</td>
       <td>2.43</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>2.93</td>
       <td>2.6</td>
       <td>2.65</td>
@@ -3809,9 +3812,9 @@
       <td>mittel</td>
       <td>AM3</td>
       <td>1.35</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>1.17</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>-</td>
       <td>-</td>
       <td>2.46</td>
@@ -3874,9 +3877,9 @@
       <td>2.47</td>
       <td>1.9</td>
       <td>2.41</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>2.58</td>
-      <td>2</td>
+      <td>2.0</td>
     </tr>
     <tr>
       <td>Nordbairisch</td>
@@ -3929,7 +3932,7 @@
       <td>-</td>
       <td>-</td>
       <td>2.33</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>2.76</td>
       <td>2.5</td>
       <td>2.77</td>
@@ -3944,13 +3947,13 @@
       <td>1.47</td>
       <td>1.1</td>
       <td>1.45</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>-</td>
       <td>-</td>
       <td>2.21</td>
       <td>1.7</td>
       <td>2.36</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>2.54</td>
       <td>2.3</td>
     </tr>
@@ -3980,10 +3983,10 @@
       <td>mittel</td>
       <td>R3</td>
       <td>1.31</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>1.16</td>
       <td>1.1</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>1.6</td>
       <td>2.6</td>
       <td>2.3</td>
@@ -4013,7 +4016,7 @@
     </tr>
     <tr>
       <td>Mittelbairisch</td>
-      <td>M�nchen</td>
+      <td>München</td>
       <td>73556</td>
       <td>alt</td>
       <td>MALT1</td>
@@ -4026,13 +4029,13 @@
       <td>2.37</td>
       <td>1.9</td>
       <td>2.46</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>2.8</td>
       <td>2.4</td>
     </tr>
     <tr>
       <td>Mittelbairisch</td>
-      <td>M�nchen</td>
+      <td>München</td>
       <td>73556</td>
       <td>mittel</td>
       <td>M9</td>
@@ -4051,7 +4054,7 @@
     </tr>
     <tr>
       <td>Mittelbairisch</td>
-      <td>M�nchen</td>
+      <td>München</td>
       <td>73556</td>
       <td>jung</td>
       <td>MJUNG1</td>
@@ -4075,17 +4078,17 @@
       <td>mittel</td>
       <td>PA2</td>
       <td>1.07</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.41</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>2.68</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.42</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.32</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Mittelbairisch</td>
@@ -4094,17 +4097,17 @@
       <td>alt</td>
       <td>PAALT2</td>
       <td>1.39</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.34</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>2.13</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.54</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.74</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Mittelbairisch</td>
@@ -4113,17 +4116,17 @@
       <td>jung</td>
       <td>PAJUNG</td>
       <td>1.21</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.65</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>2.51</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.06</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.67</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Mittelbairisch</td>
@@ -4132,7 +4135,7 @@
       <td>alt</td>
       <td>TSALT1</td>
       <td>1.19</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>1.2</td>
       <td>1.1</td>
       <td>-</td>
@@ -4172,113 +4175,113 @@
       <td>1.19</td>
       <td>0.9</td>
       <td>1.07</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>-</td>
       <td>-</td>
       <td>1.54</td>
       <td>1.1</td>
       <td>2.17</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>2.29</td>
       <td>2.1</td>
     </tr>
     <tr>
-      <td>S�dbairisch-Schw�bisch</td>
+      <td>Südbairisch-Schwäbisch</td>
       <td>Farchant</td>
       <td>78503</td>
       <td>alt</td>
       <td>GAPALT2</td>
       <td>1.62</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.02</td>
-      <td>NaN</td>
       <td>-</td>
       <td>-</td>
       <td>-</td>
-      <td>NaN</td>
+      <td>-</td>
+      <td>-</td>
       <td>2.61</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.63</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>S�dbairisch-Schw�bisch</td>
+      <td>Südbairisch-Schwäbisch</td>
       <td>Farchant</td>
       <td>78503</td>
       <td>mittel</td>
       <td>GAP1</td>
       <td>1.08</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.32</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>2.76</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.29</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.27</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>S�dbairisch-Schw�bisch</td>
+      <td>Südbairisch-Schwäbisch</td>
       <td>Farchant</td>
       <td>78503</td>
       <td>jung</td>
       <td>GAPJUNG1</td>
       <td>0.97</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.12</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.71</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.13</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.6</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Schw�bisch-Mittelbairisch</td>
+      <td>Schwäbisch-Mittelbairisch</td>
       <td>Augsburg</td>
       <td>81689</td>
       <td>alt</td>
       <td>AALT4</td>
       <td>1.46</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.77</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>2.77</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.42</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.72</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Schw�bisch-Mittelbairisch</td>
+      <td>Schwäbisch-Mittelbairisch</td>
       <td>Augsburg</td>
       <td>81689</td>
       <td>mittel</td>
       <td>A3</td>
       <td>0.97</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.46</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>2.32</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.85</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.28</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Schw�bisch-Mittelbairisch</td>
+      <td>Schwäbisch-Mittelbairisch</td>
       <td>Augsburg</td>
       <td>81689</td>
       <td>jung</td>
@@ -4297,64 +4300,64 @@
       <td>-</td>
     </tr>
     <tr>
-      <td>Schw�bisch</td>
+      <td>Schwäbisch</td>
       <td>Calw</td>
       <td>132846</td>
       <td>alt</td>
       <td>CWALT</td>
       <td>1.02</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.28</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.65</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.4</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.37</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Schw�bisch</td>
+      <td>Schwäbisch</td>
       <td>Calw</td>
       <td>132846</td>
       <td>mittel</td>
       <td>CW2</td>
       <td>1.09</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.32</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.92</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.02</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.55</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.36</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Schw�bisch</td>
+      <td>Schwäbisch</td>
       <td>Calw</td>
       <td>132846</td>
       <td>jung</td>
       <td>CWJUNG4</td>
       <td>0.94</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>0.8</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.65</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.8</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.09</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
-      <td>Schw�bisch</td>
+      <td>Schwäbisch</td>
       <td>Kaufbeuren</td>
       <td>83571</td>
       <td>alt</td>
@@ -4373,13 +4376,13 @@
       <td>2.7</td>
     </tr>
     <tr>
-      <td>Schw�bisch</td>
+      <td>Schwäbisch</td>
       <td>Kaufbeuren</td>
       <td>83571</td>
       <td>mittel</td>
       <td>KF1</td>
       <td>1.15</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>1.42</td>
       <td>1.1</td>
       <td>-</td>
@@ -4392,12 +4395,12 @@
       <td>2.6</td>
     </tr>
     <tr>
-      <td>Schw�bisch</td>
+      <td>Schwäbisch</td>
       <td>Kaufbeuren</td>
       <td>83571</td>
       <td>jung</td>
       <td>KFJUNG1</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>0.7</td>
       <td>1.14</td>
       <td>0.8</td>
@@ -4406,12 +4409,12 @@
       <td>1.5</td>
       <td>1.1</td>
       <td>1.36</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>2.27</td>
       <td>2.2</td>
     </tr>
     <tr>
-      <td>Schw�bisch</td>
+      <td>Schwäbisch</td>
       <td>Ulm</td>
       <td>127525</td>
       <td>alt</td>
@@ -4430,7 +4433,7 @@
       <td>2.6</td>
     </tr>
     <tr>
-      <td>Schw�bisch</td>
+      <td>Schwäbisch</td>
       <td>Ulm</td>
       <td>127525</td>
       <td>mittel</td>
@@ -4449,7 +4452,7 @@
       <td>2.3</td>
     </tr>
     <tr>
-      <td>Schw�bisch</td>
+      <td>Schwäbisch</td>
       <td>Ulm</td>
       <td>127525</td>
       <td>jung</td>
@@ -4457,7 +4460,7 @@
       <td>1.23</td>
       <td>1.1</td>
       <td>1.2</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>-</td>
       <td>-</td>
       <td>1.94</td>
@@ -4468,7 +4471,7 @@
       <td>2.4</td>
     </tr>
     <tr>
-      <td>Schw�bisch</td>
+      <td>Schwäbisch</td>
       <td>Balingen</td>
       <td>129371</td>
       <td>alt</td>
@@ -4487,7 +4490,7 @@
       <td>2.7</td>
     </tr>
     <tr>
-      <td>Schw�bisch</td>
+      <td>Schwäbisch</td>
       <td>Balingen</td>
       <td>129371</td>
       <td>mittel</td>
@@ -4499,14 +4502,14 @@
       <td>-</td>
       <td>-</td>
       <td>2.34</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>2.52</td>
       <td>2.2</td>
       <td>2.6</td>
       <td>2.5</td>
     </tr>
     <tr>
-      <td>Schw�bisch</td>
+      <td>Schwäbisch</td>
       <td>Balingen</td>
       <td>129371</td>
       <td>jung</td>
@@ -4514,7 +4517,7 @@
       <td>1.12</td>
       <td>0.9</td>
       <td>1.21</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>-</td>
       <td>-</td>
       <td>1.42</td>
@@ -4525,7 +4528,7 @@
       <td>2.2</td>
     </tr>
     <tr>
-      <td>Schw�bisch</td>
+      <td>Schwäbisch</td>
       <td>Rudersberg</td>
       <td>131121</td>
       <td>alt</td>
@@ -4544,7 +4547,7 @@
       <td>2.5</td>
     </tr>
     <tr>
-      <td>Schw�bisch</td>
+      <td>Schwäbisch</td>
       <td>Rudersberg</td>
       <td>131121</td>
       <td>mittel</td>
@@ -4552,24 +4555,24 @@
       <td>1.12</td>
       <td>0.8</td>
       <td>1.25</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>1.51</td>
       <td>Bettina?</td>
       <td>2.07</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>2.56</td>
       <td>2.3</td>
       <td>2.45</td>
       <td>2.5</td>
     </tr>
     <tr>
-      <td>Schw�bisch</td>
+      <td>Schwäbisch</td>
       <td>Rudersberg</td>
       <td>131121</td>
       <td>jung</td>
       <td>WNJUNG1</td>
       <td>1.19</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>1.25</td>
       <td>1.1</td>
       <td>-</td>
@@ -4582,7 +4585,7 @@
       <td>2.3</td>
     </tr>
     <tr>
-      <td>Schw�bisch</td>
+      <td>Schwäbisch</td>
       <td>Blindheim</td>
       <td>78986</td>
       <td>alt</td>
@@ -4590,7 +4593,7 @@
       <td>1.7</td>
       <td>1.4</td>
       <td>1.18</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>-</td>
       <td>-</td>
       <td>1.81</td>
@@ -4601,7 +4604,7 @@
       <td>2.3</td>
     </tr>
     <tr>
-      <td>Schw�bisch</td>
+      <td>Schwäbisch</td>
       <td>Blindheim</td>
       <td>78986</td>
       <td>mittel</td>
@@ -4620,13 +4623,13 @@
       <td>2.6</td>
     </tr>
     <tr>
-      <td>Schw�bisch</td>
+      <td>Schwäbisch</td>
       <td>Blindheim</td>
       <td>78986</td>
       <td>jung</td>
       <td>DLGJUNG2</td>
       <td>1.29</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>1.4</td>
       <td>1.1</td>
       <td>-</td>
@@ -4651,7 +4654,7 @@
       <td>-</td>
       <td>-</td>
       <td>1.32</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>1.95</td>
       <td>1.6</td>
       <td>2.12</td>
@@ -4693,7 +4696,7 @@
       <td>1.3</td>
       <td>0.4</td>
       <td>1.59</td>
-      <td>n.d.</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Hochalemannisch/Niederalemannisch</td>
@@ -4702,17 +4705,17 @@
       <td>mittel</td>
       <td>LOE6</td>
       <td>1.07</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.31</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.01</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.71</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.37</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.44</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Hochalemannisch/Niederalemannisch</td>
@@ -4721,17 +4724,17 @@
       <td>alt</td>
       <td>LOEALT</td>
       <td>1.24</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.32</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.64</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.64</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.67</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Hochalemannisch/Niederalemannisch</td>
@@ -4740,21 +4743,21 @@
       <td>jung</td>
       <td>LOEJUNG1</td>
       <td>0.8</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>1.11</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>-</td>
       <td>-</td>
       <td>1.02</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.13</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>2.25</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Mittelalemannisch</td>
-      <td>Br�unlingen</td>
+      <td>Bräunlingen</td>
       <td>127324</td>
       <td>mittel</td>
       <td>VS3</td>
@@ -4773,7 +4776,7 @@
     </tr>
     <tr>
       <td>Mittelalemannisch</td>
-      <td>Br�unlingen</td>
+      <td>Bräunlingen</td>
       <td>127324</td>
       <td>alt</td>
       <td>VSALT2</td>
@@ -4783,7 +4786,7 @@
       <td>0.8</td>
       <td>-</td>
       <td>-</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>1.5</td>
       <td>2.26</td>
       <td>1.8</td>
@@ -4792,7 +4795,7 @@
     </tr>
     <tr>
       <td>Mittelalemannisch</td>
-      <td>Br�unlingen</td>
+      <td>Bräunlingen</td>
       <td>127324</td>
       <td>jung</td>
       <td>VSJUNG1</td>
@@ -4845,7 +4848,7 @@
       <td>2.56</td>
       <td>1.86</td>
       <td>2.37</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Mittelalemannisch</td>
@@ -4901,7 +4904,7 @@
       <td>1.15</td>
       <td>2.32</td>
       <td>1.65</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>1.81</td>
     </tr>
     <tr>
@@ -4938,7 +4941,7 @@
       <td>1.99</td>
       <td>1.4</td>
       <td>2.19</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>2.42</td>
       <td>2.2</td>
     </tr>
@@ -4955,7 +4958,7 @@
       <td>-</td>
       <td>-</td>
       <td>2.54</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>2.81</td>
       <td>2.3</td>
       <td>2.5</td>
@@ -4977,9 +4980,37 @@
       <td>1.26</td>
       <td>2.22</td>
       <td>1.9</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>1.6</td>
     </tr>
   </tbody>
-</table></body>
-</html>
+</table>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let searchInput = document.getElementById('search-input');
+        let tableRows = document.querySelectorAll("tbody tr");
+
+        let list = [];
+        tableRows.forEach(row => {
+            let region = row.querySelector('td:nth-child(1)').textContent;
+            let ort = row.querySelector('td:nth-child(2)').textContent;
+            if(!list.includes(region)) list.push(region);
+            if(!list.includes(ort)) list.push(ort);
+        });
+
+        new Awesomplete(searchInput, { list: list });
+
+        searchInput.addEventListener('awesomplete-selectcomplete', function() {
+            let value = this.value;
+            tableRows.forEach(row => {
+                let region = row.querySelector('td:nth-child(1)').textContent;
+                let ort = row.querySelector('td:nth-child(2)').textContent;
+                if (region === value || ort === value) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        });
+    });
+</script></body></html>
