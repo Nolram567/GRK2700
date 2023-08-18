@@ -18,41 +18,53 @@
         }
 
         .header {
-            background-color: #f8f9fa;
-            height: 60px;
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+        background-color: #174d88;
+        height: 95px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
         }
-
-        .header a {
-            text-decoration: none;
-            color: #333;
-            font-size: 20px;
-            padding: 10px 20px;
-            border: 1px solid #333;
-            border-radius: 5px;
-            transition: 0.3s;
+        .header img {
+        margin-left: 10px; /* Abstand zum linken Rand */
         }
-
-        .header a:hover {
-            color: #fff;
-            background-color: #333;
+        .nav-container {
+        display: flex;
+        justify-content: space-around;
+        flex-grow: 1;
+        padding: 0 20px;
+        align-items: center;
         }
-
+        .nav-container a {
+        background-color: #f8f9fa;
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        padding: 10px 20px;
+        border: 1px solid #333;
+        border-radius: 5px;
+        transition: 0.3s;
+        align-items: center
+        }
+        .nav-container a:hover {
+        color: #fff;
+        background-color: #333;
+        }
         .awesomplete {
             z-index: 1000 !important;
         }
+
     </style>
 </head>
 
 <body>
     <div class="header">
+      <img src="http://127.0.0.1:8000/logo_90.png" alt="Logo">
+      <div class="nav-container">
         <input type="text" id="citySearch" placeholder="Stadt suchen...">
         <a href="http://127.0.0.1:8000/karte">Karte</a>
         <a href="http://127.0.0.1:8000/tabular">Tabelle</a>
+      </div>
     </div>
     <div id="mapid"></div>
 

@@ -2,7 +2,7 @@
     <html lang="de">
     <head>
       <meta charset="UTF-8">
-      <title>Ihr Tabellentitel</title>
+      <title>Die tabellarischen Daten</title>
       <style>
         table {
           border-collapse: collapse;
@@ -24,38 +24,54 @@
         }
 
         .header {
-            background-color: #f8f9fa;
-            height: 60px;
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
-        }
-
-        .header a {
-            text-decoration: none;
-            color: #333;
-            font-size: 20px;
-            padding: 10px 20px;
-            border: 1px solid #333;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-
-        .header a:hover {
-            color: #fff;
-            background-color: #333;
-        }
+        background-color: #174d88;
+        height: 95px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
+    }
+    .header img {
+        margin-left: 10px; /* Abstand zum linken Rand */
+    }
+    .nav-container {
+        display: flex;
+        justify-content: space-around;
+        flex-grow: 1;
+        padding: 0 20px;
+    }
+    .nav-container a {
+        background-color: #f8f9fa;
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        padding: 10px 20px;
+        border: 1px solid #333;
+        border-radius: 5px;
+        transition: 0.3s;
+        align-items: center
+    }
+    .nav-container a:hover {
+        color: #fff;
+        background-color: #333;
+    }
+    input.awesomplete {
+    margin: 0;
+    height: 35px;
+    vertical-align: middle;
+    }
       </style>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.css" />
       <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.js" async></script>
     </head>
     <body>
     <div class="header">
-      <input class="awesomplete" id="search-input" placeholder="Region oder Ort suchen..." />
-      <a href="http://127.0.0.1:8000/karte">Karte</a>
-      <a href="http://127.0.0.1:8000/tabular">Tabelle</a>
+      <img src="http://127.0.0.1:8000/logo_90.png" alt="Logo">
+      <div class="nav-container">
+        <input class="awesomplete" id="search-input" placeholder="Region oder Ort suchen..." />
+        <a href="http://127.0.0.1:8000/karte">Karte</a>
+        <a href="http://127.0.0.1:8000/tabular">Tabelle</a>
+      </div>
     </div>
 
 <table border="1" class="dataframe">

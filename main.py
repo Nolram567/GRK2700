@@ -78,8 +78,8 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             with open("chart_template.html", "r", encoding="utf-8") as f:
                 html_template = f.read()
 
-            # Ersetze die Datenplatzhalter in der HTML-Datei durch die tatsächlichen Daten
             html_content = html_template.replace("{{city}}", f"\"{city_name}\"")\
+                .replace("{{title}}", city_name)\
                 .replace("{{current_dataset}}", json.dumps(data, ensure_ascii=False)) \
                 .replace("{{region}}", f"\"{region}\"") \
                 .replace("{{regional_intragenerational_mean}}", json.dumps(regional_intragenerational_mean, ensure_ascii=False)) \
