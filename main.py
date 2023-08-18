@@ -1,4 +1,5 @@
 import json
+import os
 import time
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import pandas as pd
@@ -25,6 +26,8 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         print(self.path)
         if self.path.startswith("/data"):
             self.handle_data_endpoint()
+        if self.path == "/logo_90.png":
+            self.send_image_response()
         if self.path in self.endpoints_to_files:
             file_name = self.endpoints_to_files[self.path]
             #print(self.path)
@@ -96,7 +99,16 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             self.send_header('Content-type', 'text/html; charset=utf-8')
             self.end_headers()
             self.wfile.write(html_content.encode('utf-8'))
-
+    def send_image_response(self):
+        image_path = 'logo_90.png'
+        if os.path.exists(image_path):
+            with open(image_path, 'rb') as file:
+                self.send_response(200)
+                self.send_header('Content-type', 'image/png')
+                self.end_headers()
+                self.wfile.write(file.read())
+        else:
+            self.send_error(404, 'File Not Found')
 
 
 

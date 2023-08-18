@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <title>Deutsche Karte</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <!-- Awesomplete CSS für das Dropdown-Menü -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.css" />
     <style>
         #mapid {
@@ -58,11 +57,10 @@
     <div id="mapid"></div>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <!-- Awesomplete JS für das Dropdown-Menü -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.js"></script>
 
     <script>
-        var map = L.map('mapid').setView([51.1657, 10.4515], 6);  // Zentriert auf Deutschland
+        var map = L.map('mapid').setView([51.1657, 10.4515], 6);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
