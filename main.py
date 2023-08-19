@@ -28,6 +28,10 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             self.handle_data_endpoint()
         if self.path == "/logo_90.png":
             self.send_image_response()
+        '''if self.path == "/get_data":
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.wfile.write(json.dumps(self.df.to_dict("records"), ensure_ascii=False).encode('utf-8'))'''
         if self.path in self.endpoints_to_files:
             file_name = self.endpoints_to_files[self.path]
             #print(self.path)
@@ -90,8 +94,8 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
                 .replace("{{local_young_mean}}", f"{local_general_PAM['jung']}") \
                 .replace("{{local_intermediate_mean}}", f"{local_general_PAM['mittel']}") \
                 .replace("{{local_old_mean}}", f"{local_general_PAM['alt']}") \
-                .replace("{{regional_general_mean}}", f"{json.dumps(regional_general_PAM_intergenerational, ensure_ascii=False)}")
-                #.replace("{{full_dataset}}", json.dumps(self.df.to_dict("records"), ensure_ascii=False)) \
+                .replace("{{regional_general_mean}}", f"{json.dumps(regional_general_PAM_intergenerational, ensure_ascii=False)}") \
+                #.replace("{{full_dataset}}", json.dumps(self.df.to_dict("records"), ensure_ascii=False))
 
             #print(html_content)
 
