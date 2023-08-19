@@ -18,6 +18,12 @@
             font-family: Arial, sans-serif;
         }
 
+        /* Remove Outline*/
+        body, html {
+          margin: 0;
+          padding: 0;
+        }
+
         .header {
         background-color: #174d88;
         height: 95px;
@@ -54,7 +60,6 @@
         .awesomplete {
             z-index: 1000 !important;
         }
-
     </style>
 </head>
 
@@ -175,7 +180,7 @@
 
         function getColor(value) {
             var lowerThird = 1.3;
-            var middleThird = 1.5;
+            var middleThird = 1.6;
 
             if (value < lowerThird) {
                 return 'yellow';

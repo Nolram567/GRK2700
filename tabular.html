@@ -12,6 +12,7 @@
         }
         th {
           background-color: #f2f2f2;
+          text-align: center;
         }
         th, td {
           border: 1px solid #ddd;
@@ -22,26 +23,33 @@
         }
         body {
             font-family: Arial, sans-serif;
+
+        }
+        body, html {
+          margin: 0;
+          padding: 0;
         }
 
-        .header {
+    .header {
         background-color: #174d88;
         height: 95px;
         width: 100%;
         display: flex;
         align-items: center;
         box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
-    }
-    .header img {
+        position: fixed;
+        }
+        .header img {
         margin-left: 10px; /* Abstand zum linken Rand */
-    }
-    .nav-container {
+        }
+        .nav-container {
         display: flex;
         justify-content: space-around;
         flex-grow: 1;
         padding: 0 20px;
-    }
-    .nav-container a {
+        align-items: center;
+        }
+        .nav-container a {
         background-color: #f8f9fa;
         text-decoration: none;
         color: black;
@@ -51,11 +59,11 @@
         border-radius: 5px;
         transition: 0.3s;
         align-items: center
-    }
-    .nav-container a:hover {
+        }
+        .nav-container a:hover {
         color: #fff;
         background-color: #333;
-    }
+        }
     input.awesomplete {
     margin: 0;
     height: 35px;
@@ -79,9 +87,9 @@
   <thead>
     <tr style="text-align: right;">
       <th>Region</th>
-      <th>ort</th>
+      <th>Ort</th>
       <th>gid</th>
-      <th>GENERATION</th>
+      <th>Generation</th>
       <th>Informant</th>
       <th>PAM-Wert_WSS</th>
       <th>Kontrollwert_WSS</th>
