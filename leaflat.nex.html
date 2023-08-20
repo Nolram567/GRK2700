@@ -222,31 +222,40 @@
             }).addTo(map).bindPopup(`
         <h2><a href="http://localhost:8000/data/${city.name}">${city.name}</a></h2>
         <p><strong>Mittlerer PAM-Wert:</strong> ${city.PAM_Mittelwert}</p>
-    `);
+        `);
         });
 
-        document.getElementById('citySearch').addEventListener('keydown', function (e) {
+        function handleCitySearch(searchTerm) {
+    cities.forEach(city => {
+        if (city.name.toLowerCase() === searchTerm) {
+            var circle = L.circle([city.lat, city.lng], {
+                color: getColor(city.PAM_Mittelwert),
+                fillColor: getColor(city.PAM_Mittelwert),
+                fillOpacity: getOpacity(city.PAM_Mittelwert),
+                radius: 5000
+            }).addTo(map).bindPopup(`
+                <h2><a href="http://localhost:8000/data/${city.name}">${city.name}</a></h2>
+                <p><strong>Mittlerer PAM-Wert:</strong> ${city.PAM_Mittelwert}</p>
+            `);
+            circle.openPopup();
+            map.setView([city.lat, city.lng], 6);
+        }
+    });
+    }
+
+
+        var searchInput = document.getElementById('citySearch');
+
+        searchInput.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
-                var searchTerm = this.value.toLowerCase();
-                cities.forEach(city => {
-                    if (city.name.toLowerCase() === searchTerm) {
-                        var circle = L.circle([city.lat, city.lng], {
-                            color: getColor(city.PAM_Mittelwert),
-                            fillColor: getColor(city.PAM_Mittelwert),
-                            fillOpacity: getOpacity(city.PAM_Mittelwert),
-                            radius: 5000
-                        }).addTo(map).bindPopup(`
-                            <h2><a href="http://localhost:8000/data/${city.name}">${city.name}</a></h2>
-                            <p><strong>Latitude:</strong> ${city.lat}</p>
-                            <p><strong>Longitude:</strong> ${city.lng}</p>
-                            <p><strong>Mittlerer PAM-Wert:</strong> ${city.PAM_Mittelwert}</p>
-                        `);
-                        circle.openPopup();
-                        map.setView([city.lat, city.lng], 6);
-                    }
-                });
+                handleCitySearch(e.target.value.toLowerCase());
             }
         });
+
+        searchInput.addEventListener('awesomplete-selectcomplete', function(e) {
+            handleCitySearch(e.text.value.toLowerCase());
+        });
+
 
     </script>
 <footer>

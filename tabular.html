@@ -15,7 +15,7 @@
           text-align: center;
           position: sticky;
           top: 95px; /* Dies sollte die Höhe Ihres Headers sein, sodass der Spaltenkopf darunter haften bleibt */
-          z-index: 2; /* Ein höherer z-Index stellt sicher, dass der Header über anderen Inhalten angezeigt wird */
+
         }
         th, td {
           border: 1px solid #ddd;
@@ -40,6 +40,7 @@
         align-items: center;
         box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
         position: fixed;
+        z-index: 1;
         }
         .header img {
         margin-left: 10px; /* Abstand zum linken Rand */
@@ -66,6 +67,10 @@
         color: #fff;
         background-color: #333;
         }
+    .awesomplete > ul {
+    z-index: 1000; /* Dieser Wert ist höher als der von 'th', sodass das Menü darüber angezeigt wird */
+    position: relative; /* Stellt sicher, dass der z-index angewendet wird */
+    }
     input.awesomplete {
     margin: 0;
     height: 35px;
@@ -97,7 +102,7 @@
     <div class="header">
       <img src="http://127.0.0.1:8000/logo_90.png" alt="Logo">
       <div class="nav-container">
-        <input class="awesomplete" id="search-input" placeholder="Region oder Ort suchen..." />
+        <input type="text" id="search-input" placeholder="Region oder Ort suchen..." />
         <a href="http://127.0.0.1:8000/karte">Karte</a>
         <a href="http://127.0.0.1:8000/tabular">Tabelle</a>
       </div>
@@ -5032,20 +5037,33 @@
 </table>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
-        let searchInput = document.getElementById('search-input');
-        let tableRows = document.querySelectorAll("tbody tr");
+    let searchInput = document.getElementById('search-input');
+    let tableRows = document.querySelectorAll("tbody tr");
 
-        let list = [];
+    let list = [];
+    tableRows.forEach(row => {
+        let region = row.querySelector('td:nth-child(1)').textContent;
+        let ort = row.querySelector('td:nth-child(2)').textContent;
+        if(!list.includes(region)) list.push(region);
+        if(!list.includes(ort)) list.push(ort);
+    });
+
+    new Awesomplete(searchInput, { list: list });
+
+    searchInput.addEventListener('awesomplete-selectcomplete', function() {
+        let value = this.value;
         tableRows.forEach(row => {
             let region = row.querySelector('td:nth-child(1)').textContent;
             let ort = row.querySelector('td:nth-child(2)').textContent;
-            if(!list.includes(region)) list.push(region);
-            if(!list.includes(ort)) list.push(ort);
+            if (region === value || ort === value) {
+                row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
         });
+    });
 
-        new Awesomplete(searchInput, { list: list });
-
-        searchInput.addEventListener('awesomplete-selectcomplete', function() {
+    searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.keyCode === 13) {
             let value = this.value;
             tableRows.forEach(row => {
                 let region = row.querySelector('td:nth-child(1)').textContent;
@@ -5055,8 +5073,10 @@
                     return;
                 }
             });
-        });
+        }
     });
+});
+
 </script>
     <footer>
     <a href="http://localhost:8000/Impressum">Impressum</a>
