@@ -60,6 +60,24 @@
         .awesomplete {
             z-index: 1000 !important;
         }
+        footer {
+        background-color: #174d88;
+        color: white; /* Farbe des Textes, in diesem Fall weiß */
+        padding: 20px 0; /* Vertikales Padding */
+        text-align: center; /* Zentrierung des Inhalts */
+        width: 100%; /* Volle Breite */
+        position: relative; /* Relative Positionierung */
+        z-index: 1; /* Stellt sicher, dass die Fußzeile über anderen Inhalten angezeigt wird */
+    }
+
+    footer a {
+      color: white; /* Farbe des Links */
+      text-decoration: none; /* Entfernt die Unterstreichung des Links */
+    }
+
+      footer a:hover {
+        text-decoration: underline; /* Unterstreichung beim Darüberfahren */
+      }
     </style>
 </head>
 
@@ -231,5 +249,9 @@
         });
 
     </script>
+<footer>
+    <a href="http://localhost:8000/Impressum">Impressum</a>
+    </footer>
+
 </body>
 </html>

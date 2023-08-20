@@ -64,6 +64,24 @@
         color: #fff;
         background-color: #333;
     }
+    footer {
+        background-color: #174d88;
+        color: white; /* Farbe des Textes, in diesem Fall weiß */
+        padding: 20px 0; /* Vertikales Padding */
+        text-align: center; /* Zentrierung des Inhalts */
+        width: 100%; /* Volle Breite */
+        position: relative; /* Relative Positionierung */
+        z-index: 1; /* Stellt sicher, dass die Fußzeile über anderen Inhalten angezeigt wird */
+    }
+
+    footer a {
+      color: white; /* Farbe des Links */
+      text-decoration: none; /* Entfernt die Unterstreichung des Links */
+    }
+
+      footer a:hover {
+        text-decoration: underline; /* Unterstreichung beim Darüberfahren */
+      }
   </style>
 </head>
 <body>
@@ -313,11 +331,11 @@
             label: 'PAM-Werte',
             data: [mean_local, mean_regional, mean_national, mean_local_young, mean_local_intermediate, mean_local_old],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',  // Rot
-                'rgba(75, 192, 192, 0.2)',  // Grün
-                'rgba(255, 205, 86, 0.2)',  // Gelb
-                'rgba(54, 162, 235, 0.2)',  // Blau
-                'rgba(153, 102, 255, 0.2)'  // Violett
+                'rgba(255, 99, 132, 0.5)',  // Rot
+                'rgba(75, 192, 192, 0.5)',  // Grün
+                'rgba(255, 205, 86, 0.5)',  // Gelb
+                'rgba(54, 162, 235, 0.5)',  // Blau
+                'rgba(153, 102, 255, 0.5)'  // Violett
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',  // Rot
@@ -341,7 +359,7 @@
         },
         title:{
             display: true,
-            text: `Bar Chart lokaler und regionaler und nationaler Werte von ${city}`
+            text: `${city} im lokalen, regionalen und nationalen Vergleich`
         }
     }
 });
@@ -492,5 +510,9 @@ var myRadarChart = new Chart(ctx6, {
 });
 
   </script>
+<br><br><br><br>
+<footer>
+    <a href="http://localhost:8000/Impressum">Impressum</a>
+    </footer>
 </body>
 </html>

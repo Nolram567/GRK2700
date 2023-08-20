@@ -13,6 +13,9 @@
         th {
           background-color: #f2f2f2;
           text-align: center;
+          position: sticky;
+          top: 95px; /* Dies sollte die Höhe Ihres Headers sein, sodass der Spaltenkopf darunter haften bleibt */
+          z-index: 2; /* Ein höherer z-Index stellt sicher, dass der Header über anderen Inhalten angezeigt wird */
         }
         th, td {
           border: 1px solid #ddd;
@@ -23,7 +26,6 @@
         }
         body {
             font-family: Arial, sans-serif;
-
         }
         body, html {
           margin: 0;
@@ -69,6 +71,24 @@
     height: 35px;
     vertical-align: middle;
     }
+    footer {
+        background-color: #174d88;
+        color: white; /* Farbe des Textes, in diesem Fall weiß */
+        padding: 20px 0; /* Vertikales Padding */
+        text-align: center; /* Zentrierung des Inhalts */
+        width: 100%; /* Volle Breite */
+        position: relative; /* Relative Positionierung */
+        z-index: 1; /* Stellt sicher, dass die Fußzeile über anderen Inhalten angezeigt wird */
+    }
+
+    footer a {
+      color: white; /* Farbe des Links */
+      text-decoration: none; /* Entfernt die Unterstreichung des Links */
+    }
+
+      footer a:hover {
+        text-decoration: underline; /* Unterstreichung beim Darüberfahren */
+      }
       </style>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.css" />
       <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.js" async></script>
@@ -82,7 +102,7 @@
         <a href="http://127.0.0.1:8000/tabular">Tabelle</a>
       </div>
     </div>
-
+    <br><br><br><br><br>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -5038,4 +5058,8 @@
         });
     });
 </script>
+    <footer>
+    <a href="http://localhost:8000/Impressum">Impressum</a>
+    </footer>
+
 </body></html>

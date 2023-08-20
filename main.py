@@ -17,7 +17,8 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         "/draw": "leaflat_draw_example.html",
         "/regions": "leaflet.js_regions.html",
         "/tabular": "tabular.html",
-        "/": "leaflat.nex.html"
+        "/": "leaflat.nex.html",
+        "/Impressum": "impressum.html"
     }
 
     df = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
