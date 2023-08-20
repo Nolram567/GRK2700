@@ -189,4 +189,21 @@ if __name__ == '__main__':
         yaxis=dict(range=[0, 3.0])
     )
 
-    fig.show()
+    html_string = fig.to_html(full_html=False)
+
+    html_document = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Plotly Grafik</title>
+    </head>
+    <body>
+        <h1>Meine Plotly Grafik</h1>
+        {html_string}
+    </body>
+    </html>
+    """
+
+    # Zum Speichern als HTML-Datei
+    with open("plotly_grafik.html", "w", encoding="utf-8") as f:
+        f.write(html_document)
