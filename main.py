@@ -18,6 +18,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         "/regions": "leaflet.js_regions.html",
         "/tabular": "tabular.html",
         "/": "leaflat.nex.html",
+        "/Konfigurator": "plotly_grafik.html",
         "/Impressum": "impressum.html"
     }
 

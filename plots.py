@@ -8,129 +8,29 @@ if __name__ == '__main__':
     df = pd.DataFrame(data)
 
     data = df.to_dict("records")
-    '''# Ihre Daten
-
-    # Extrahieren Sie einzigartige Werte für die Spaltennamen, die "PAM-Wert_" enthalten
-    features = [col for col in df.columns if "PAM-Wert_" in col]
-
-    # Plot initialisieren
-    fig = go.Figure()
-
-    # Für jedes Feature einen scatter plot erstellen
-    for feature in features:
-        for gen in df['GENERATION'].unique():
-            df_gen = df[df['GENERATION'] == gen]
-            fig.add_trace(
-                go.Scatter(x=df_gen['ort'], y=df_gen[feature],
-                           mode='markers', name=gen, visible=(gen == 'alt')))
-
-    # Dropdown Menü erstellen
-    buttons = []
-    for gen in df['GENERATION'].unique():
-        visible = [g == gen for feature in features for g in df['GENERATION'].unique()]
-        button = dict(label=gen,
-                      method="update",
-                      args=[{"visible": visible}])
-        buttons.append(button)
-
-    # Menü zum Plot hinzufügen
-    fig.update_layout(
-        updatemenus=[
-            dict(
-                active=0,
-                buttons=buttons,
-            )
-        ])
-
-    fig.show()'''
-
-    '''generations = df['GENERATION'].unique()
-    orte = df['ort'].unique()
-
-    # PAM-Spaltennamen finden
-    pam_columns = [col for col in df.columns if 'PAM-Wert' in col]
-
-    # Scatterplot Daten für jede Kombination von Generation und Ort erstellen
-    traces = []
-    for generation in generations:
-        for ort in orte:
-            df_filtered = df[(df['GENERATION'] == generation) & (df['ort'] == ort)]
-            if not df_filtered.empty:
-                for pam_col in pam_columns:
-                    traces.append(
-                        go.Scatter(
-                            x=[pam_col.split("_")[1] for _ in df_filtered[pam_col]],
-                            y=df_filtered[pam_col],
-                            mode='markers',
-                            name=f"{generation} - {ort}",
-                            visible=(generation == generations[0] and ort == orte[0])
-                            # Erster trace sichtbar, rest unsichtbar
-                        )
-                    )
-
-    # Dropdown-Menüs erstellen
-    generation_buttons = [
-        {
-            "args": [{"visible": [(gen == generation) & (o == ort) for gen in generations for o in orte for _ in
-                                  pam_columns]}],
-            "label": generation,
-            "method": "restyle"
-        }
-        for generation in generations
-    ]
-
-    ort_buttons = [
-        {
-            "args": [{"visible": [(gen == generation) & (o == ort) for gen in generations for o in orte for _ in
-                                  pam_columns]}],
-            "label": ort,
-            "method": "restyle"
-        }
-        for ort in orte
-    ]
-
-    # Scatterplot mit Dropdown-Menüs
-    layout = go.Layout(
-        xaxis={"title": "Varianten der PAM-Werte"},
-        yaxis={"title": "Wert", "range": [0, 3.0]},
-        updatemenus=[
-            {
-                "buttons": generation_buttons,
-                "direction": "down",
-                "showactive": True,
-                "x": 0.1,
-                "xanchor": "left",
-                "y": 1.1,
-                "yanchor": "top"
-            },
-            {
-                "buttons": ort_buttons,
-                "direction": "down",
-                "showactive": True,
-                "x": 0.4,
-                "xanchor": "left",
-                "y": 1.1,
-                "yanchor": "top"
-            }
-        ]
-    )
-
-    fig = go.Figure(data=traces, layout=layout)
-    fig.show()'''
 
     # Eine Liste der PAM-Werte.
     pam_keys = ["PAM-Wert_WSS", "PAM-Wert_NOSO", "PAM-Wert_NOT", "PAM-Wert_INT", "PAM-Wert_FG", "PAM-Wert_WSD"]
 
     pam_symbols = {
-        "PAM-Wert_WSS": 'circle',
-        "PAM-Wert_NOSO": 'square',
-        "PAM-Wert_NOT": 'diamond',
-        "PAM-Wert_INT": 'cross',
-        "PAM-Wert_FG": 'x',
-        "PAM-Wert_WSD": 'triangle-up'
+        "Übersetzung in das Standarddeutsche": 'circle',
+        "Vorlesen": 'square',
+        "Notruf": 'diamond',
+        "Interview": 'cross',
+        "Freundesgespräch": 'x',
+        "Übersetzung in den Dialekt": 'triangle-up'
     }
 
-    orte = list(set(entry["ort"] for entry in data))
+    pam_titles = {
+        "PAM-Wert_WSS": "Übersetzung in das Standarddeutsche",
+        "PAM-Wert_NOSO": "Vorlesen",
+        "PAM-Wert_NOT": "Notruf",
+        "PAM-Wert_INT": "Interview",
+        "PAM-Wert_FG": "Freundesgespräch",
+        "PAM-Wert_WSD": "Übersetzung in den Dialekt"
+    }
+
+    orte = sorted(list(set(entry["ort"] for entry in data)))
 
 
     # Erzeugt die sichtbaren Daten für eine bestimmte Stadt.
@@ -147,12 +47,11 @@ if __name__ == '__main__':
     initial_data = generate_data_for_ort(orte[0])
     initial_traces = [
         go.Scatter(
-            x=["jung", "mittel", "alt"],
+            x=["Jung", "Mittel", "Alt"],
             y=initial_data[key],
             mode='markers',
-            name=key,
-            marker=dict(symbol=pam_symbols[key],
-                        size= 20)  # Setzen Sie das Symbol mit dem Dictionary
+            name=pam_titles[key],
+            marker=dict(symbol=pam_symbols[pam_titles[key]], size=20)
         )
         for key in pam_keys
     ]
@@ -182,14 +81,21 @@ if __name__ == '__main__':
                 showactive=True,
                 x=0.5,
                 xanchor="center",
-                y=1.15,
+                y=1.2,
                 yanchor="top"
             ),
         ],
-        yaxis=dict(range=[0, 3.0])
+        yaxis=dict(range=[0, 3.5]),
+        xaxis=dict(title="Generation"),
+        legend_title_text='Situationen'
     )
 
-    html_string = fig.to_html(full_html=False)
+    fig.show()
+
+
+
+
+    '''html_string = fig.to_html(full_html=False)
 
     html_document = f"""
     <!DOCTYPE html>
@@ -205,5 +111,5 @@ if __name__ == '__main__':
     """
 
     # Zum Speichern als HTML-Datei
-    with open("plotly_grafik.html", "w", encoding="utf-8") as f:
-        f.write(html_document)
+    with open("plotly_grafik_test.html", "w", encoding="utf-8") as f:
+        f.write(html_document)'''
