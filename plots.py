@@ -3,6 +3,8 @@ import plotly.graph_objects as go
 import json
 
 if __name__ == '__main__':
+
+
     data = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
 
     df = pd.DataFrame(data)
@@ -13,12 +15,12 @@ if __name__ == '__main__':
     pam_keys = ["PAM-Wert_WSS", "PAM-Wert_NOSO", "PAM-Wert_NOT", "PAM-Wert_INT", "PAM-Wert_FG", "PAM-Wert_WSD"]
 
     pam_symbols = {
-        "Übersetzung in das Standarddeutsche": 'circle',
-        "Vorlesen": 'square',
-        "Notruf": 'diamond',
-        "Interview": 'cross',
-        "Freundesgespräch": 'x',
-        "Übersetzung in den Dialekt": 'triangle-up'
+        "Übersetzung in das Standarddeutsche": 'star-triangle-down',
+        "Vorlesen": 'x',
+        "Notruf": 'square',
+        "Interview": 'triangle-up',
+        "Freundesgespräch": 'circle',
+        "Übersetzung in den Dialekt": 'star'
     }
 
     pam_titles = {
@@ -47,11 +49,12 @@ if __name__ == '__main__':
     initial_data = generate_data_for_ort(orte[0])
     initial_traces = [
         go.Scatter(
-            x=["Jung", "Mittel", "Alt"],
+            x=[25 if gen == "Jung" else 50 if gen == "Mittel" else 75 for gen in ["Jung", "Mittel", "Alt"]],
+
             y=initial_data[key],
             mode='markers',
             name=pam_titles[key],
-            marker=dict(symbol=pam_symbols[pam_titles[key]], size=20)
+            marker=dict(symbol=pam_symbols[pam_titles[key]], size=13)
         )
         for key in pam_keys
     ]
@@ -86,30 +89,110 @@ if __name__ == '__main__':
             ),
         ],
         yaxis=dict(range=[0, 3.5]),
-        xaxis=dict(title="Generation"),
+        xaxis=dict(
+            title="Generation",
+            # Positionen und Text-Labels für die X-Achse:
+            tickvals=[25, 50, 75],
+            ticktext=["Jung", "Mittel", "Alt"],
+            range=[0, 100]  # Stellen Sie sicher, dass die X-Achse von 0 bis 100 reicht
+        ),
         legend_title_text='Situationen'
     )
 
     fig.show()
 
-
-
-
-    '''html_string = fig.to_html(full_html=False)
+    html_string = fig.to_html(full_html=False)
 
     html_document = f"""
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Plotly Grafik</title>
-    </head>
-    <body>
-        <h1>Meine Plotly Grafik</h1>
-        {html_string}
-    </body>
-    </html>
-    """
+            <!DOCTYPE html>
+        <html lang="de">
+        <head>
+          <title>Konfigurator</title>
+          <meta charset="UTF-8">
+            <link rel="icon" href="http://localhost:8000/favicon" type="image/x-icon">
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+            <script src="https://unpkg.com/chartjs-chart-box-and-violin-plot"></script>
 
+           <style>
+            body {{
+                font-family: Arial, sans-serif;
+            }}
+            /* Remove outline*/
+            body, html {{
+                  margin: 0;
+                  padding: 0;
+            }}
+
+            .header {{
+                background-color: #174d88;
+                height: 95px;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
+            }}
+            .header img {{
+                margin-left: 10px; /* Abstand zum linken Rand */
+            }}
+            .nav-container {{
+                display: flex;
+                justify-content: space-around;
+                flex-grow: 1; /* Nimmt den verfügbaren Platz im Header auf */
+                padding: 0 20px; /* Raum um die Links */
+            }}
+            .nav-container a {{
+                background-color: #f8f9fa;
+                text-decoration: none;
+                color: black;
+                font-size: 20px;
+                padding: 10px 20px;
+                border: 1px solid #333;
+                border-radius: 5px;
+                transition: 0.3s;
+            }}
+            .nav-container a:hover {{
+                color: #fff;
+                background-color: #333;
+            }}
+            footer {{
+                background-color: #174d88;
+                color: white; /* Farbe des Textes, in diesem Fall weiß */
+                padding: 20px 0; /* Vertikales Padding */
+                text-align: center; /* Zentrierung des Inhalts */
+                width: 100%; /* Volle Breite */
+                position: relative; /* Relative Positionierung */
+                z-index: 1; /* Stellt sicher, dass die Fußzeile über anderen Inhalten angezeigt wird */
+            }}
+
+            footer a {{
+              color: white; /* Farbe des Links */
+              text-decoration: none; /* Entfernt die Unterstreichung des Links */
+            }}
+
+              footer a:hover {{
+                text-decoration: underline; /* Unterstreichung beim Darüberfahren */
+              }}
+          </style>
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        </head>
+        <body>
+          <div class="header">
+                <img src="http://127.0.0.1:8000/logo_90.png" alt="Logo">
+                <div class="nav-container">
+                    <a href="http://127.0.0.1:8000/karte"><i class="fa-solid fa-map"></i> Karte</a>
+                    <a href="http://127.0.0.1:8000/tabular"><i class="fa-solid fa-table"></i> Tabelle</a>
+                    <a href="http://127.0.0.1:8000/Konfigurator"><i class="fa-solid fa-chart-column"></i> Konfigurator</a>
+                </div>
+          </div>
+        <br><br><br>
+            {html_string}
+        <br><br><br>
+        <footer>
+        <a href="http://localhost:8000/Impressum">Impressum</a>
+        </footer>
+        </body>
+        </html>
+        """
     # Zum Speichern als HTML-Datei
-    with open("plotly_grafik_test.html", "w", encoding="utf-8") as f:
-        f.write(html_document)'''
+    with open("plotly_grafik.html", "w", encoding="utf-8") as f:
+        f.write(html_document)
