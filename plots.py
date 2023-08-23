@@ -99,9 +99,10 @@ if __name__ == '__main__':
         legend_title_text='Situationen'
     )
 
-    fig.show()
+    #fig.show()
 
-    html_string = fig.to_html(full_html=False)
+    html_string = fig.to_html(full_html=False, config={'displayModeBar': True,
+                                                       "modeBarButtonsToRemove": ['zoom2d', 'pan2d', 'select2d', 'lasso2d']})
 
     html_document = f"""
             <!DOCTYPE html>
@@ -184,7 +185,7 @@ if __name__ == '__main__':
                     <a href="http://127.0.0.1:8000/Konfigurator"><i class="fa-solid fa-chart-column"></i> Konfigurator</a>
                 </div>
           </div>
-        <br><br><br>
+        <br>
             {html_string}
         <br><br><br>
         <footer>
