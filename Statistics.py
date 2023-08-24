@@ -65,4 +65,5 @@ class Statistics:
         return average_pam
 
 if __name__ == '__main__':
-    print("success")
+    df = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
+    print(df.head(15).to_dict("records"))
