@@ -96,7 +96,17 @@ if __name__ == '__main__':
             ticktext=["Jung", "Mittel", "Alt"],
             range=[0, 100]  # Stellen Sie sicher, dass die X-Achse von 0 bis 100 reicht
         ),
-        legend_title_text='Situationen'
+        legend_title_text='Situationen',
+        annotations=[
+            dict(
+                x=1,  # x-Position, die Sie anpassen können
+                y=-0.3,  # y-Position, die Sie anpassen können
+                xref='paper',  # x-Position ist relativ zur Breite des Diagramms
+                yref='paper',  # y-Position ist relativ zur Höhe des Diagramms
+                text="Dieser Konfigurator veranschaulicht die Abweichung vom Standarddeutschen der Gewehrpersonen nach Situation, Generation und Stadt.",  # Ihr Text
+                showarrow=False  # Kein Pfeil, nur Text
+            )
+        ]
     )
 
     #fig.show()
@@ -164,17 +174,33 @@ if __name__ == '__main__':
                 position: relative; /* Relative Positionierung */
                 z-index: 1; /* Stellt sicher, dass die Fußzeile über anderen Inhalten angezeigt wird */
             }}
-
-            footer a {{
-              color: white; /* Farbe des Links */
-              text-decoration: none; /* Entfernt die Unterstreichung des Links */
+            .social-media {{
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
             }}
-
-              footer a:hover {{
-                text-decoration: underline; /* Unterstreichung beim Darüberfahren */
-              }}
+        
+            footer a, .social-media a {{
+                color: white;
+                text-decoration: none;
+                margin-right: 10px;  /* Etwas Abstand zwischen den Symbolen */
+            }}
+        
+            footer a:hover, .social-media a:hover {{
+                text-decoration: underline;
+                color: black;  /* Ändern Sie die Farbe beim Überfahren in schwarz */
+            }}
+        
+            .social-media i {{  /* Ändern Sie die Farbe des Symbols selbst, nicht nur des Links */
+                color: white;
+            }}
+        
+            .social-media i:hover {{
+                color: black;
+            }}
           </style>
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
         </head>
         <body>
           <div class="header">
@@ -189,7 +215,12 @@ if __name__ == '__main__':
             {html_string}
         <br><br><br>
         <footer>
-        <a href="http://localhost:8000/Impressum">Impressum</a>
+        <div class="social-media">
+            <a href="http://localhost:8000/Impressum">Impressum</a>
+        </div>
+            <a href="https://twitter.com/regionalsprache?lang=de" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.instagram.com/deutschersprachatlas/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/DeutscherSprachatlas" target="_blank"><i class="fa-brands fa-facebook"></i></a>
         </footer>
         </body>
         </html>
