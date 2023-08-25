@@ -224,43 +224,49 @@
             list: cities.map(city => city.name)
         });
 
+       /* Calculate Color with quartils
+        Q1: 1.245
+        Q2 (Median): 1.492
+        Q3: 1.692
+       */
         function getColor(value) {
-            var lowerThird = 1.3;
-            var middleThird = 1.6;
-
-            if (value < lowerThird) {
-                return 'yellow';
-            } else if (value < middleThird) {
-                return 'orange';
-            } else {
-                return 'red';
-            }
+        if (isNaN(value)) {
+            return 'white'; // Farbe für NaN-Werte
         }
 
-        function getOpacity(value) {
-            return value / 2;
+        var lowerThird = 1.245;
+        var middleThird = 1.692;
+
+        if (value < lowerThird) {
+            return 'yellow';
+        } else if (value < middleThird) {
+            return 'orange';
+        } else {
+            return 'red';
+        }
         }
 
-        cities.forEach(city => {
-            L.circle([city.lat, city.lng], {
-                color: getColor(city.PAM_Mittelwert),
-                fillColor: getColor(city.PAM_Mittelwert),
-                fillOpacity: getOpacity(city.PAM_Mittelwert),
-                radius: 5000
-            }).addTo(map).bindPopup(`
+
+cities.forEach(city => {
+    L.circle([city.lat, city.lng], {
+        color: 'none',
+        fillColor: getColor(city.PAM_Mittelwert),
+        fillOpacity: 0.7,
+        radius: 10000
+    }).addTo(map).bindPopup(`
         <h2><a href="http://localhost:8000/data/${city.name}">${city.name}</a></h2>
         <p><strong>Mittlerer PAM-Wert:</strong> ${city.PAM_Mittelwert}</p>
-        `);
-        });
+    `);
+});
 
-        function handleCitySearch(searchTerm) {
+function handleCitySearch(searchTerm) {
     cities.forEach(city => {
         if (city.name.toLowerCase() === searchTerm) {
             var circle = L.circle([city.lat, city.lng], {
-                color: getColor(city.PAM_Mittelwert),
+                color: 'none',
+                fillOpacity: 0.7,
                 fillColor: getColor(city.PAM_Mittelwert),
-                fillOpacity: getOpacity(city.PAM_Mittelwert),
-                radius: 5000
+                radius: 10000
             }).addTo(map).bindPopup(`
                 <h2><a href="http://localhost:8000/data/${city.name}">${city.name}</a></h2>
                 <p><strong>Mittlerer PAM-Wert:</strong> ${city.PAM_Mittelwert}</p>
@@ -269,7 +275,8 @@
             map.setView([city.lat, city.lng], 6);
         }
     });
-    }
+}
+
 
 
         var searchInput = document.getElementById('citySearch');
