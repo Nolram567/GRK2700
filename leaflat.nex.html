@@ -251,7 +251,7 @@ cities.forEach(city => {
     L.circle([city.lat, city.lng], {
         color: 'none',
         fillColor: getColor(city.PAM_Mittelwert),
-        fillOpacity: 0.7,
+        fillOpacity: 0.65,
         radius: 10000
     }).addTo(map).bindPopup(`
         <h2><a href="http://localhost:8000/data/${city.name}">${city.name}</a></h2>
@@ -264,7 +264,7 @@ function handleCitySearch(searchTerm) {
         if (city.name.toLowerCase() === searchTerm) {
             var circle = L.circle([city.lat, city.lng], {
                 color: 'none',
-                fillOpacity: 0.7,
+                fillOpacity: 0.65,
                 fillColor: getColor(city.PAM_Mittelwert),
                 radius: 10000
             }).addTo(map).bindPopup(`
