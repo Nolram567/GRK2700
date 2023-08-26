@@ -38,7 +38,7 @@ class Statistics:
             if i['ort'] not in ticked:
                 ort_to_filter = i['ort']
                 filtered_list = [entry for entry in intragenerationalMeans if entry['ort'] == ort_to_filter]
-                print(filtered_list)
+                #print(filtered_list)
                 mean_pam_values = [entry['Mean_PAM'] for entry in filtered_list if not math.isnan(entry['Mean_PAM'])]
                 if len(mean_pam_values) > 0:
                     average_mean_pam = sum(mean_pam_values) / len(mean_pam_values)
@@ -50,8 +50,16 @@ class Statistics:
                 else:
                     resultSet.append({'ort': i['ort'], 'Mean_PAM': math.nan})
                     ticked.append(ort_to_filter)
+        return resultSet
 
-
+    @staticmethod
+    def calculate_national_mean_PAM(r=True):
+        intergenerationalMeans=Statistics.calculate_local_mean_intergenerational(r=False)
+        mean_pam_values = [entry['Mean_PAM'] for entry in intergenerationalMeans if not math.isnan(entry['Mean_PAM'])]
+        if r:
+            return round(sum(mean_pam_values) / len(mean_pam_values), 3)
+        else:
+            return sum(mean_pam_values) / len(mean_pam_values)
 
 
     @staticmethod
@@ -117,4 +125,4 @@ class Statistics:
 
 if __name__ == '__main__':
 
-    print(Statistics.calculate_local_mean_intergenerational())
+    print(Statistics.calculate_national_mean_PAM(r=True))
