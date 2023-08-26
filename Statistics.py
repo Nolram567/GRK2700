@@ -12,20 +12,20 @@ class Statistics:
     def calculate_local_means_intragenerational(r=True):
         localValues = []
         for i in Statistics.mydata:
-            filtered_dict = {k: v for k, v in i.items() if k.startswith("PAM") or k == "ort" or k == "GENERATION"}
+            filtered_dict = {k: v for k, v in i.items() if k.startswith("PAM") or k == "ort" or k == "Region" or k == "GENERATION"}
             filtered_dict2 = {k: v for k, v in filtered_dict.items() if
                               type(v) == str or (type(v) == float and not math.isnan(v))}
             filtered_dict3 = {k: v for k, v in filtered_dict2.items() if k.startswith("PAM")}
             if len(filtered_dict3) > 0:
                 if r:
-                    localValues.append({'ort': filtered_dict2['ort'], 'Generation': filtered_dict2['GENERATION'],
+                    localValues.append({'ort': filtered_dict2['ort'], 'Generation': filtered_dict2['GENERATION'], 'Region': filtered_dict2['Region'],
                                         'Mean_PAM': round(sum(filtered_dict3.values()) / len(filtered_dict3), 3)})
                 else:
-                    localValues.append({'ort': filtered_dict2['ort'], 'Generation': filtered_dict2['GENERATION'],
+                    localValues.append({'ort': filtered_dict2['ort'], 'Generation': filtered_dict2['GENERATION'], 'Region': filtered_dict2['Region'],
                                         'Mean_PAM': sum(filtered_dict3.values()) / len(filtered_dict3)})
             else:
                 localValues.append(
-                    {'ort': filtered_dict2['ort'], 'Generation': filtered_dict2['GENERATION'], 'Mean_PAM': math.nan})
+                    {'ort': filtered_dict2['ort'], 'Generation': filtered_dict2['GENERATION'], 'Region': filtered_dict2['Region'], 'Mean_PAM': math.nan})
 
         return localValues
 
@@ -43,12 +43,12 @@ class Statistics:
                 if len(mean_pam_values) > 0:
                     average_mean_pam = sum(mean_pam_values) / len(mean_pam_values)
                     if r:
-                        resultSet.append({'ort': i['ort'], 'Mean_PAM': round(average_mean_pam, 3)})
+                        resultSet.append({'ort': i['ort'], 'Region': i['Region'], 'Mean_PAM': round(average_mean_pam, 3)})
                     else:
-                        resultSet.append({'ort': i['ort'], 'Mean_PAM': average_mean_pam})
+                        resultSet.append({'ort': i['ort'], 'Region': i['Region'], 'Mean_PAM': average_mean_pam})
                     ticked.append(ort_to_filter)
                 else:
-                    resultSet.append({'ort': i['ort'], 'Mean_PAM': math.nan})
+                    resultSet.append({'ort': i['ort'], 'Region': i['Region'], 'Mean_PAM': math.nan})
                     ticked.append(ort_to_filter)
         return resultSet
 
@@ -125,4 +125,4 @@ class Statistics:
 
 if __name__ == '__main__':
 
-    print(Statistics.calculate_national_mean_PAM(r=True))
+    print(Statistics.calculate_local_mean_intergenerational())
