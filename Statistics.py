@@ -121,17 +121,53 @@ class Statistics:
                 ticked.append(i['ort'])
         return local_situational_means
 
-
-
-
     @staticmethod
-    def calculate_national_mean_PAM(r=True):
+    def calculate_national_mean(r=True):
         intergenerationalMeans=Statistics.calculate_local_mean_intergenerational(r=False)
         mean_pam_values = [entry['Mean_PAM'] for entry in intergenerationalMeans if not math.isnan(entry['Mean_PAM'])]
         if r:
             return round(sum(mean_pam_values) / len(mean_pam_values), 3)
         else:
             return sum(mean_pam_values) / len(mean_pam_values)
+
+    @staticmethod
+    def calculate_regional_means_intergenerational(r=True):
+        local_means = Statistics.calculate_local_means_intragenerational(r=False)
+        regional_values = []
+        ticked = []
+
+        for i in local_means:
+            if i['Region'] not in ticked:
+                filtered_list = [entry for entry in local_means if entry['Region'] == i['Region']]
+                print(filtered_list)
+                mean_pam_values = [entry['Mean_PAM'] for entry in filtered_list if not math.isnan(entry['Mean_PAM'])]
+                print(mean_pam_values)
+                if r:
+                    if len(mean_pam_values) > 0:
+                        regional_values.append({'Region': i['Region'], 'Mean_PAM': round(sum(mean_pam_values) / len(mean_pam_values), 3)})
+                    else:
+                        regional_values.append({'Region': i['Region'], 'Mean_PAM': math.nan})
+                else:
+                    if len(mean_pam_values) > 0:
+                        regional_values.append({'Region': i['Region'], 'Mean_PAM': sum(mean_pam_values) / len(mean_pam_values)})
+                    else:
+                        regional_values.append({'Region': i['Region'], 'Mean_PAM': math.nan})
+                ticked.append(i['Region'])
+
+        return regional_values
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     @staticmethod
@@ -197,4 +233,4 @@ class Statistics:
 
 if __name__ == '__main__':
 
-    print(Statistics.mydata)
+    print(Statistics.calculate_regional_means_intergenerational(r=False))
