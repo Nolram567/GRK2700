@@ -156,19 +156,72 @@ class Statistics:
 
         return regional_values
 
+    @staticmethod
+    def calculate_regional_situational_means(r=True):
+        local_means = Statistics.calculate_local_situational_means(r=False)
+        ticked = []
+        regional_situational_means = []
+        for i in local_means:
+            if i['Region'] not in ticked:
+                filtered_list = [entry for entry in local_means if entry['Region'] == i['Region']]
 
+                PAM_Variations = ['PAM-Wert_WSS', 'PAM-Wert_NOSO', 'PAM-Wert_NOT', 'PAM-Wert_INT', 'PAM-Wert_FG',
+                                  'PAM-Wert_WSD']
+                temp = {'Region': i['Region']}
+                for j in PAM_Variations:
+                    temp[f'values_{j}'] = []
+                    for d in filtered_list:
+                        temp[f'values_{j}'].append({k: v for k, v in d.items() if k.startswith(j)}[j])
 
-
-
-
-
-
-
-
-
-
-
-
+                # print(temp)
+                for key, value_list in temp.items():
+                    if isinstance(value_list, list):
+                        temp[key] = [v for v in value_list if not math.isnan(v)]
+                # print(temp)
+                if r:
+                    regional_situational_means.append({'Region': i['Region'],
+                                                    'PAM-Wert_WSS': round(sum(temp['values_PAM-Wert_WSS']) / len(
+                                                        temp['values_PAM-Wert_WSS']), 3) if len(
+                                                        temp['values_PAM-Wert_WSS']) != 0 else math.nan,
+                                                    'PAM-Wert_NOSO': round(sum(temp['values_PAM-Wert_NOSO']) / len(
+                                                        temp['values_PAM-Wert_NOSO']), 3) if len(
+                                                        temp['values_PAM-Wert_NOSO']) != 0 else math.nan,
+                                                    'PAM-Wert_NOT': round(sum(temp['values_PAM-Wert_NOT']) / len(
+                                                        temp['values_PAM-Wert_NOT']), 3) if len(
+                                                        temp['values_PAM-Wert_NOT']) != 0 else math.nan,
+                                                    'PAM-Wert_INT': round(sum(temp['values_PAM-Wert_INT']) / len(
+                                                        temp['values_PAM-Wert_INT']), 3) if len(
+                                                        temp['values_PAM-Wert_INT']) != 0 else math.nan,
+                                                    'PAM-Wert_FG': round(sum(temp['values_PAM-Wert_FG']) / len(
+                                                        temp['values_PAM-Wert_FG']), 3) if len(
+                                                        temp['values_PAM-Wert_FG']) != 0 else math.nan,
+                                                    'PAM-Wert_WSD': round(sum(temp['values_PAM-Wert_WSD']) / len(
+                                                        temp['values_PAM-Wert_WSD']), 3) if len(
+                                                        temp['values_PAM-Wert_WSD']) != 0 else math.nan
+                                                    })
+                else:
+                    regional_situational_means.append({'Region': i['Region'],
+                                                    'PAM-Wert_WSS': sum(temp['values_PAM-Wert_WSS']) / len(
+                                                        temp['values_PAM-Wert_WSS']) if len(
+                                                        temp['values_PAM-Wert_WSS']) != 0 else math.nan,
+                                                    'PAM-Wert_NOSO': sum(temp['values_PAM-Wert_NOSO']) / len(
+                                                        temp['values_PAM-Wert_NOSO']) if len(
+                                                        temp['values_PAM-Wert_NOSO']) != 0 else math.nan,
+                                                    'PAM-Wert_NOT': sum(temp['values_PAM-Wert_NOT']) / len(
+                                                        temp['values_PAM-Wert_NOT']) if len(
+                                                        temp['values_PAM-Wert_NOT']) != 0 else math.nan,
+                                                    'PAM-Wert_INT': sum(temp['values_PAM-Wert_INT']) / len(
+                                                        temp['values_PAM-Wert_INT']) if len(
+                                                        temp['values_PAM-Wert_INT']) != 0 else math.nan,
+                                                    'PAM-Wert_FG': sum(temp['values_PAM-Wert_FG']) / len(
+                                                        temp['values_PAM-Wert_FG']) if len(
+                                                        temp['values_PAM-Wert_FG']) != 0 else math.nan,
+                                                    'PAM-Wert_WSD': sum(temp['values_PAM-Wert_WSD']) / len(
+                                                        temp['values_PAM-Wert_WSD']) if len(
+                                                        temp['values_PAM-Wert_WSD']) != 0 else math.nan
+                                                    })
+            ticked.append(i['Region'])
+        return regional_situational_means
 
     @staticmethod
     def calculate_means_for_citys(city_name):
@@ -233,4 +286,5 @@ class Statistics:
 
 if __name__ == '__main__':
 
-    print(Statistics.calculate_regional_means_intergenerational(r=False))
+    print(Statistics.calculate_local_situational_means())
+    print(Statistics.calculate_regional_situational_means(r=False))
