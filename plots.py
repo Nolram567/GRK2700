@@ -32,6 +32,12 @@ if __name__ == '__main__':
         "PAM-Wert_WSD": "Übersetzung in den Dialekt"
     }
 
+    x_values = {
+        "first": [8.25, 16.5, 24.75],
+        "second": [41.25, 49.5, 57.75],
+        "third": [74.25, 82.5, 90.25]
+    }
+
     orte = sorted(list(set(entry["ort"] for entry in data)))
 
 
@@ -45,56 +51,49 @@ if __name__ == '__main__':
         return y_data
 
 
-    # Initialdaten für den ersten Ort.
-    initial_data = generate_data_for_ort(orte[0])
-    initial_traces = [
-        go.Scatter(
-            x=[25 if gen == "Jung" else 50 if gen == "Mittel" else 75 for gen in ["Jung", "Mittel", "Alt"]],
+    dropdown_buttons1, dropdown_buttons2, dropdown_buttons3 = [], [], []
 
-            y=initial_data[key],
-            mode='markers',
-            name=pam_titles[key],
-            marker=dict(symbol=pam_symbols[pam_titles[key]], size=13)
-        )
-        for key in pam_keys
-    ]
-
-    # Erstellt das Diagramm.
-    fig = go.Figure(data=initial_traces)
-
-    # Dropdown-Menü.
-    dropdown_buttons = []
-
-    for ort in orte:
+    for i, ort in enumerate(orte):
         ort_data = generate_data_for_ort(ort)
-        dropdown_buttons.append(
-            dict(
-                args=[{"y": [ort_data[key] for key in pam_keys]}],
-                label=ort,
-                method="restyle"
-            )
-        )
+        args_dict = {"y": [ort_data[key] for key in pam_keys]}
 
+        btn_dict = dict(args=[args_dict, [i]], label=ort, method="restyle")
+
+        if i == 0:
+            dropdown_buttons1.append(btn_dict)
+        elif i == 1:
+            dropdown_buttons2.append(btn_dict)
+        elif i == 2:
+            dropdown_buttons3.append(btn_dict)
+
+    # Erzeugung der initialen Scatter-Traces
+    initial_traces = []
+    for i, ort in enumerate(['first', 'second', 'third']):
+        initial_data = generate_data_for_ort(orte[0])
+        for key in pam_keys:
+            initial_traces.append(
+                go.Scatter(
+                    x=x_values[ort],
+                    y=initial_data[key] if i == 0 else None,
+                    mode='markers',
+                    name=f"{pam_titles[key]} ({ort})",
+                    marker=dict(symbol=pam_symbols[pam_titles[key]], size=13)
+                )
+            )
+
+    fig = go.Figure(data=initial_traces)
     fig.update_layout(
         updatemenus=[
-            dict(
-                buttons=dropdown_buttons,
-                direction="down",
-                pad={"r": 10, "t": 10},
-                showactive=True,
-                x=0.5,
-                xanchor="center",
-                y=1.2,
-                yanchor="top"
-            ),
+            dict(buttons=dropdown_buttons1, direction="down", x=0.1, xanchor="left", y=1.2, yanchor="top"),
+            dict(buttons=dropdown_buttons2, direction="down", x=0.5, xanchor="left", y=1.2, yanchor="top"),
+            dict(buttons=dropdown_buttons3, direction="down", x=0.9, xanchor="left", y=1.2, yanchor="top")
         ],
         yaxis=dict(range=[0, 3.5]),
         xaxis=dict(
             title="Generation",
-            # Positionen und Text-Labels für die X-Achse:
-            tickvals=[25, 50, 75],
-            ticktext=["Jung", "Mittel", "Alt"],
-            range=[0, 100]  # Stellen Sie sicher, dass die X-Achse von 0 bis 100 reicht
+            tickvals=x_values['first'] + x_values['second'] + x_values['third'],
+            ticktext=["Jung", "Mittel", "Alt"] * 3,  # Dreimal, da es drei Städte gibt
+            range=[0, 100]
         ),
         legend_title_text='Situationen',
         annotations=[
@@ -109,9 +108,9 @@ if __name__ == '__main__':
         ]
     )
 
-    #fig.show()
+    fig.show()
 
-    html_string = fig.to_html(full_html=False, config={'displayModeBar': True,
+    '''html_string = fig.to_html(full_html=False, config={'displayModeBar': True,
                                                        "modeBarButtonsToRemove": ['zoom2d', 'pan2d', 'select2d', 'lasso2d']})
 
     html_document = f"""
@@ -227,4 +226,4 @@ if __name__ == '__main__':
         """
     # Zum Speichern als HTML-Datei
     with open("plotly_grafik.html", "w", encoding="utf-8") as f:
-        f.write(html_document)
+        f.write(html_document)'''

@@ -197,4 +197,4 @@ class Statistics:
 
 if __name__ == '__main__':
 
-    print(Statistics.calculate_local_situational_means(r=True))
+    print(Statistics.mydata)

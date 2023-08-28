@@ -18,7 +18,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         "/regions": "leaflet.js_regions.html",
         "/tabular": "tabular.html",
         "/": "leaflat.nex.html",
-        "/Konfigurator": "plotly_grafik.html",
+        #"/Konfigurator": "plotly_grafik.html",
         "/Impressum": "impressum.html"
     }
 
@@ -32,6 +32,8 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             self.send_image_response()
         if self.path == "/favicon":
             self.send_favicon()
+        if self.path == "/Konfigurator":
+            self.handle_Konfigurator()
         if self.path in self.endpoints_to_files:
             file_name = self.endpoints_to_files[self.path]
             # print(self.path)
@@ -110,6 +112,18 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             self.send_header('Content-type', 'text/html; charset=utf-8')
             self.end_headers()
             self.wfile.write(html_content.encode('utf-8'))
+
+    def handle_Konfigurator(self):
+
+        with open("plotly_grafik.html", 'r', encoding='utf-8') as f:
+            html_template = f.read()
+
+        html_content = html_template.replace("{{full_dataset}}", json.dumps(self.df.to_dict("records"), ensure_ascii=False))
+
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html; charset=utf-8')
+        self.end_headers()
+        self.wfile.write(html_content.encode('utf-8'))
 
     def send_image_response(self):
         image_path = 'logo_90.png'
