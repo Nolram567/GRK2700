@@ -31,6 +31,7 @@ class Statistics:
                     {'ort': filtered_dict2['ort'], 'Generation': filtered_dict2['GENERATION'],
                      'Region': filtered_dict2['Region'], 'Mean_PAM': math.nan})
 
+
         return localValues
 
     @staticmethod
@@ -54,10 +55,19 @@ class Statistics:
                 else:
                     resultSet.append({'ort': i['ort'], 'Region': i['Region'], 'Mean_PAM': math.nan})
                     ticked.append(ort_to_filter)
-        return resultSet
+
+
+        returnSet = {}
+
+        for d in resultSet:
+            ort = d['ort']
+            temp = {k: v for k, v in d.items() if k != 'ort'}
+            returnSet[ort] = temp
+
+        return returnSet
 
     @staticmethod
-    def calculate_local_situational_means(r=True):
+    def calculate_local_situational_means(r=True, internal=True):
         local_situational_means = []
         ticked = []
         for i in Statistics.mydata:
@@ -119,6 +129,17 @@ class Statistics:
                                                         temp['values_PAM-Wert_WSD']) != 0 else math.nan
                                                     })
                 ticked.append(i['ort'])
+
+        if internal:
+            return_set = {}
+
+            for d in local_situational_means:
+                ort = d['ort']
+                restliche_daten = {k: v for k, v in d.items() if k != 'ort'}
+                return_set[ort] = restliche_daten
+
+            return return_set
+
         return local_situational_means
 
     @staticmethod
@@ -139,9 +160,9 @@ class Statistics:
         for i in local_means:
             if i['Region'] not in ticked:
                 filtered_list = [entry for entry in local_means if entry['Region'] == i['Region']]
-                print(filtered_list)
+                #print(filtered_list)
                 mean_pam_values = [entry['Mean_PAM'] for entry in filtered_list if not math.isnan(entry['Mean_PAM'])]
-                print(mean_pam_values)
+                #print(mean_pam_values)
                 if r:
                     if len(mean_pam_values) > 0:
                         regional_values.append({'Region': i['Region'], 'Mean_PAM': round(sum(mean_pam_values) / len(mean_pam_values), 3)})
@@ -154,11 +175,19 @@ class Statistics:
                         regional_values.append({'Region': i['Region'], 'Mean_PAM': math.nan})
                 ticked.append(i['Region'])
 
-        return regional_values
+        returnSet = {}
+
+        for d in regional_values:
+            Region = d['Region']
+            temp = {k: v for k, v in d.items() if k != 'Region'}
+            returnSet[Region] = temp
+
+        return returnSet
 
     @staticmethod
-    def calculate_regional_situational_means(r=True):
-        local_means = Statistics.calculate_local_situational_means(r=False)
+    def calculate_regional_situational_means(r=True, internal=True):
+        local_means = Statistics.calculate_local_situational_means(r=False, internal=False)
+
         ticked = []
         regional_situational_means = []
         for i in local_means:
@@ -221,70 +250,24 @@ class Statistics:
                                                         temp['values_PAM-Wert_WSD']) != 0 else math.nan
                                                     })
             ticked.append(i['Region'])
+
+        if internal:
+            return_set = {}
+
+            for d in regional_situational_means:
+                region = d['Region']
+                restliche_daten = {k: v for k, v in d.items() if k != 'Region'}
+                return_set[region] = restliche_daten
+
+            return return_set
+
         return regional_situational_means
 
-    @staticmethod
-    def calculate_means_for_citys(city_name):
-        df = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
-
-        df = df[df['ort'] == city_name]
-
-        df = df.drop(columns=["gid", "ort", "Informant"])
-
-        mean_df = df.groupby('GENERATION').mean(numeric_only=True).reset_index()
-
-        mean_all = mean_df.mean(numeric_only=True)
-
-        return [mean_df, mean_all]
-    @staticmethod
-    def calculate_means_for_regions(city_name):
-        df = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
-
-        region = df[df['ort'] == city_name]['Region'].iloc[0]
-        df = df[df['Region'] == region]
-
-        df = df.drop(columns=["gid", "ort", "Informant"])
-
-        mean_df = df.groupby('GENERATION').mean(numeric_only=True).reset_index()
-
-        mean_all = mean_df.mean(numeric_only=True)
-
-        return [mean_df, mean_all]
-
-    @staticmethod
-    def calculate_mean_local_generation(df):
-
-        df = df[[col for col in df.columns if 'PAM-Wert' in col or 'GENERATION' in col]]
-
-        mean_pam_values = df.groupby('GENERATION').mean()
-
-        mean_pam_values = mean_pam_values.mean(axis=1)
-
-        return mean_pam_values
-
-    @staticmethod
-    def calculate_mean_PAM(s):
-
-        s = s.dropna()
-
-        s = s.drop(columns=["Kontrollwert_WSS", "Kontrollwert_NOSO", "Kontrollwert_NOT", "Kontrollwert_INT", "Kontrollwert_FG", "Kontrollwert_WSD"])
-
-        # Berechne den Mittelwert
-        mean_PAM = s.mean()
-
-        # Erstelle eine neue Series mit dem berechneten Mittelwert
-        mean_series = pd.Series({'Mean_PAM': mean_PAM})
-
-        return mean_series
-
-    @staticmethod
-    def calculate_regional_general_PAM_intergenerational(d: dict) -> dict:
-        filtered_values = [value for key, value in d.items() if
-                           not key.startswith('Kontrollwert') and not np.isnan(value)]
-        average_pam = np.mean(filtered_values)
-        return average_pam
 
 if __name__ == '__main__':
 
-    print(Statistics.calculate_local_situational_means())
-    print(Statistics.calculate_regional_situational_means(r=False))
+    #print(Statistics.calculate_local_mean_intergenerational()['Alt Duvenstedt']['Mean_PAM'])
+    #print([entry for entry in Statistics.calculate_local_means_intragenerational() if entry['ort'] == 'Alt Duvenstedt'])
+    #print(Statistics.calculate_regional_means_intergenerational()['Nordniederdeutsch']['Mean_PAM'])
+    #print(Statistics.calculate_regional_situational_means(internal=False))
+    print(Statistics.calculate_regional_means_intergenerational())

@@ -24,6 +24,14 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
 
     df = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
 
+    local_means_intergenerational = Statistics.calculate_local_mean_intergenerational()
+    local_mean_intragenerational = Statistics.calculate_local_means_intragenerational()
+    local_situational_means = Statistics.calculate_local_situational_means()
+
+    regional_means_intergenerational = Statistics.calculate_regional_means_intergenerational()
+    regional_means_intragenerational = Statistics.calculate_regional_situational_means()
+    regional_situational_means = Statistics.calculate_regional_situational_means()
+
     def do_GET(self) -> None:
         print(self.path)
         if self.path.startswith("/data"):
@@ -55,8 +63,16 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
 
         city_name = unquote(path_parts[2])
         filtered_df = self.df[self.df['ort'] == city_name]
-        region = self.df[self.df['ort'] == city_name]['Region'].iloc[0].lower()
+        region = self.df[self.df['ort'] == city_name]['Region'].iloc[0]
         # filtered_df2 = self.df[self.df['Region'] == region]
+
+
+
+        local_mean = self.local_means_intergenerational[city_name]['Mean_PAM']
+        local_mean_young = [entry for entry in self.local_mean_intragenerational if entry['ort'] == city_name and entry['Generation'] == 'jung'][0]['Mean_PAM']
+        local_mean_intermediate = [entry for entry in self.local_mean_intragenerational if entry['ort'] == city_name and entry['Generation'] == 'mittel'][0]['Mean_PAM']
+        local_mean_old = [entry for entry in self.local_mean_intragenerational if entry['ort'] == city_name and entry['Generation'] == 'alt'][0]['Mean_PAM']
+        regional_mean = self.regional_means_intergenerational[region]['Mean_PAM']
 
         if filtered_df.empty:
             self.send_response(404)
@@ -64,46 +80,23 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json.dumps({'error': 'Stadt nicht gefunden'}).encode())
         else:
-            data = filtered_df.to_dict('records')
-            # data2 = filtered_df2.to_dict('records')
-            regional_means = Statistics.calculate_means_for_regions(city_name)
-            local_means = Statistics.calculate_means_for_citys(city_name)
-            regional_means[0].reset_index(drop=True, inplace=True)
-            local_means[0].reset_index(drop=True, inplace=True)
-            local_mean_PAM = Statistics.calculate_mean_PAM(local_means[1])
-            regional_intragenerational_mean = regional_means[0].to_dict('records')
-            regional_intergenerational_mean = regional_means[1].to_dict()
-            # regional_mean_PAM = Statistics.calculate_mean_PAM(regional_means[1]).to_dict()
-            local_intragenerational_mean = local_means[0].to_dict('records')
-            local_intergenerational_mean = local_means[1].to_dict()
-            local_general_PAM = Statistics.calculate_mean_local_generation(filtered_df)
-            local_general_PAM_intergenerational = np.mean(
-                [local_general_PAM['jung'], local_general_PAM['mittel'], local_general_PAM['alt']])
-            regional_general_PAM_intergenerational = Statistics.calculate_regional_general_PAM_intergenerational(
-                regional_intergenerational_mean)
-            print(regional_general_PAM_intergenerational)
-
             with open("chart_template.html", "r", encoding="utf-8") as f:
                 html_template = f.read()
 
+
             html_content = html_template.replace("{{city}}", f"\"{city_name}\"") \
                 .replace("{{title}}", city_name) \
-                .replace("{{current_dataset}}", json.dumps(data, ensure_ascii=False)) \
+                .replace("{{current_dataset}}", json.dumps(filtered_df.to_dict('records'), ensure_ascii=False)) \
                 .replace("{{region}}", f"\"{region}\"") \
-                .replace("{{regional_intragenerational_mean}}",
-                         json.dumps(regional_intragenerational_mean, ensure_ascii=False)) \
-                .replace("{{regional_intergenerational_mean}}",
-                         json.dumps(regional_intergenerational_mean, ensure_ascii=False)) \
-                .replace("{{local_intragenerational_mean}}",
-                         json.dumps(local_intragenerational_mean, ensure_ascii=False)) \
-                .replace("{{local_intergenerational_mean}}",
-                         json.dumps(local_intergenerational_mean, ensure_ascii=False)) \
-                .replace("{{local_mean_PAM}}", f"{local_general_PAM_intergenerational}") \
-                .replace("{{local_young_mean}}", f"{local_general_PAM['jung']}") \
-                .replace("{{local_intermediate_mean}}", f"{local_general_PAM['mittel']}") \
-                .replace("{{local_old_mean}}", f"{local_general_PAM['alt']}") \
-                .replace("{{regional_general_mean}}",
-                         f"{json.dumps(regional_general_PAM_intergenerational, ensure_ascii=False)}") \
+                .replace("{{local_intergenerational_mean_situational}}",
+                         json.dumps(self.local_situational_means[city_name], ensure_ascii=False)) \
+                .replace("{{regional_intergenerational_mean_situational}}",
+                         json.dumps(self.regional_situational_means[region], ensure_ascii=False)) \
+                .replace("{{local_mean_PAM}}", f"{local_mean}") \
+                .replace("{{local_young_mean}}", f"{local_mean_young}") \
+                .replace("{{local_intermediate_mean}}", f"{local_mean_intermediate}") \
+                .replace("{{local_old_mean}}", f"{local_mean_old}") \
+                .replace("{{regional_general_mean}}", f"{regional_mean}") \
                 # .replace("{{full_dataset}}", json.dumps(self.df.to_dict("records"), ensure_ascii=False))
 
             # print(html_content)
