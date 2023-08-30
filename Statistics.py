@@ -360,5 +360,6 @@ if __name__ == '__main__':
     #print(Statistics.calculate_regional_situational_means(internal=False))
     '''for e in [entry for entry in Statistics.calculate_regional_situational_means_intragenerational(r=False) if entry['Region'] == 'Ripuarisch-Niederfränkisch']:
         print(f"{e}\n")'''
-    print(Statistics.calculate_regional_situational_means_intragenerational(r=False))
+    #print(Statistics.calculate_regional_situational_means_intragenerational(r=False))
+    print(Statistics.calculate_regional_situational_means())
     #Statistics.serialize()

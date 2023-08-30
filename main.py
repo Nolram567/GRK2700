@@ -24,15 +24,17 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
 
     df = pd.read_csv('data/d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
 
-    local_means_intergenerational = Statistics.calculate_local_mean_intergenerational()
-    local_mean_intragenerational = Statistics.calculate_local_means_intragenerational()
-    local_situational_means = Statistics.calculate_local_situational_means()
+    #local_means_intergenerational = Statistics.calculate_local_mean_intergenerational()
+    local_means_intergenerational = json.load(open("data/local_means_intergenerational.json", 'r',  encoding='utf-8'))
+    local_mean_intragenerational = json.load(open("data/local_means_intragenerational.json", 'r',  encoding='utf-8'))
+    local_situational_means = json.load(open("data/local_means_situational_intergenerational.json", 'r',  encoding='utf-8'))
 
-    regional_means_intergenerational = Statistics.calculate_regional_means_intergenerational()
-    regional_means_intragenerational = Statistics.calculate_regional_situational_means()
-    regional_situational_means = Statistics.calculate_regional_situational_means()
-    regional_situational_means_intragenerational = Statistics.calculate_regional_situational_means_intragenerational()
-
+    #regional_means_intergenerational = Statistics.calculate_regional_means_intergenerational()
+    regional_means_intergenerational = json.load(open("data/regional_means_intergenerational.json", 'r',  encoding='utf-8'))
+    #regional_means_intragenerational = Statistics.calculate_regional_situational_means()
+    #regional_situational_means = Statistics.calculate_regional_situational_means()
+    regional_situational_means = json.load(open("data/regional_means_situational_intergenerational.json", 'r',  encoding='utf-8'))
+    regional_situational_means_intragenerational = json.load(open("data/regional_means_situational_intragenerational.json", 'r',  encoding='utf-8'))
     def do_GET(self) -> None:
         print(self.path)
         if self.path.startswith("/data"):
@@ -65,9 +67,6 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         city_name = unquote(path_parts[2])
         filtered_df = self.df[self.df['ort'] == city_name]
         region = self.df[self.df['ort'] == city_name]['Region'].iloc[0]
-        # filtered_df2 = self.df[self.df['Region'] == region]
-
-
 
         local_mean = self.local_means_intergenerational[city_name]['Mean_PAM']
         local_mean_young = [entry for entry in self.local_mean_intragenerational if entry['ort'] == city_name and entry['Generation'] == 'jung'][0]['Mean_PAM']
@@ -75,7 +74,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         local_mean_old = [entry for entry in self.local_mean_intragenerational if entry['ort'] == city_name and entry['Generation'] == 'alt'][0]['Mean_PAM']
         regional_mean = self.regional_means_intergenerational[region]['Mean_PAM']
         regional_mean_intra = [entry for entry in self.regional_situational_means_intragenerational if entry['Region'] == region]
-        print(regional_mean_intra)
+
         if filtered_df.empty:
             self.send_response(404)
             self.send_header('Content-type', 'application/json')
