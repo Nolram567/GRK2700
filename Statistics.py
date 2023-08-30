@@ -1,12 +1,12 @@
 import math
 import time
-
+import json
 import pandas as pd
 import numpy as np
 
 class Statistics:
 
-    df = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
+    df = pd.read_csv('data/d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
     mydata = df.to_dict("records")
 
     @staticmethod
@@ -263,6 +263,94 @@ class Statistics:
 
         return regional_situational_means
 
+    @staticmethod
+    def calculate_regional_situational_means_intragenerational(r=True):
+        regional_situational_means_intra = []
+        ticked = []
+        for i in Statistics.mydata:
+            if i['Region'] not in ticked:
+                filtered_list = [entry for entry in Statistics.mydata if entry['Region'] == i['Region']]
+                #print(filtered_list)
+                for n in ['jung', 'mittel', 'alt']:
+                    filtered_list2 = [entry for entry in filtered_list if entry['GENERATION'] == n]
+                    #print(filtered_list2)
+                    PAM_Variations = ['PAM-Wert_WSS', 'PAM-Wert_NOSO', 'PAM-Wert_NOT', 'PAM-Wert_INT', 'PAM-Wert_FG',
+                                      'PAM-Wert_WSD']
+
+                    temp = {'Region': i['Region'], 'Generation': n}
+                    for j in PAM_Variations:
+                        temp[f'values_{j}'] = []
+                        for d in filtered_list2:
+                            temp[f'values_{j}'].append({k: v for k, v in d.items() if k.startswith(j)}[j])
+
+                    # print(temp)
+                    for key, value_list in temp.items():
+                        if isinstance(value_list, list):
+                            temp[key] = [v for v in value_list if not math.isnan(v)]
+                    #print(temp)
+
+                    if r:
+                        regional_situational_means_intra.append({'Region': i['Region'], 'Generation': n,
+                                                        'PAM-Wert_WSS': round(sum(temp['values_PAM-Wert_WSS']) / len(
+                                                            temp['values_PAM-Wert_WSS']), 3) if len(
+                                                            temp['values_PAM-Wert_WSS']) != 0 else math.nan,
+                                                        'PAM-Wert_NOSO': round(sum(temp['values_PAM-Wert_NOSO']) / len(
+                                                            temp['values_PAM-Wert_NOSO']), 3) if len(
+                                                            temp['values_PAM-Wert_NOSO']) != 0 else math.nan,
+                                                        'PAM-Wert_NOT': round(sum(temp['values_PAM-Wert_NOT']) / len(
+                                                            temp['values_PAM-Wert_NOT']), 3) if len(
+                                                            temp['values_PAM-Wert_NOT']) != 0 else math.nan,
+                                                        'PAM-Wert_INT': round(sum(temp['values_PAM-Wert_INT']) / len(
+                                                            temp['values_PAM-Wert_INT']), 3) if len(
+                                                            temp['values_PAM-Wert_INT']) != 0 else math.nan,
+                                                        'PAM-Wert_FG': round(sum(temp['values_PAM-Wert_FG']) / len(
+                                                            temp['values_PAM-Wert_FG']), 3) if len(
+                                                            temp['values_PAM-Wert_FG']) != 0 else math.nan,
+                                                        'PAM-Wert_WSD': round(sum(temp['values_PAM-Wert_WSD']) / len(
+                                                            temp['values_PAM-Wert_WSD']), 3) if len(
+                                                            temp['values_PAM-Wert_WSD']) != 0 else math.nan
+                                                        })
+                    else:
+                        regional_situational_means_intra.append({'Region': i['Region'], 'Generation': n,
+                                                           'PAM-Wert_WSS': sum(temp['values_PAM-Wert_WSS']) / len(
+                                                               temp['values_PAM-Wert_WSS']) if len(
+                                                               temp['values_PAM-Wert_WSS']) != 0 else math.nan,
+                                                           'PAM-Wert_NOSO': sum(temp['values_PAM-Wert_NOSO']) / len(
+                                                               temp['values_PAM-Wert_NOSO']) if len(
+                                                               temp['values_PAM-Wert_NOSO']) != 0 else math.nan,
+                                                           'PAM-Wert_NOT': sum(temp['values_PAM-Wert_NOT']) / len(
+                                                               temp['values_PAM-Wert_NOT']) if len(
+                                                               temp['values_PAM-Wert_NOT']) != 0 else math.nan,
+                                                           'PAM-Wert_INT': sum(temp['values_PAM-Wert_INT']) / len(
+                                                               temp['values_PAM-Wert_INT']) if len(
+                                                               temp['values_PAM-Wert_INT']) != 0 else math.nan,
+                                                           'PAM-Wert_FG': sum(temp['values_PAM-Wert_FG']) / len(
+                                                               temp['values_PAM-Wert_FG']) if len(
+                                                               temp['values_PAM-Wert_FG']) != 0 else math.nan,
+                                                           'PAM-Wert_WSD': sum(temp['values_PAM-Wert_WSD']) / len(
+                                                               temp['values_PAM-Wert_WSD']) if len(
+                                                               temp['values_PAM-Wert_WSD']) != 0 else math.nan
+                                                           })
+
+            ticked.append(i['Region'])
+        return regional_situational_means_intra
+
+    @staticmethod
+    def serialize():
+        statistic_data = {
+            "local_means_intragenerational": Statistics.calculate_local_means_intragenerational(),
+            "local_means_intergenerational": Statistics.calculate_local_mean_intergenerational(),
+            "local_means_situational_intergenerational": Statistics.calculate_local_situational_means(),
+
+            "regional_means_intergenerational": Statistics.calculate_regional_means_intergenerational(),
+            "regional_means_situational_intergenerational": Statistics.calculate_regional_situational_means(),
+            "regional_means_situational_intragenerational": Statistics.calculate_regional_situational_means_intragenerational()
+        }
+        for k, v in statistic_data.items():
+            with open(f'data/{k}.json', 'w', encoding='utf-8') as f:
+                json.dump(v, f, ensure_ascii=False)
+
+
 
 if __name__ == '__main__':
 
@@ -270,4 +358,7 @@ if __name__ == '__main__':
     #print([entry for entry in Statistics.calculate_local_means_intragenerational() if entry['ort'] == 'Alt Duvenstedt'])
     #print(Statistics.calculate_regional_means_intergenerational()['Nordniederdeutsch']['Mean_PAM'])
     #print(Statistics.calculate_regional_situational_means(internal=False))
-    print(Statistics.calculate_regional_means_intergenerational())
+    '''for e in [entry for entry in Statistics.calculate_regional_situational_means_intragenerational(r=False) if entry['Region'] == 'Ripuarisch-Niederfränkisch']:
+        print(f"{e}\n")'''
+    print(Statistics.calculate_regional_situational_means_intragenerational(r=False))
+    #Statistics.serialize()

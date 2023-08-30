@@ -130,7 +130,7 @@
     var current_dataset = {{current_dataset}};
     var city = {{city}};
     var region = {{region}};
-    //var mean_region_intragenerational = {{regional_intragenerational_mean}};
+    var mean_region_intragenerational = {{regional_intragenerational_mean}};
     var mean_region_intergenerational = {{regional_intergenerational_mean_situational}};
     var mean_local_intergenerational = {{local_intergenerational_mean_situational}};
     var mean_local_young = {{local_young_mean}};
@@ -140,19 +140,6 @@
     var mean_regional = {{regional_general_mean}};
     var mean_national = 1.619;
 
-    function getEntrysfromCity(ort) {
-    var result = datenListe.filter(function(entry) {
-        return entry.ort === ort;
-    });
-    return result;
-    }
-
-    function getEntrysFromRegion(region) {
-    var result = datenListe.filter(function(entry) {
-        return entry.Region === region;
-    });
-    return result;
-    }
 
     function getPAMFromGeneration(generation, PAMType) {
         for (let i = 0; i < current_dataset.length; i++) {
@@ -165,17 +152,8 @@
 
     function getIntragenerationalRegionalPAMFromGeneration(generation, PAMType) {
         for (let i = 0; i < mean_region_intragenerational.length; i++) {
-        if (mean_region_intragenerational[i].GENERATION === generation) {
+        if (mean_region_intragenerational[i].Generation === generation) {
             return mean_region_intragenerational[i][PAMType];
-        }
-    }
-    return null;
-    }
-
-    function getIntragenerationalLocalPAMFromGeneration(generation, PAMType) {
-        for (let i = 0; i < mean_local_intragenerational.length; i++) {
-        if (mean_local_intragenerational[i].GENERATION === generation) {
-            return mean_local_intragenerational[i][PAMType];
         }
     }
     return null;

@@ -5,7 +5,7 @@ import json
 if __name__ == '__main__':
 
 
-    data = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
+    data = pd.read_csv('data/d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
 
     df = pd.DataFrame(data)
 
