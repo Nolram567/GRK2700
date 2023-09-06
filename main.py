@@ -3,6 +3,8 @@ import json
 import os
 import time
 from http.server import BaseHTTPRequestHandler, HTTPServer
+from socketserver import ThreadingMixIn
+import threading
 import pandas as pd
 from urllib.parse import unquote
 import numpy as np
@@ -10,6 +12,8 @@ import matplotlib
 from geopy import Nominatim
 from Statistics import Statistics
 
+class ThreadingSimpleServer(ThreadingMixIn, HTTPServer):
+    pass
 
 class MyHTTPRequestHandler(BaseHTTPRequestHandler):
     endpoints_to_files = {
@@ -153,8 +157,8 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
 
 def run_server():
     server_address = ('', 8000)
-    httpd = HTTPServer(server_address, MyHTTPRequestHandler)
-    print('Server läuft auf Port 8000...')
+    httpd = ThreadingSimpleServer(server_address, MyHTTPRequestHandler)
+    print(f"Server läuft auf Port 8000, Thread {threading.current_thread().name}...")
 
     try:
         httpd.serve_forever()
