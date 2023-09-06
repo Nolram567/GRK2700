@@ -1,3 +1,4 @@
+import configparser
 import json
 import os
 import time
@@ -44,6 +45,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             with open(file_name, "r", encoding="utf-8") as f:
                 content = f.read()
 
+            content = self.format_header(content)
             self.send_response(200)
             self.send_header('Content-type', 'text/html; charset=utf-8')
             self.end_headers()
@@ -81,7 +83,8 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
                 html_template = f.read()
 
 
-            html_content = html_template.replace("{{city}}", f"\"{city_name}\"") \
+            html_content = self.format_header(html_template)
+            html_content = html_content.replace("{{city}}", f"\"{city_name}\"") \
                 .replace("{{title}}", city_name) \
                 .replace("{{current_dataset}}", json.dumps(filtered_df.to_dict('records'), ensure_ascii=False)) \
                 .replace("{{region}}", f"\"{region.lower()}\"") \
@@ -104,13 +107,22 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(html_content.encode('utf-8'))
 
+    def format_data_template(self):
+        pass
+
+    def format_header(self, html_content):
+        config = configparser.ConfigParser()
+        config.read('config.ini')
+        base_url = config.get('Settings', 'base_url')
+        return html_content.replace("{{ base_url }}", base_url)
+
     def handle_Konfigurator(self):
 
         with open("plotly_grafik.html", 'r', encoding='utf-8') as f:
             html_template = f.read()
 
         html_content = html_template.replace("{{full_dataset}}", json.dumps(self.df.to_dict("records"), ensure_ascii=False))
-
+        html_content = self.format_header(html_content)
         self.send_response(200)
         self.send_header('Content-type', 'text/html; charset=utf-8')
         self.end_headers()
