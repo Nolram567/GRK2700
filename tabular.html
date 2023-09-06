@@ -5072,33 +5072,39 @@
 
     new Awesomplete(searchInput, { list: list });
 
-    searchInput.addEventListener('awesomplete-selectcomplete', function() {
-        let value = this.value;
-        tableRows.forEach(row => {
+    const headerHeight = document.querySelector('.header').offsetHeight;
+    const additionalSpacing = 5 * 16 +31; // Höhe der Leerzeilen (angenommen jede <br> erzeugt 16px Abstand)
+
+    const scrollToRow = (row) => {
+        let rect = row.getBoundingClientRect();
+        let scrollOffset = window.pageYOffset || document.documentElement.scrollTop;
+        let targetPosition = rect.top + scrollOffset - headerHeight - additionalSpacing;
+        window.scrollTo({top: targetPosition, behavior: 'smooth'});
+    };
+
+    const findAndScrollToRow = (value) => {
+        for (let row of tableRows) {
             let region = row.querySelector('td:nth-child(1)').textContent;
             let ort = row.querySelector('td:nth-child(2)').textContent;
             if (region === value || ort === value) {
-                row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                scrollToRow(row);
                 return;
             }
-        });
+        }
+    };
+
+    searchInput.addEventListener('awesomplete-selectcomplete', function() {
+        let value = this.value;
+        findAndScrollToRow(value);
     });
 
     searchInput.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' || e.keyCode === 13) {
             let value = this.value;
-            tableRows.forEach(row => {
-                let region = row.querySelector('td:nth-child(1)').textContent;
-                let ort = row.querySelector('td:nth-child(2)').textContent;
-                if (region === value || ort === value) {
-                    row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    return;
-                }
-            });
+            findAndScrollToRow(value);
         }
     });
 });
-
 </script>
 
     <footer>
