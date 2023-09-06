@@ -4,6 +4,7 @@ import json
 import pandas as pd
 import numpy as np
 
+
 class Statistics:
 
     df = pd.read_csv('data/d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
@@ -350,7 +351,39 @@ class Statistics:
             with open(f'data/{k}.json', 'w', encoding='utf-8') as f:
                 json.dump(v, f, ensure_ascii=False)
 
+    @staticmethod
+    def deserialization():
+        local_means_intergenerational = json.load(
+            open("data/local_means_intergenerational.json", 'r', encoding='utf-8'))
+        local_mean_intragenerational = json.load(open("data/local_means_intragenerational.json", 'r', encoding='utf-8'))
+        local_situational_means = json.load(
+            open("data/local_means_situational_intergenerational.json", 'r', encoding='utf-8'))
+        regional_means_intergenerational = json.load(
+            open("data/regional_means_intergenerational.json", 'r', encoding='utf-8'))
+        regional_situational_means = json.load(
+            open("data/regional_means_situational_intergenerational.json", 'r', encoding='utf-8'))
+        regional_situational_means_intragenerational = json.load(
+            open("data/regional_means_situational_intragenerational.json", 'r', encoding='utf-8'))
 
+        return local_means_intergenerational, local_mean_intragenerational, local_situational_means,\
+            regional_means_intergenerational, regional_situational_means, regional_situational_means_intragenerational
+    @staticmethod
+    def pick_runtime_data(city_name, region, local_means_intergenerational, local_mean_intragenerational,
+                         regional_means_intergenerational, regional_situational_means_intragenerational):
+       local_mean = local_means_intergenerational[city_name]['Mean_PAM']
+       local_mean_young = \
+       [entry for entry in local_mean_intragenerational if entry['ort'] == city_name and entry['Generation'] == 'jung'][
+           0]['Mean_PAM']
+       local_mean_intermediate = [entry for entry in local_mean_intragenerational if
+                                  entry['ort'] == city_name and entry['Generation'] == 'mittel'][0]['Mean_PAM']
+       local_mean_old = \
+       [entry for entry in local_mean_intragenerational if entry['ort'] == city_name and entry['Generation'] == 'alt'][
+           0]['Mean_PAM']
+       regional_mean = regional_means_intergenerational[region]['Mean_PAM']
+       regional_mean_intra = [entry for entry in regional_situational_means_intragenerational if
+                              entry['Region'] == region]
+
+       return local_mean, local_mean_young, local_mean_intermediate, local_mean_old, regional_mean, regional_mean_intra
 
 if __name__ == '__main__':
 
@@ -361,5 +394,8 @@ if __name__ == '__main__':
     '''for e in [entry for entry in Statistics.calculate_regional_situational_means_intragenerational(r=False) if entry['Region'] == 'Ripuarisch-Niederfränkisch']:
         print(f"{e}\n")'''
     #print(Statistics.calculate_regional_situational_means_intragenerational(r=False))
-    print(Statistics.calculate_regional_situational_means())
+    #print(Statistics.calculate_regional_situational_means())
     #Statistics.serialize()
+    a, b, c = Statistics.test()
+
+    print(c)
