@@ -82,10 +82,11 @@
     padding: 20px 0;
     text-align: center;
     width: 100%;
-    position: relative;
+    position: relative; // Keine Änderung hier, da wir JavaScript verwenden werden
     z-index: 1;
-
+    left: 0; // Neu hinzugefügt, initial auf 0 setzen
     }
+
     .social-media {
         position: absolute;
         right: 20px;
@@ -128,7 +129,7 @@
         <a href="{{ base_url }}/Konfigurator"><i class="fa-solid fa-chart-column"></i> Konfigurator</a>
       </div>
     </div>
-    
+
     <br><br><br><br><br>
 <table border="1" class="dataframe">
   <thead>
@@ -5105,16 +5106,17 @@
         }
     });
 });
+
 </script>
 
     <footer>
-    <div class="social-media">
-        <a href="https://twitter.com/regionalsprache?lang=de" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-        <a href="https://www.instagram.com/deutschersprachatlas/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.facebook.com/DeutscherSprachatlas" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-    </div>
-    <a href="{{ base_url }}/Impressum">Impressum</a>
-    </footer>
+        <div class="social-media">
+            <a href="{{ base_url }}/Impressum">Impressum</a>
+        </div>
+            <a href="https://twitter.com/regionalsprache?lang=de" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.instagram.com/deutschersprachatlas/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/DeutscherSprachatlas" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        </footer>
 
 
 </body></html>

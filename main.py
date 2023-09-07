@@ -23,7 +23,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         "/regions": "leaflet.js_regions.html",
         "/tabular": "tabular.html",
         "/": "leaflat.nex.html",
-        #"/Konfigurator": "plotly_grafik.html",
+        #"/Konfigurator": "Konfigurator.html",
         "/Impressum": "impressum.html"
     }
 
@@ -122,7 +122,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
 
     def handle_Konfigurator(self):
 
-        with open("plotly_grafik.html", 'r', encoding='utf-8') as f:
+        with open("Konfigurator.html", 'r', encoding='utf-8') as f:
             html_template = f.read()
 
         html_content = html_template.replace("{{full_dataset}}", json.dumps(self.df.to_dict("records"), ensure_ascii=False))
@@ -171,93 +171,5 @@ def run_server():
 
 if __name__ == '__main__':
     run_server()
+    #print(MyHTTPRequestHandler.local_means_intergenerational)
 
-    '''# Beispiel DataFrame erstellen
-    df = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
-
-    df.replace(['n. d.', np.nan], '-', inplace=True)
-
-    # DataFrame als HTML exportieren
-    html_string = df.to_html(index=False, escape=False)
-
-    # Die HTML-String in eine Datei schreiben mit utf-8 Encoding
-    with open('', 'w', encoding='utf-8') as f:
-        f.write(html_string)'''
-    '''data = [{'GENERATION': 'alt', 'PAM-Wert_WSS': 1.1, 'Kontrollwert_WSS': 0.7, 'PAM-Wert_NOSO': 1.15,
-             'Kontrollwert_NOSO': 0.8, 'PAM-Wert_NOT': np.nan, 'PAM-Wert_INT': 1.58, 'Kontrollwert_INT': 1.0,
-             'PAM-Wert_FG': 1.62, 'Kontrollwert_FG': 1.0, 'PAM-Wert_WSD': 1.69, 'Kontrollwert_WSD': 1.3},
-            {'GENERATION': 'jung', 'PAM-Wert_WSS': 0.79, 'Kontrollwert_WSS': 0.6, 'PAM-Wert_NOSO': 1.05,
-             'Kontrollwert_NOSO': 0.8, 'PAM-Wert_NOT': np.nan, 'PAM-Wert_INT': 1.35, 'Kontrollwert_INT': 1.1,
-             'PAM-Wert_FG': 1.43, 'Kontrollwert_FG': 1.1, 'PAM-Wert_WSD': 1.31, 'Kontrollwert_WSD': 1.1},
-            {'GENERATION': 'mittel', 'PAM-Wert_WSS': 1.01, 'Kontrollwert_WSS': 0.8, 'PAM-Wert_NOSO': 1.34,
-             'Kontrollwert_NOSO': 1.0, 'PAM-Wert_NOT': np.nan, 'PAM-Wert_INT': 1.83, 'Kontrollwert_INT': 1.2,
-             'PAM-Wert_FG': 1.78, 'Kontrollwert_FG': 1.4, 'PAM-Wert_WSD': 1.38, 'Kontrollwert_WSD': 1.0}]
-    # Erzeugen des DataFrames
-    # Erzeugen des DataFrames
-    df = pd.DataFrame(data)
-
-    # Behalten nur der Spalten, die 'PAM-Wert' oder 'GENERATION' enthalten
-    df = df[[col for col in df.columns if 'PAM-Wert' in col or 'GENERATION' in col]]
-
-    # Berechnen des Durchschnitts der 'PAM-Wert'-Spalten für jede 'GENERATION'
-    mean_pam_values = df.groupby('GENERATION').mean()
-
-    # Berechnen des Durchschnitts dieser Mittelwerte für jede 'GENERATION'
-    mean_pam_values = mean_pam_values.mean(axis=1)
-
-    # Ausgabe der Ergebnisse
-    print(mean_pam_values)'''
-
-    '''data = pd.read_csv('d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
-
-    filtered_df = df[df['ort'] == "Kassel"]
-    region = df[df['ort'] == "Kassel"]['Region'].iloc[0]
-    df = df[df['Region'] == region]
-
-    df = df.drop(columns=["gid", "ort", "Informant"])
-
-    mean_df = df.groupby('GENERATION').mean(numeric_only=True).reset_index()
-
-    mean_all = mean_df.mean(numeric_only=True)
-
-    print([mean_df, mean_all])
-    print(type([mean_df, mean_all][0]))
-
-
-    #print(str(data["ort"].unique()).replace("\'", "").replace("[", "").replace("]", ""). replace(" ", ", "))
-    print(data.loc[(data["ort"] == "Alt Duvenstedt") & (data["GENERATION"] == "alt"), "PAM-Wert_WSS"])
-    geolocator = Nominatim(user_agent="geoapiExercises")'''
-
-    '''cities = ["Alt Duvenstedt", "Bad Segeberg", "Flensburg", "Lohne",
-              "Oldenburg", "Lüneburg", "Neustadt am Rübenberge", "Rostock",
-              "Schwerin", "Stralsund", "Bergen", "Pasewalk",
-              "Frankfurt an der Oder", "Fürstenwalde", "Potsdam", "Pritzwalk",
-              "Lüderitz", "Brandenburg an der Havel", "Neuruppin", "Borken",
-              "Hagen", "Gütersloh", "Horn-Bad Meinberg", "Drolshagen",
-              "Halberstadt", "Hildesheim", "Northeim", "Magdeburg",
-              "Bergisch-Gladbach", "Düren", "Troisdorf", "Krefeld",
-              "Mönchengladbach", "Montabaur", "Schweich", "Wittlich",
-              "Altenkirchen", "Heidelberg", "Kaiserslautern", "Erbach",
-              "Reinheim", "Kirkel", "Merzig", "Mainz", "Heilbronn",
-              "Frankfurt am Main", "Kleve", "Homberg", "Kassel",
-              "Bad Nauheim", "Büdingen", "Gießen", "Ulrichstein",
-              "Hofbieber", "Erfurt", "Heilbad Heiligenstadt",
-              "Sondershausen", "Gera", "Halle", "Dresden", "Reichenbach",
-              "Dessau", "Ansbach", "Bamberg", "Würzburg", "Hirschau",
-              "Weiden", "Ingolstadt", "Regensburg", "München", "Passau",
-              "Trostberg", "Farchant", "Augsburg", "Calw", "Kaufbeuren",
-              "Ulm", "Balingen", "Rudersberg", "Blindheim", "Waldshut",
-              "Steinen", "Bräunlingen", "Ravensburg", "Tuttlingen", "Ohlsbach"]
-
-    my_mean_values = []
-    for city in cities:
-        #location = geolocator.geocode(city + ", Deutschland")
-        #print(f"{{name: '{city}', lat: {location.latitude}, lng: {location.longitude}}},")
-        local_means = Statistics.calculate_means_for_citys(city)
-        New_value = Statistics.calculate_mean_PAM(Statistics.calculate_mean_PAM(local_means[1]))['Mean_PAM']
-        if not np.isnan(New_value):
-            my_mean_values.append(New_value)
-        print(np.mean(my_mean_values))
-        time.sleep(1)'''
-
-    # print(data["ort"].unique())

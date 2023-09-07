@@ -396,6 +396,4 @@ if __name__ == '__main__':
     #print(Statistics.calculate_regional_situational_means_intragenerational(r=False))
     #print(Statistics.calculate_regional_situational_means())
     #Statistics.serialize()
-    a, b, c = Statistics.test()
 
-    print(c)

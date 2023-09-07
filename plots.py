@@ -225,5 +225,5 @@ if __name__ == '__main__':
         </html>
         """
     # Zum Speichern als HTML-Datei
-    with open("plotly_grafik.html", "w", encoding="utf-8") as f:
+    with open("Konfigurator.html", "w", encoding="utf-8") as f:
         f.write(html_document)'''
