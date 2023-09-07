@@ -1,26 +1,17 @@
-
-            <!DOCTYPE html>
-        <html lang="de">
+<!DOCTYPE html>
+    <html lang="de">
         <head>
           <title>Konfigurator</title>
           <meta charset="UTF-8">
             <link rel="icon" href="http://localhost:8000/favicon" type="image/x-icon">
-            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
-            <script src="https://unpkg.com/chartjs-chart-box-and-violin-plot"></script>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
            <style>
-
-
             body {
                 font-family: Arial, sans-serif;
             }
-            /* Remove outline*/
             body, html {
                   margin: 0;
                   padding: 0;
             }
-
-
             .header {
                 background-color: #174d88;
                 height: 95px;
@@ -30,13 +21,13 @@
                 box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
             }
             .header img {
-                margin-left: 10px; /* Abstand zum linken Rand */
+                margin-left: 10px;
             }
             .nav-container {
                 display: flex;
                 justify-content: space-around;
-                flex-grow: 1; /* Nimmt den verfügbaren Platz im Header auf */
-                padding: 0 20px; /* Raum um die Links */
+                flex-grow: 1;
+                padding: 0 20px;
             }
             .nav-container a {
                 background-color: #f8f9fa;
@@ -54,12 +45,12 @@
             }
             footer {
                 background-color: #174d88;
-                color: white; /* Farbe des Textes, in diesem Fall weiß */
-                padding: 20px 0; /* Vertikales Padding */
-                text-align: center; /* Zentrierung des Inhalts */
-                width: 100%; /* Volle Breite */
-                position: relative; /* Relative Positionierung */
-                z-index: 1; /* Stellt sicher, dass die Fußzeile über anderen Inhalten angezeigt wird */
+                color: white;
+                padding: 20px 0;
+                text-align: center;
+                width: 100%;
+                position: relative;
+                z-index: 1;
             }
             .social-media {
                 position: absolute;
@@ -67,22 +58,22 @@
                 top: 50%;
                 transform: translateY(-50%);
             }
-        
+
             footer a, .social-media a {
                 color: white;
                 text-decoration: none;
-                margin-right: 10px;  /* Etwas Abstand zwischen den Symbolen */
+                margin-right: 10px;
             }
-        
+
             footer a:hover, .social-media a:hover {
                 text-decoration: underline;
-                color: black;  /* Ändern Sie die Farbe beim Überfahren in schwarz */
+                color: black;
             }
-        
-            .social-media i {  /* Ändern Sie die Farbe des Symbols selbst, nicht nur des Links */
+
+            .social-media i {
                 color: white;
             }
-        
+
             .social-media i:hover {
                 color: black;
             }
@@ -130,6 +121,6 @@ plotDiv.addEventListener('wheel', function(event) {
             <a href="https://www.instagram.com/deutschersprachatlas/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://www.facebook.com/DeutscherSprachatlas" target="_blank"><i class="fa-brands fa-facebook"></i></a>
         </footer>
-        </body>
-        </html>
+    </body>
+</html>
         
