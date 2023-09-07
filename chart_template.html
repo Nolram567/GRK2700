@@ -22,8 +22,11 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-auto-rows: auto;
-            width: 48%;
+            width: 49%;
             gap: 10px;
+        }
+        .first-row {
+            margin-bottom: 60px; /* Oder ein anderer Wert Ihrer Wahl */
         }
 
         body {
@@ -124,8 +127,8 @@
     <canvas id="diagramm2"></canvas>
 </div>
 <div class="special-container">
-    <canvas id="diagramm3"></canvas>
-    <canvas id="diagramm4"></canvas>
+    <canvas id="diagramm3" class="first-row"></canvas>
+    <canvas id="diagramm4" class="first-row"></canvas>
     <canvas id="diagramm5"></canvas>
     <canvas id="diagramm6"></canvas>
 </div>
@@ -285,7 +288,7 @@
     var myStackedBarChart = new Chart(ctx3, {
         type: 'bar',
         data: {
-            labels: ['PAM-Wert_WSS', 'PAM-Wert_NOSO', 'PAM-Wert_NOT', 'PAM-Wert_INT', 'PAM-Wert_FG', 'PAM-Wert_WSD', 'Mittlerer lokaler PAM-Wert'],
+            labels: ['WSS', 'NOSO', 'NOT', 'INT', 'FG', 'WSD', 'Mittelwerte'],
             datasets: [{
                 label: 'Jung',
                 data: [getPAMFromGeneration("jung", "PAM-Wert_WSS"), getPAMFromGeneration("jung", "PAM-Wert_NOSO"),
@@ -329,6 +332,9 @@
             title: {
                 display: true,
                 text: `Stacked Bar Chart der PAM-Werte von ${city}`
+            },
+            legend: {
+                display: false
             }
         }
     });
@@ -340,27 +346,20 @@
             labels: [
                 'Mittlerer lokaler PAM-Wert',
                 'Mittlerer regionaler PAM-Wert',
-                'Mittlerer nationaler PAM-Wert',
-                'Mittlerer lokaler PAM-Wert (Jung)',
-                'Mittlerer lokaler PAM-Wert (Mittel)',
-                'Mittlerer lokaler PAM-Wert (Alt)'
+                'Mittlerer nationaler PAM-Wert'
             ],
             datasets: [{
                 label: '',
-                data: [mean_local, mean_regional, mean_national, mean_local_young, mean_local_intermediate, mean_local_old],
+                data: [mean_local, mean_regional, mean_national],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.5)',  // Rot
                     'rgba(75, 192, 192, 0.5)',  // Grün
-                    'rgba(255, 205, 86, 0.5)',  // Gelb
-                    'rgba(54, 162, 235, 0.5)',  // Blau
-                    'rgba(153, 102, 255, 0.5)'  // Violett
+                    'rgba(153, 102, 255, 0.5)',  // Violett
+                    'rgba(243,112,26,0.5)'
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',  // Rot
                     'rgba(75, 192, 192, 1)',  // Grün
-                    'rgba(255, 205, 86, 1)',  // Gelb
-                    'rgba(54, 162, 235, 1)',  // Blau
-                    'rgba(153, 102, 255, 1)'  // Violett
+                    'rgba(153, 102, 255, 1)',  // Violett
+                    'rgba(243,112,26,0.5)'
                 ],
                 borderWidth: 1
             }]

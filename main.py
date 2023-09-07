@@ -1,5 +1,6 @@
 import configparser
 import json
+import math
 import os
 import time
 from http.server import BaseHTTPRequestHandler, HTTPServer
@@ -97,11 +98,11 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
                 .replace("{{regional_intergenerational_mean_situational}}",
                          json.dumps(self.regional_situational_means[region], ensure_ascii=False)) \
                 .replace("{{regional_intragenerational_mean}}", json.dumps(regional_mean_intra, ensure_ascii=False)) \
-                .replace("{{local_mean_PAM}}", f"{local_mean}") \
-                .replace("{{local_young_mean}}", f"{local_mean_young}") \
-                .replace("{{local_intermediate_mean}}", f"{local_mean_intermediate}") \
-                .replace("{{local_old_mean}}", f"{local_mean_old}") \
-                .replace("{{regional_general_mean}}", f"{regional_mean}") \
+                .replace("{{local_mean_PAM}}", f"{local_mean if not math.isnan(local_mean) else 0}") \
+                .replace("{{local_young_mean}}", f"{local_mean_young if not math.isnan(local_mean_young) else 0}") \
+                .replace("{{local_intermediate_mean}}", f"{local_mean_intermediate if not math.isnan(local_mean_intermediate) else 0}") \
+                .replace("{{local_old_mean}}", f"{local_mean_old if not math.isnan(local_mean_old) else 0}") \
+                .replace("{{regional_general_mean}}", f"{regional_mean if not math.isnan(regional_mean) else 0}") \
                 # .replace("{{full_dataset}}", json.dumps(self.df.to_dict("records"), ensure_ascii=False))
 
             # print(html_content)
@@ -171,5 +172,4 @@ def run_server():
 
 if __name__ == '__main__':
     run_server()
-    #print(MyHTTPRequestHandler.local_means_intergenerational)
 
