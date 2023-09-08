@@ -5,7 +5,7 @@ import json
 if __name__ == '__main__':
 
 
-    data = pd.read_csv('data/d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
+    data = pd.read_csv('../data/d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
 
     df = pd.DataFrame(data)
 
@@ -110,7 +110,7 @@ if __name__ == '__main__':
 
     fig.show()
 
-    '''html_string = fig.to_html(full_html=False, config={'displayModeBar': True,
+    html_string = fig.to_html(full_html=False, config={'displayModeBar': True,
                                                        "modeBarButtonsToRemove": ['zoom2d', 'pan2d', 'select2d', 'lasso2d']})
 
     html_document = f"""
@@ -226,4 +226,4 @@ if __name__ == '__main__':
         """
     # Zum Speichern als HTML-Datei
     with open("Konfigurator.html", "w", encoding="utf-8") as f:
-        f.write(html_document)'''
+        f.write(html_document)

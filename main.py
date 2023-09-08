@@ -2,19 +2,17 @@ import configparser
 import json
 import math
 import os
-import time
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from socketserver import ThreadingMixIn
 import threading
 import pandas as pd
 from urllib.parse import unquote
-import numpy as np
-import matplotlib
-from geopy import Nominatim
 from Statistics import Statistics
+
 
 class ThreadingSimpleServer(ThreadingMixIn, HTTPServer):
     pass
+
 
 class MyHTTPRequestHandler(BaseHTTPRequestHandler):
     endpoints_to_files = {
@@ -24,14 +22,14 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         "/regions": "leaflet.js_regions.html",
         "/tabular": "tabular.html",
         "/": "leaflat.nex.html",
-        #"/Konfigurator": "Konfigurator.html",
+        # "/Konfigurator": "Konfigurator.html",
         "/Impressum": "impressum.html"
     }
 
     df = pd.read_csv('data/d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
 
-    local_means_intergenerational, local_mean_intragenerational,\
-        local_situational_means, regional_means_intergenerational,\
+    local_means_intergenerational, local_mean_intragenerational, \
+        local_situational_means, regional_means_intergenerational, \
         regional_situational_means, regional_situational_means_intragenerational = Statistics.deserialization()
 
     def do_GET(self) -> None:
@@ -47,10 +45,11 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         if self.path in self.endpoints_to_files:
             file_name = self.endpoints_to_files[self.path]
             # print(self.path)
-            with open(file_name, "r", encoding="utf-8") as f:
+            with open(f"public/{file_name}", "r", encoding="utf-8") as f:
                 content = f.read()
 
             content = self.format_header(content)
+            content = self.format_footer(content)
             self.send_response(200)
             self.send_header('Content-type', 'text/html; charset=utf-8')
             self.end_headers()
@@ -70,12 +69,12 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
 
         (local_mean, local_mean_young, local_mean_intermediate, local_mean_old,
          regional_mean, regional_mean_intra) = Statistics.pick_runtime_data(
-        city_name,
-        region,
-        self.local_means_intergenerational,
-        self.local_mean_intragenerational,
-        self.regional_means_intergenerational,
-        self.regional_situational_means_intragenerational
+            city_name,
+            region,
+            self.local_means_intergenerational,
+            self.local_mean_intragenerational,
+            self.regional_means_intergenerational,
+            self.regional_situational_means_intragenerational
         )
 
         if filtered_df.empty:
@@ -84,11 +83,11 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json.dumps({'error': 'Stadt nicht gefunden'}).encode())
         else:
-            with open("chart_template.html", "r", encoding="utf-8") as f:
+            with open("public/chart_template.html", "r", encoding="utf-8") as f:
                 html_template = f.read()
 
-
             html_content = self.format_header(html_template)
+            html_content = self.format_footer(html_content)
             html_content = html_content.replace("{{city}}", f"\"{city_name}\"") \
                 .replace("{{title}}", city_name) \
                 .replace("{{current_dataset}}", json.dumps(filtered_df.to_dict('records'), ensure_ascii=False)) \
@@ -100,12 +99,10 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
                 .replace("{{regional_intragenerational_mean}}", json.dumps(regional_mean_intra, ensure_ascii=False)) \
                 .replace("{{local_mean_PAM}}", f"{local_mean if not math.isnan(local_mean) else 0}") \
                 .replace("{{local_young_mean}}", f"{local_mean_young if not math.isnan(local_mean_young) else 0}") \
-                .replace("{{local_intermediate_mean}}", f"{local_mean_intermediate if not math.isnan(local_mean_intermediate) else 0}") \
+                .replace("{{local_intermediate_mean}}",
+                         f"{local_mean_intermediate if not math.isnan(local_mean_intermediate) else 0}") \
                 .replace("{{local_old_mean}}", f"{local_mean_old if not math.isnan(local_mean_old) else 0}") \
-                .replace("{{regional_general_mean}}", f"{regional_mean if not math.isnan(regional_mean) else 0}") \
-                # .replace("{{full_dataset}}", json.dumps(self.df.to_dict("records"), ensure_ascii=False))
-
-            # print(html_content)
+                .replace("{{regional_general_mean}}", f"{regional_mean if not math.isnan(regional_mean) else 0}")
 
             self.send_response(200)
             self.send_header('Content-type', 'text/html; charset=utf-8')
@@ -115,26 +112,48 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
     def format_data_template(self):
         pass
 
-    def format_header(self, html_content):
+    def format_header(self, html_content: str) -> str:
+        """
+        Formats all hyperlinks to the link specified in config.ini.
+
+        :param html_content
+        :return:
+        """
         config = configparser.ConfigParser()
         config.read('config.ini')
         base_url = config.get('Settings', 'base_url')
         return html_content.replace("{{ base_url }}", base_url)
 
-    def handle_Konfigurator(self):
+    def format_footer(self, html_content: str) -> str:
+        config = configparser.ConfigParser()
+        config.read('config.ini')
+        x_url = config.get('Settings', 'x_url')
+        instagram_url = config.get('Settings', 'instagram_url')
+        facebook_url = config.get('Settings', 'facebook_url')
+        return html_content.replace("{{ x_url }}", x_url)\
+            .replace("{{ instagram_url }}", instagram_url)\
+            .replace("{{ facebook_url }}", facebook_url)
 
-        with open("Konfigurator.html", 'r', encoding='utf-8') as f:
+    def handle_Konfigurator(self) -> None:
+        '''
+        Handler for requests for the konfigurator page
+
+        '''
+        with open("public/Konfigurator.html", 'r', encoding='utf-8') as f:
             html_template = f.read()
 
-        html_content = html_template.replace("{{full_dataset}}", json.dumps(self.df.to_dict("records"), ensure_ascii=False))
+        html_content = html_template.replace("{{full_dataset}}",
+                                             json.dumps(self.df.to_dict("records"), ensure_ascii=False))
         html_content = self.format_header(html_content)
+        html_content = self.format_footer(html_content)
+
         self.send_response(200)
         self.send_header('Content-type', 'text/html; charset=utf-8')
         self.end_headers()
         self.wfile.write(html_content.encode('utf-8'))
 
     def send_image_response(self):
-        image_path = 'logo_90.png'
+        image_path = 'public/logo_90.png'
         if os.path.exists(image_path):
             with open(image_path, 'rb') as file:
                 self.send_response(200)
@@ -145,7 +164,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             self.send_error(404, 'File Not Found')
 
     def send_favicon(self):
-        image_path = 'favicon.ico'
+        image_path = 'public/favicon.ico'
         if os.path.exists(image_path):
             with open(image_path, 'rb') as file:
                 self.send_response(200)
@@ -172,4 +191,3 @@ def run_server():
 
 if __name__ == '__main__':
     run_server()
-
