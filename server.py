@@ -22,7 +22,6 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         "/regions": "leaflet.js_regions.html",
         "/tabular": "tabular.html",
         "/": "leaflat.nex.html",
-        # "/Konfigurator": "Konfigurator.html",
         "/Impressum": "impressum.html"
     }
 
@@ -44,7 +43,6 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             self.handle_Konfigurator()
         if self.path in self.endpoints_to_files:
             file_name = self.endpoints_to_files[self.path]
-            # print(self.path)
             with open(f"public/{file_name}", "r", encoding="utf-8") as f:
                 content = f.read()
 
@@ -109,9 +107,6 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(html_content.encode('utf-8'))
 
-    def format_data_template(self):
-        pass
-
     def format_header(self, html_content: str) -> str:
         """
         Formats all hyperlinks to the link specified in config.ini.
@@ -174,7 +169,6 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         else:
             self.send_error(404, 'File Not Found')
 
-
 def run_server():
     server_address = ('', 8000)
     httpd = ThreadingSimpleServer(server_address, MyHTTPRequestHandler)
@@ -190,4 +184,5 @@ def run_server():
 
 
 if __name__ == '__main__':
+
     run_server()
