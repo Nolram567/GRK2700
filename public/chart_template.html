@@ -3,9 +3,7 @@
 <head>
     <title>{{title}}</title>
     <meta charset="UTF-8">
-    <link rel="icon" href="http://localhost:8000/favicon" type="image/x-icon">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
-    <script src="https://unpkg.com/chartjs-chart-box-and-violin-plot"></script>
+    <link rel="icon" href="{{ base_url }}/favicon" type="image/x-icon">
 
     <style>
         .chart-container {
@@ -117,11 +115,13 @@
     <img src="{{ base_url }}/logo_90.png" alt="Logo">
     <div class="nav-container">
         <a href="{{ base_url }}/karte"><i class="fa-solid fa-map"></i> Karte</a>
-        <a href="{{ base_url }}/tabular"><i class="fa-solid fa-table"></i> Tabelle</a>
+        <a href="{{ base_url }}/Datenuebersicht"><i class="fa-solid fa-chart-column"></i> Datenübersicht</a>
         <a href="{{ base_url }}/Konfigurator"><i class="fa-solid fa-chart-column"></i> Konfigurator</a>
+        <a href="{{ base_url }}/tabular"><i class="fa-solid fa-table"></i> Tabelle</a>
     </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+<script src="https://unpkg.com/chartjs-chart-box-and-violin-plot"></script>
 <div class="chart-container">
     <canvas id="diagramm1"></canvas>
     <canvas id="diagramm2"></canvas>
