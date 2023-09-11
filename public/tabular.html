@@ -107,32 +107,41 @@
         color: black;
     }
       </style>
+      <script>
+              document.addEventListener("DOMContentLoaded", function() {
+        // Überprüfen, ob das Bild bereits im Cache (SessionStorage) vorhanden ist
+        if(sessionStorage.getItem("logoLoaded")) {
+          // Bild aus dem Cache laden
+          var img = document.querySelector(".header img");
+          img.src = sessionStorage.getItem("logoLoaded");
+        } else {
+          // Bild aus dem Netzwerk laden
+          var img = new Image();
+          img.src = "{{ base_url }}/logo_90.png";
+
+          img.onload = function() {
+            // Bild im Header ersetzen
+            var headerImg = document.querySelector(".header img");
+            headerImg.src = img.src;
+
+            // Bild-URL im Cache (SessionStorage) speichern
+            sessionStorage.setItem("logoLoaded", img.src);
+          };
+        }
+      });
+
+      </script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.css" />
       <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.js" async></script>
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     </head>
     <body>
-    <script>
-        const logoSrc = '{{ base_url }}/logo_90.png'; // URL des Logos
-        if (localStorage.getItem('logoLoaded')) {
-          // Setze das Bild direkt ohne es neu zu laden
-          document.getElementById('logoImage').src = logoSrc;
-        } else {
-          // Lade das Bild und setze den Cache-Indikator
-          const img = new Image();
-          img.src = logoSrc;
-          img.onload = function() {
-            document.getElementById('logoImage').src = logoSrc;
-            localStorage.setItem('logoLoaded', 'true');
-          };
-        }
-    </script>
     <div class="header">
-      <img src="{{ base_url }}/logo_90.png" alt="Logo">
+      <img src="" alt="Logo">
       <div class="nav-container">
         <input type="text" id="search-input" placeholder="Region oder Ort suchen..."/>
         <a href="{{ base_url }}/karte"><i class="fa-solid fa-map"></i> Karte</a>
-        <a href="{{ base_url }}/Datenuebersicht"><i class="fa-solid fa-chart-column"></i> Datenübersicht</a>
+        <a href="{{ base_url }}/Datenuebersicht"><i class="fa-solid fa-magnifying-glass-chart"></i> Datenübersicht</a>
         <a href="{{ base_url }}/Konfigurator"><i class="fa-solid fa-chart-column"></i> Konfigurator</a>
         <a href="{{ base_url }}/tabular"><i class="fa-solid fa-table"></i> Tabelle</a>
       </div>
