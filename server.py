@@ -23,7 +23,8 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         "/tabular": "tabular.html",
         "/": "leaflat.nex.html",
         "/Impressum": "impressum.html",
-        "/Datenuebersicht": "Datenübersicht.html"
+        "/Datenuebersicht": "Datenübersicht.html",
+        "/Ueber": "Ueber.html"
     }
 
     df = pd.read_csv('data/d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
