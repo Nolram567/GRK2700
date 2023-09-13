@@ -115,34 +115,12 @@
         }
     </style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-    <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                // Überprüfen, ob das Bild bereits im Cache (SessionStorage) vorhanden ist
-                if(sessionStorage.getItem("logoLoaded")) {
-                  // Bild aus dem Cache laden
-                  var img = document.querySelector(".header img");
-                  img.src = sessionStorage.getItem("logoLoaded");
-                } else {
-                  // Bild aus dem Netzwerk laden
-                  var img = new Image();
-                  img.src = "{{ base_url }}/logo_90.png";
 
-                  img.onload = function() {
-                    // Bild im Header ersetzen
-                    var headerImg = document.querySelector(".header img");
-                    headerImg.src = img.src;
-
-                    // Bild-URL im Cache (SessionStorage) speichern
-                    sessionStorage.setItem("logoLoaded", img.src);
-                  };
-                }
-              });
-    </script>
 </head>
 
 <body>
 <div class="header">
-    <img src="" alt="Logo">
+    <img src="{{ base_url }}/logo_90.png" alt="Logo">
     <div class="nav-container">
         <a href="{{ base_url }}/karte"><i class="fa-solid fa-map"></i> Karte</a>
         <a rel="preload" href="{{ base_url }}/Ueber"><i class="fa-solid fa-book"></i> Über</a>
