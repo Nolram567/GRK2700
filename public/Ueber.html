@@ -8,15 +8,18 @@
     <link rel="icon" href="{{ base_url }}/favicon" type="image/x-icon">
 
     <style>
-        #mapid {
-            height: calc(100vh - 60px);
-            width: 100%;
-            margin: 0 auto;
-        }
-
         body {
-            font-family: Arial, sans-serif;
-        }
+                    font-family: sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    flex-direction: column;
+                    min-height: 100vh;
+                }
+                .content {
+                    flex: 1;
+                }
+
 
         body, html {
             margin: 0;
@@ -78,15 +81,7 @@
             z-index: 1;
         }
 
-        footer {
-            background-color: #174d88;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            width: 100%;
-            position: relative;
-            z-index: 1;
-        }
+
 
         .social-media {
             position: absolute;
@@ -129,6 +124,7 @@
         <a rel="preload" href="{{ base_url }}/tabular"><i class="fa-solid fa-table"></i> Tabelle</a>
     </div>
 </div>
+<div class="content">
 <p style="font-size: 18px;">Diese Webseite fasst die Ergebnisse sog. phonetischer Abstandsmessungen (vgl. <a href="http://archiv.ub.uni-marburg.de/es/2008/0007/pdf/dialektalitaetsmessung.pdf" target=_blank>Herrgen et al. 2001</a>) zusammen. Korpus sind die Gewährspersonenen des Projekts <a href="http://www.regionalsprache.de" target=_blank><i>regionalsprache.de</i></a>.
     In diesem Projekt wurden während der Jahre 2008 bis heute Personen in ganz Deutschland hinsichtlich ihres Sprachgebrauchs befragt. Einige Ergebnisse der Sprachmessungen sind hier zusammengetragen. </p>
 
@@ -149,6 +145,7 @@
 
 </p>
 <p style="font-size: 18px;"> Diese Webseite verwendet für die Datenvisualisierung die Open-Source-Bibliotheken <a href="https://www.chartjs.org/" target=_blank> Chart.js</a>, <a href="https://plotly.com/python/" target=_blank>Plotly</a> und <a href="https://leafletjs.com/" target=_blank>Leaflet</a>.</p>
+</div>
 <footer>
     <div class="social-media">
         <a href="{{ base_url }}/Impressum">Impressum</a>
