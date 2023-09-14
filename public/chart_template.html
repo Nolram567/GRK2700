@@ -124,18 +124,16 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
 <script src="https://unpkg.com/chartjs-chart-box-and-violin-plot"></script>
-<div class="chart-container">
-    <canvas id="diagramm1"></canvas>
-    <canvas id="diagramm2"></canvas>
-</div>
 <div class="special-container">
+    <canvas id="diagramm1" class="first-row"></canvas>
+    <canvas id="diagramm2" class="first-row"></canvas>
     <canvas id="diagramm3" class="first-row"></canvas>
     <canvas id="diagramm4" class="first-row"></canvas>
     <canvas id="diagramm5"></canvas>
     <canvas id="diagramm6"></canvas>
 </div>
 
-
+<br><br>
 <script>
     var current_dataset = {{current_dataset}};
     var city = {{city}};
@@ -172,7 +170,7 @@
     var myBoxPlot = new Chart(ctx1, {
         type: 'boxplot',
         data: {
-            labels: ['Jung', 'Mittel', 'Alt', 'Lokaler intergenerationaler Schnitt'],
+            labels: ['Jung', 'Mittel', 'Alt', 'Generationaler Schnitt'],
             datasets: [{
                 label: 'Altergruppen',
                 data: [[getPAMFromGeneration("jung", "PAM-Wert_WSS"), getPAMFromGeneration("jung", "PAM-Wert_NOSO"),
@@ -195,7 +193,8 @@
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.5)',
                     'rgba(54, 162, 235, 0.5)',
-                    'rgba(255, 206, 86, 0.5)'
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(138,136,136,0.5)'
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
@@ -213,7 +212,7 @@
             },
             title: {
                 display: true,
-                text: `Boxplot von ${city}: Bildet die PAM-Werte 'WSS', 'NOSO', 'NOT', 'INT', 'FG', 'WSD' nach Generation ab.`
+                text: `Boxplot von ${city}: Bildet die Verteilung der phonetischer Abstandsmessungen in allen Erhebungssituationen ab.`
             },
             scales: {
                 yAxes: [{
@@ -231,7 +230,7 @@
     var myBoxPlot = new Chart(ctx2, {
         type: 'boxplot',
         data: {
-            labels: ['Jung', 'Mittel', 'Alt', 'Regionaler intergenerationaler Schnitt'],
+            labels: ['Jung', 'Mittel', 'Alt', 'Generationaler Schnitt'],
             datasets: [{
                 label: 'Altergruppen',
                 data: [[getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_NOSO"),
@@ -254,7 +253,8 @@
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.5)',
                     'rgba(54, 162, 235, 0.5)',
-                    'rgba(255, 206, 86, 0.5)'
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(138,136,136,0.5)'
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
@@ -272,7 +272,7 @@
             },
             title: {
                 display: true,
-                text: `Boxplot der mittleren Abweichung vom Standarddeutschen aller ${region}en Städte: Bildet die inter-, und intragenerationalen regionalen PAM-Werte 'WSS', 'NOSO', 'NOT', 'INT', 'FG', 'WSD' ab.`
+                text: `Boxplot der Verteilung des mittleren phonetischer Abstands aller ${region}en Städte`
             },
             scales: {
                 yAxes: [{
@@ -333,7 +333,7 @@
             },
             title: {
                 display: true,
-                text: `Stacked Bar Chart der PAM-Werte von ${city}`
+                text: `Stacked Bar Chart der phonetischen Abstandsmessung nach Erhebungssituation und Generation von ${city}`
             },
             legend: {
                 display: false
@@ -391,12 +391,13 @@
       var myBubbleChart = new Chart(ctx5, {
           type: 'radar',
           data: {
-              labels: ['PAM-Wert_WSS', 'PAM-Wert_NOSO', 'PAM-Wert_NOT', 'PAM-Wert_INT', 'PAM-Wert_FG', 'PAM-Wert_WSD'],
-              datasets: [{
-                  label: 'Alt',
-                  data: [getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_NOSO"),
-                      getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_INT"),
-                      getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_WSD")],
+              labels: ['Übersetzung in den Dialekt', 'Vorlesen', 'Notruf', 'Interview', 'Freudesgespräch', 'Übersetzung in das Standarddeutsche'],
+              datasets: [
+              {
+                  label: 'Jung',
+                  data: [getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_NOSO"),
+                      getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_INT"),
+                      getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_WSD")],
                   fill: true,
                   backgroundColor: 'rgba(255, 99, 132, 0.2)',
                   borderColor: 'rgb(255, 99, 132)',
@@ -404,7 +405,8 @@
                   pointBorderColor: '#fff',
                   pointHoverBackgroundColor: '#fff',
                   pointHoverBorderColor: 'rgb(255, 99, 132)'
-              }, {
+              },
+              {
                   label: 'Mittel',
                   data: [getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_NOSO"),
                       getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_INT"),
@@ -416,19 +418,19 @@
                   pointBorderColor: '#fff',
                   pointHoverBackgroundColor: '#fff',
                   pointHoverBorderColor: 'rgb(54, 162, 235)'
-              }, {
-                  label: 'Jung',
-                  data: [getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_NOSO"),
-                      getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_INT"),
-                      getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_WSD")],
+              },{
+                  label: 'Alt',
+                  data: [getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_NOSO"),
+                      getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_INT"),
+                      getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_WSD")],
                   fill: true,
-                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                  borderColor: 'rgb(75, 192, 192)',
-                  pointBackgroundColor: 'rgb(75, 192, 192)',
+                  backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                  borderColor: 'rgb(255, 206, 86)',
+                  pointBackgroundColor: 'rgb(255, 206, 86)',
                   pointBorderColor: '#fff',
                   pointHoverBackgroundColor: '#fff',
-                  pointHoverBorderColor: 'rgb(75, 192, 192)'
-              }, {
+                  pointHoverBorderColor: 'rgb(255, 206, 86)'
+              },   {
                   label: 'Intergenerational',
                   data: [
                       mean_region_intergenerational["PAM-Wert_WSS"],
@@ -439,12 +441,12 @@
                       mean_region_intergenerational["PAM-Wert_WSD"]
                   ],
                   fill: true,
-                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                  borderColor: 'rgb(75, 192, 192)',
-                  pointBackgroundColor: 'rgb(75, 192, 192)',
+                  backgroundColor: 'rgba(152,152,152,0.2)',
+                  borderColor: 'rgb(152,152,152)',
+                  pointBackgroundColor: 'rgb(152,152,152)',
                   pointBorderColor: '#fff',
                   pointHoverBackgroundColor: '#fff',
-                  pointHoverBorderColor: 'rgb(75, 192, 192)',
+                  pointHoverBorderColor: 'rgb(152,152,152)',
                   borderDash: [5, 5]
               }]
           },
@@ -473,12 +475,12 @@
       var myRadarChart = new Chart(ctx6, {
           type: 'radar',
           data: {
-              labels: ['PAM-Wert_WSS', 'PAM-Wert_NOSO', 'PAM-Wert_NOT', 'PAM-Wert_INT', 'PAM-Wert_FG', 'PAM-Wert_WSD'],
+              labels: ['Übersetzung in den Dialekt', 'Vorlesen', 'Notruf', 'Interview', 'Freudesgespräch', 'Übersetzung in das Standarddeutsche'],
               datasets: [{
-                  label: 'Alt',
-                  data: [getPAMFromGeneration("alt", "PAM-Wert_WSS"), getPAMFromGeneration("alt", "PAM-Wert_NOSO"),
-                      getPAMFromGeneration("alt", "PAM-Wert_NOT"), getPAMFromGeneration("alt", "PAM-Wert_INT"),
-                      getPAMFromGeneration("alt", "PAM-Wert_FG"), getPAMFromGeneration("alt", "PAM-Wert_WSD")],
+                  label: 'Jung',
+                  data: [getPAMFromGeneration("jung", "PAM-Wert_WSS"), getPAMFromGeneration("jung", "PAM-Wert_NOSO"),
+                      getPAMFromGeneration("jung", "PAM-Wert_NOT"), getPAMFromGeneration("jung", "PAM-Wert_INT"),
+                      getPAMFromGeneration("jung", "PAM-Wert_FG"), getPAMFromGeneration("jung", "PAM-Wert_WSD")],
                   fill: true,
                   backgroundColor: 'rgba(255, 99, 132, 0.2)',
                   borderColor: 'rgb(255, 99, 132)',
@@ -499,17 +501,17 @@
                   pointHoverBackgroundColor: '#fff',
                   pointHoverBorderColor: 'rgb(54, 162, 235)'
               }, {
-                  label: 'Jung',
-                  data: [getPAMFromGeneration("jung", "PAM-Wert_WSS"), getPAMFromGeneration("jung", "PAM-Wert_NOSO"),
-                      getPAMFromGeneration("jung", "PAM-Wert_NOT"), getPAMFromGeneration("jung", "PAM-Wert_INT"),
-                      getPAMFromGeneration("jung", "PAM-Wert_FG"), getPAMFromGeneration("jung", "PAM-Wert_WSD")],
+                  label: 'Alt',
+                  data: [getPAMFromGeneration("alt", "PAM-Wert_WSS"), getPAMFromGeneration("alt", "PAM-Wert_NOSO"),
+                      getPAMFromGeneration("alt", "PAM-Wert_NOT"), getPAMFromGeneration("alt", "PAM-Wert_INT"),
+                      getPAMFromGeneration("alt", "PAM-Wert_FG"), getPAMFromGeneration("alt", "PAM-Wert_WSD")],
                   fill: true,
-                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                  borderColor: 'rgb(75, 192, 192)',
-                  pointBackgroundColor: 'rgb(75, 192, 192)',
+                  backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                  borderColor: 'rgb(255, 206, 86)',
+                  pointBackgroundColor: 'rgb(255, 206, 86)',
                   pointBorderColor: '#fff',
                   pointHoverBackgroundColor: '#fff',
-                  pointHoverBorderColor: 'rgb(75, 192, 192)'
+                  pointHoverBorderColor: 'rgb(255, 206, 86)'
               }]
           },
           options: {
@@ -527,7 +529,7 @@
               },
               title: {
                   display: true,
-                  text: `Radardiagramm von ${city}`
+                  text: `Radardiagramm der phonetischen Abstandsmessungen nach Erhebungssituation und Generation von ${city}`
               }
           }
       });
