@@ -78,20 +78,43 @@
             .social-media i:hover {
                 color: black;
             }
+            .loading-screen {
+                  position: fixed;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-color: rgba(255, 255, 255, 1);
+                  z-index: 9999;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+            }
             </style>
             <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 
         </head>
         <body>
+            <div id="loading-screen" class="loading-screen">
+              <p style="font-size: 18px;"><i class="fa-solid fa-spinner fa-spin"></i></p>
+            </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  setTimeout(function() {
+                    var loadingScreen = document.getElementById("loading-screen");
+                    loadingScreen.style.display = "none";
+                  }, 800);
+                });
 
+            </script>
           <div class="header">
                 <img src="{{ base_url }}/logo_90.png" alt="Logo">
                 <div class="nav-container">
-                    <a rel="preload" href="{{ base_url }}/karte"><i class="fa-solid fa-map"></i> Karte</a>
-                    <a rel="preload" href="{{ base_url }}/Ueber"><i class="fa-solid fa-book"></i> Über</a>
-                    <a rel="preload" href="{{ base_url }}/Datenuebersicht"><i class="fa-solid fa-magnifying-glass-chart"></i> Datenübersicht</a>
-                    <a rel="preload" href="{{ base_url }}/Konfigurator"><i class="fa-solid fa-chart-column"></i> Konfigurator</a>
-                    <a rel="preload" href="{{ base_url }}/tabular"><i class="fa-solid fa-table"></i> Tabelle</a>
+                    <a href="{{ base_url }}/karte"><i class="fa-solid fa-map"></i> Karte</a>
+                    <a href="{{ base_url }}/Ueber"><i class="fa-solid fa-book"></i> Über</a>
+                    <a href="{{ base_url }}/Datenuebersicht"><i class="fa-solid fa-magnifying-glass-chart"></i> Datenübersicht</a>
+                    <a href="{{ base_url }}/Konfigurator"><i class="fa-solid fa-chart-column"></i> Konfigurator</a>
+                    <a href="{{ base_url }}/tabular"><i class="fa-solid fa-table"></i> Tabelle</a>
                 </div>
           </div>
           <div class="content">
@@ -119,6 +142,7 @@ plotDiv.addEventListener('wheel', function(event) {
 });
 
 </script>
+
  </div>
         <footer>
         <div class="social-media">
@@ -129,7 +153,7 @@ plotDiv.addEventListener('wheel', function(event) {
             <a href="{{ facebook_url }}" target="_blank"><i class="fa-brands fa-facebook"></i></a>
         </footer>
     </div>
-
+    </div>
     </body>
 </html>
         
