@@ -116,9 +116,9 @@
     <img src="{{ base_url }}/logo_90.png" alt="Logo">
     <div class="nav-container">
         <a rel="preload" href="{{ base_url }}/karte"><i class="fa-solid fa-map"></i> Karte</a>
-        <a rel="preload" href="{{ base_url }}/Ueber"><i class="fa-solid fa-book"></i> Über</a>
-        <a rel="preload" href="{{ base_url }}/Datenuebersicht"><i class="fa-solid fa-magnifying-glass-chart"></i> Datenübersicht</a>
-        <a rel="preload" href="{{ base_url }}/Konfigurator"><i class="fa-solid fa-chart-column"></i> Konfigurator</a>
+        <a rel="preload" href="{{ base_url }}/ueber"><i class="fa-solid fa-book"></i> Über</a>
+        <a rel="preload" href="{{ base_url }}/datenuebersicht"><i class="fa-solid fa-magnifying-glass-chart"></i> Datenübersicht</a>
+        <a rel="preload" href="{{ base_url }}/konfigurator"><i class="fa-solid fa-chart-column"></i> Konfigurator</a>
         <a rel="preload" href="{{ base_url }}/tabular"><i class="fa-solid fa-table"></i> Tabelle</a>
     </div>
 </div>
@@ -136,6 +136,7 @@
 <br><br>
 <script>
     var current_dataset = {{current_dataset}};
+    var regional_dataset = {{regional_dataset}};
     var city = {{city}};
     var region = {{region}};
     var mean_region_intragenerational = {{regional_intragenerational_mean}};
@@ -166,11 +167,27 @@
         return null;
     }
 
+    function getPamValuesByGeneration(data, generation) {
+    const filteredData = data.filter(item => item.GENERATION === generation);
+
+    const pamValues = [];
+    filteredData.forEach(item => {
+        for (const key in item) {
+            if (key.startsWith("PAM-Wert_") && !isNaN(item[key])) {
+                pamValues.push(item[key]);
+            }
+        }
+    });
+
+    return pamValues;
+    }
+
+
     var ctx1 = document.getElementById('diagramm1').getContext('2d');
     var myBoxPlot = new Chart(ctx1, {
         type: 'boxplot',
         data: {
-            labels: ['Jung', 'Mittel', 'Alt', 'Generationaler Schnitt'],
+            labels: ['Jung', 'Mittel', 'Alt'],
             datasets: [{
                 label: 'Altergruppen',
                 data: [[getPAMFromGeneration("jung", "PAM-Wert_WSS"), getPAMFromGeneration("jung", "PAM-Wert_NOSO"),
@@ -182,14 +199,7 @@
                     [getPAMFromGeneration("alt", "PAM-Wert_WSS"), getPAMFromGeneration("alt", "PAM-Wert_NOSO"),
                         getPAMFromGeneration("alt", "PAM-Wert_NOT"), getPAMFromGeneration("alt", "PAM-Wert_INT"),
                         getPAMFromGeneration("alt", "PAM-Wert_FG"), getPAMFromGeneration("alt", "PAM-Wert_WSD")],
-                    [
-                        mean_local_intergenerational["PAM-Wert_WSS"],
-                        mean_local_intergenerational["PAM-Wert_NOSO"],
-                        mean_local_intergenerational["PAM-Wert_NOT"],
-                        mean_local_intergenerational["PAM-Wert_INT"],
-                        mean_local_intergenerational["PAM-Wert_FG"],
-                        mean_local_intergenerational["PAM-Wert_WSD"]
-                    ]],
+                    ],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.5)',
                     'rgba(54, 162, 235, 0.5)',
@@ -230,26 +240,13 @@
     var myBoxPlot = new Chart(ctx2, {
         type: 'boxplot',
         data: {
-            labels: ['Jung', 'Mittel', 'Alt', 'Generationaler Schnitt'],
+            labels: ['Jung', 'Mittel', 'Alt'],
             datasets: [{
                 label: 'Altergruppen',
-                data: [[getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_NOSO"),
-                    getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_INT"),
-                    getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_WSD")],
-                    [getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_NOSO"),
-                        getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_INT"),
-                        getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_WSD")],
-                    [getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_NOSO"),
-                        getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_INT"),
-                        getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_WSD")],
-                    [
-                        mean_region_intergenerational["PAM-Wert_WSS"],
-                        mean_region_intergenerational["PAM-Wert_NOSO"],
-                        mean_region_intergenerational["PAM-Wert_NOT"],
-                        mean_region_intergenerational["PAM-Wert_INT"],
-                        mean_region_intergenerational["PAM-Wert_FG"],
-                        mean_region_intergenerational["PAM-Wert_WSD"]
-                    ]],
+                data: [getPamValuesByGeneration(regional_dataset, "jung"),
+                    getPamValuesByGeneration(regional_dataset, "mittel"),
+                    getPamValuesByGeneration(regional_dataset, "alt"),
+                    ],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.5)',
                     'rgba(54, 162, 235, 0.5)',

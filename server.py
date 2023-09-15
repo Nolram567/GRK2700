@@ -17,14 +17,11 @@ class ThreadingSimpleServer(ThreadingMixIn, HTTPServer):
 class MyHTTPRequestHandler(BaseHTTPRequestHandler):
     endpoints_to_files = {
         "/karte": "leaflat.nex.html",
-        "/html_content": "chart.js_Beipiel.html",
-        "/draw": "leaflat_draw_example.html",
-        "/regions": "leaflet.js_regions.html",
         "/tabular": "tabular.html",
         "/": "leaflat.nex.html",
-        "/Impressum": "impressum.html",
-        "/Datenuebersicht": "Datenübersicht.html",
-        "/Ueber": "Ueber.html"
+        "/impressum": "impressum.html",
+        "/datenuebersicht": "Datenübersicht.html",
+        "/ueber": "Ueber.html"
     }
 
     df = pd.read_csv('data/d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
@@ -41,7 +38,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             self.send_image_response()
         if self.path == "/favicon":
             self.send_favicon()
-        if self.path == "/Konfigurator":
+        if self.path == "/konfigurator":
             self.handle_Konfigurator()
         if self.path in self.endpoints_to_files:
             file_name = self.endpoints_to_files[self.path]
@@ -63,9 +60,11 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             self.send_error(400, 'Stadtname muss angegeben werden')
             return
 
-        city_name = unquote(path_parts[2])
-        filtered_df = self.df[self.df['ort'] == city_name]
+        city_name = unquote(path_parts[-1])
+        filtered_df_ort = self.df[self.df['ort'] == city_name]
         region = self.df[self.df['ort'] == city_name]['Region'].iloc[0]
+        filtered_df_region = self.df[self.df['Region'] == region]
+        print(filtered_df_region.to_dict('records'))
 
         (local_mean, local_mean_young, local_mean_intermediate, local_mean_old,
          regional_mean, regional_mean_intra) = Statistics.pick_runtime_data(
@@ -77,7 +76,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             self.regional_situational_means_intragenerational
         )
 
-        if filtered_df.empty:
+        if filtered_df_ort.empty:
             self.send_response(404)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
@@ -90,7 +89,8 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             html_content = self.format_footer(html_content)
             html_content = html_content.replace("{{city}}", f"\"{city_name}\"") \
                 .replace("{{title}}", city_name) \
-                .replace("{{current_dataset}}", json.dumps(filtered_df.to_dict('records'), ensure_ascii=False)) \
+                .replace("{{current_dataset}}", json.dumps(filtered_df_ort.to_dict('records'), ensure_ascii=False)) \
+                .replace("{{regional_dataset}}", json.dumps(filtered_df_region.to_dict('records'), ensure_ascii=False)) \
                 .replace("{{region}}", f"\"{region.lower()}\"") \
                 .replace("{{local_intergenerational_mean_situational}}",
                          json.dumps(self.local_situational_means[city_name], ensure_ascii=False)) \
