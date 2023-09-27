@@ -20,7 +20,7 @@ if __name__ == '__main__':
     fig = make_subplots(rows=1, cols=3, subplot_titles=("Freudesgespräch", "Interview", "Notruf", "Vorlesen", "Übersetzung in das Standarddeutsche", "Übersetzung in den Dialekt"))
     fig2 = make_subplots(rows=1, cols=3, subplot_titles=("Vorlesen", "Übersetzung in das Standarddeutsche", "Übersetzung in den Dialekt"))
 
-    hover_text = df['ort'].apply(lambda x: f'Ort: {x}')
+    hover_text = df['ort'].apply(lambda x: f'{x}')
     # Füge Boxplots hinzu
     fig.add_trace(
         go.Box(y=df['Freudesgespräch'], x=df["Generation"], boxpoints='all', hovertext=hover_text,  hoverinfo='y+text', boxmean='sd'),
@@ -35,7 +35,7 @@ if __name__ == '__main__':
         row=1, col=3
     )
     fig2.add_trace(
-        go.Box(y=df["Vorlesen"], x=df["Generation"], boxpoints='all', hovertext=hover_text,  hoverinfo='y+text', boxmean='sd'),
+        go.Box(y=df["Vorlesen"], x=df["Generation"], boxpoints='all', hovertext=hover_text,  hoverinfo='y+text', boxmean='sd', ),
         row=1, col=1
     )
     fig2.add_trace(
@@ -57,9 +57,10 @@ if __name__ == '__main__':
     }
 
 
-    #fig.show()
+    fig.show()
     fig.update_layout(width=1263)
     fig2.update_layout(width=1263)
+
     html_string = fig.to_html(full_html=False, config=config)
     html_string2 = fig2.to_html(full_html=False, config={'displayModeBar': False})
 
@@ -178,6 +179,6 @@ if __name__ == '__main__':
             """
     #print(html_document)
 
-    # Zum Speichern als HTML-Datei
+    '''# Zum Speichern als HTML-Datei
     with open("public/Datenübersicht.html", "w", encoding="utf-8") as f:
-        f.write(html_document)
+        f.write(html_document)'''
