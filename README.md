@@ -31,10 +31,14 @@ Rede-Dashboard/
 
 │   ├── ...         # Haupt-Server-Datei (oder wie auch immer sie heißt)
 
-├── scripts/              # Dieser Ordner enthält einige Helferskripte: Einen Performance-Tester und einige Skripte,
+├── scripts/              # Dieser Ordner enthält einige Helferskripte: Einen Performance-Tester und einige Skripte
+
 │   └── ...                       mit denen ich die plotly-Grafiken erzeugt habe.
+
 ├── Statistics.py    # Das Skript für die Datenverarbeitung. 
+
 ├── server.py        # Der Server.
+
 
 Um die Webseite zu starten muss nur server.py ausgeführt werden.
 
