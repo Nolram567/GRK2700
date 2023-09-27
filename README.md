@@ -10,6 +10,12 @@ Dieses Projekt nutzt die Open-Source-Bilbliotheken [Chart.js](https://www.chartj
 
 # Übersicht und Benutzung
 
+Für die Installation clonen sie das Repo und installieren sie die Abhängigkeiten:
+
+<code>git clone [https://github.com/Nolram567/GRK2700](https://github.com/Nolram567/GRK2700.git)
+cd GRK2700 && pip3 install -r requirements.txt
+python3 server.py</code>
+
 Die Ordnerstruktur des Projekts sieht folgendermaßen aus:
 
 Rede-Dashboard/
