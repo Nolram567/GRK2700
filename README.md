@@ -13,6 +13,7 @@ Dieses Projekt nutzt die Open-Source-Bilbliotheken [Chart.js](https://www.chartj
 Die Ordnerstruktur des Projekts sieht folgendermaßen aus:
 
 Rede-Dashboard/
+
 ├── .gitignore           # Git-Ignore-Datei zum Ausschließen bestimmter Dateien
 
 ├── README.md            # Projektdokumentation und -beschreibung
