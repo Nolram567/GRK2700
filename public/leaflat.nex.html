@@ -111,19 +111,45 @@
         .social-media i:hover {
             color: black;
         }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 1);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 
 </head>
 
 <body>
+<div id="loading-screen" class="loading-screen">
+    <p style="font-size: 18px;"><i class="fa-solid fa-spinner fa-spin"></i></p>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+            var loadingScreen = document.getElementById("loading-screen");
+            loadingScreen.style.display = "none";
+        }, 1000);
+    });
+
+</script>
 <div class="header">
     <img src="{{ base_url }}/logo_90.png" alt="Logo">
     <div class="nav-container">
         <input type="text" id="citySearch" placeholder="Stadt suchen...">
         <a href="{{ base_url }}/karte"><i class="fa-solid fa-map"></i> Karte</a>
         <a rel="preload" href="{{ base_url }}/ueber"><i class="fa-solid fa-book"></i> Über</a>
-        <a rel="preload" href="{{ base_url }}/datenuebersicht"><i class="fa-solid fa-magnifying-glass-chart"></i> Datenübersicht</a>
+        <a rel="preload" href="{{ base_url }}/datenuebersicht"><i class="fa-solid fa-magnifying-glass-chart"></i>
+            Datenübersicht</a>
         <a rel="preload" href="{{ base_url }}/konfigurator"><i class="fa-solid fa-chart-column"></i> Konfigurator</a>
         <a rel="preload" href="{{ base_url }}/tabular"><i class="fa-solid fa-table"></i> Tabelle</a>
 
@@ -159,7 +185,12 @@
         {name: 'Potsdam', lat: 52.4009309, lng: 13.0591397, PAM_Mittelwert: 1.413}, /*  hier*/
         {name: 'Pritzwalk', lat: 53.1492896, lng: 12.1761903, PAM_Mittelwert: 1.836},
         {name: 'Lüderitz', lat: 52.5084647, lng: 11.7427093, PAM_Mittelwert: 'Es liegen keine Daten vor.'},
-        {name: 'Brandenburg an der Havel', lat: 52.4108261, lng: 12.5497933, PAM_Mittelwert: 'Es liegen keine Daten vor.'},
+        {
+            name: 'Brandenburg an der Havel',
+            lat: 52.4108261,
+            lng: 12.5497933,
+            PAM_Mittelwert: 'Es liegen keine Daten vor.'
+        },
         {name: 'Neuruppin', lat: 52.9243859, lng: 12.8092919, PAM_Mittelwert: 1.603},
         {name: 'Borken', lat: 51.8443183, lng: 6.8582247, PAM_Mittelwert: 1.542},
         {name: 'Hagen', lat: 51.3582945, lng: 7.473296, PAM_Mittelwert: 1.218},
@@ -230,7 +261,7 @@
         {name: 'Ohlsbach', lat: 48.4316699, lng: 7.9939024, PAM_Mittelwert: 1.808}
     ];
 
-    // Initialisieren Sie Awesomplete für die Eingabeaufforderung
+
     new Awesomplete(document.getElementById("citySearch"), {
         list: cities.map(city => city.name)
     });

@@ -4,31 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Über</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.css"/>
     <link rel="icon" href="{{ base_url }}/favicon" type="image/x-icon">
 
     <style>
         body {
-                    font-family: sans-serif;
-                    margin: 0;
-                    padding: 0;
-                    display: flex;
-                    flex-direction: column;
-                    min-height: 100vh;
-                }
-                .content {
-                    flex: 1;
-                }
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .content {
+            flex: 1;
+        }
 
 
         body, html {
             margin: 0;
             padding: 0;
         }
+
         p {
             margin: 20px;
             text-align: justify;
         }
+
         .header {
             background-color: #174d88;
             height: 95px;
@@ -67,10 +69,6 @@
             background-color: #333;
         }
 
-        .awesomplete {
-            z-index: 1000 !important;
-        }
-
         footer {
             background-color: #174d88;
             color: white;
@@ -80,7 +78,6 @@
             position: relative;
             z-index: 1;
         }
-
 
 
         .social-media {
@@ -108,44 +105,91 @@
         .social-media i:hover {
             color: black;
         }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 1);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 
 </head>
 
 <body>
+<div id="loading-screen" class="loading-screen">
+    <p style="font-size: 18px;"><i class="fa-solid fa-spinner fa-spin"></i></p>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+            var loadingScreen = document.getElementById("loading-screen");
+            loadingScreen.style.display = "none";
+        }, 1000);
+    });
+
+</script>
 <div class="header">
     <img src="{{ base_url }}/logo_90.png" alt="Logo">
     <div class="nav-container">
         <a href="{{ base_url }}/karte"><i class="fa-solid fa-map"></i> Karte</a>
         <a rel="preload" href="{{ base_url }}/ueber"><i class="fa-solid fa-book"></i> Über</a>
-        <a rel="preload" href="{{ base_url }}/datenuebersicht"><i class="fa-solid fa-magnifying-glass-chart"></i> Datenübersicht</a>
+        <a rel="preload" href="{{ base_url }}/datenuebersicht"><i class="fa-solid fa-magnifying-glass-chart"></i>
+            Datenübersicht</a>
         <a rel="preload" href="{{ base_url }}/konfigurator"><i class="fa-solid fa-chart-column"></i> Konfigurator</a>
         <a rel="preload" href="{{ base_url }}/tabular"><i class="fa-solid fa-table"></i> Tabelle</a>
     </div>
 </div>
 <div class="content">
-<p style="font-size: 18px;">Diese Webseite fasst die Ergebnisse sog. phonetischer Abstandsmessungen (vgl. <a href="http://archiv.ub.uni-marburg.de/es/2008/0007/pdf/dialektalitaetsmessung.pdf" target=_blank>Herrgen et al. 2001</a>) zusammen. Korpus sind die Gewährspersonen des Projekts <a href="http://www.regionalsprache.de" target=_blank><i>regionalsprache.de</i></a>.
-    In diesem Projekt wurden während der Jahre 2008 bis heute Personen in ganz Deutschland hinsichtlich ihres Sprachgebrauchs befragt. Einige Ergebnisse der Sprachmessungen sind hier zusammengetragen. </p>
+    <p style="font-size: 18px;">Diese Webseite fasst die Ergebnisse sog. phonetischer Abstandsmessungen (vgl. <a
+            href="http://archiv.ub.uni-marburg.de/es/2008/0007/pdf/dialektalitaetsmessung.pdf" target=_blank>Herrgen et
+        al. 2001</a>) zusammen. Korpus sind die Gewährspersonen des Projekts <a href="http://www.regionalsprache.de"
+                                                                                target=_blank><i>regionalsprache.de</i></a>.
+        In diesem Projekt wurden während der Jahre 2008 bis heute Personen in ganz Deutschland hinsichtlich ihres
+        Sprachgebrauchs befragt. Einige Ergebnisse der Sprachmessungen sind hier zusammengetragen. </p>
 
-    <p style="font-size: 18px;">Die <i> Karte </i> visualisiert alle lokalen Datenpunkte. Die Farbskala veranschaulicht das erste und dritte Quartil der mittleren phonetischen Abstandsmessung (kurz "PAM-Wert") über alle Generationen und Erhebungssituationen hinweg. Ist ein Ort mit einem roten Punkt markiert, so ist der mittlere PAM-Wert größer
-    als das dritte Quartil. Alle Werte, die kleiner als das dritte Quartil sind, aber größer als das erste Quartil, sind orange markiert. Die restlichen Werte, welche kleiner als das erste Quartil sind, werden gelb gekennzeichnet. Die Orte können über die Suchleiste gefunden werden. Der Klick auf das Pop-up-Fenster eines Orts führt zu weiteren Grafiken, die die regionalen und lokalen
-    Datenpunkte veranschaulichen und in Relation setzen. Das Schlüsselwort "intergenerational" meint dabei Kennziffern, die über alle Generationen hinweg erhoben wurden. Das Schlüsselwort "Intragenerational" hingegen meint Kennziffern, die innerhalb der Generation erhoben oder berechnet wurden.</p>
-    <p style="font-size: 18px;">In der <i>Datenübersicht</i> werden unterschiedliche Perspektiven auf die Messergebnisse eröffnet. Auf diese Weise wird es möglich, die Dynamik des regionalen Sprechens über die Generationen hinweg zu erfassen. Die gerissene Raute veranschaulicht die Varianz der PAM-Werte, das arithmetische Mittel und die Standardabweichung. Die Boxen veranschaulichen die Streuung der Werte und statistische Ausreißer.</p>
-    <p style="font-size: 18px;">Über den <i>Konfigurator</i> ist es möglich, die Daten der Orte nach Generation und Erhebungssituationen (z. B. Übersetzungen in den Ortsdialekt oder die Standardsprache, Gespräche unter Freunden oder das Sprechen im Interview) zu vergleichen und so einen Einblick in die regionale Variation der deutschen Sprache zu gewinnen.</p>
-    <p style="font-size: 18px;">Die <i>Tabelle</i> enthält den vollständigen Datensatz: Die Variationen der PAM-Werte kodifizieren folgende Erhebungssituationen:
+    <p style="font-size: 18px;">Die <i> Karte </i> visualisiert alle lokalen Datenpunkte. Die Farbskala veranschaulicht
+        das erste und dritte Quartil der mittleren phonetischen Abstandsmessung (kurz "PAM-Wert") über alle Generationen
+        und Erhebungssituationen hinweg. Ist ein Ort mit einem roten Punkt markiert, so ist der mittlere PAM-Wert größer
+        als das dritte Quartil. Alle Werte, die kleiner als das dritte Quartil sind, aber größer als das erste Quartil,
+        sind orange markiert. Die restlichen Werte, welche kleiner als das erste Quartil sind, werden gelb
+        gekennzeichnet. Die Orte können über die Suchleiste gefunden werden. Der Klick auf das Pop-up-Fenster eines Orts
+        führt zu weiteren Grafiken, die die regionalen und lokalen
+        Datenpunkte veranschaulichen und in Relation setzen. Das Schlüsselwort "intergenerational" meint dabei
+        Kennziffern, die über alle Generationen hinweg erhoben wurden. Das Schlüsselwort "Intragenerational" hingegen
+        meint Kennziffern, die innerhalb der Generation erhoben oder berechnet wurden.</p>
+    <p style="font-size: 18px;">In der <i>Datenübersicht</i> werden unterschiedliche Perspektiven auf die Messergebnisse
+        eröffnet. Auf diese Weise wird es möglich, die Dynamik des regionalen Sprechens über die Generationen hinweg zu
+        erfassen. Die gerissene Raute veranschaulicht die Varianz der PAM-Werte, das arithmetische Mittel und die
+        Standardabweichung. Die Boxen veranschaulichen die Streuung der Werte und statistische Ausreißer.</p>
+    <p style="font-size: 18px;">Über den <i>Konfigurator</i> ist es möglich, die Daten der Orte nach Generation und
+        Erhebungssituationen (z. B. Übersetzungen in den Ortsdialekt oder die Standardsprache, Gespräche unter Freunden
+        oder das Sprechen im Interview) zu vergleichen und so einen Einblick in die regionale Variation der deutschen
+        Sprache zu gewinnen.</p>
+    <p style="font-size: 18px;">Die <i>Tabelle</i> enthält den vollständigen Datensatz: Die Variationen der PAM-Werte
+        kodifizieren folgende Erhebungssituationen:
     <ul>
-      <li><b>PAM-Wert_WSS</b>: Übersetzung in den Dialekt</li>
-      <li><b>PAM-Wert_NOSO</b>: Vorlesen</li>
-      <li><b>PAM-Wert_NOT</b>: Notruf</li>
-      <li><b>PAM-Wert_INT</b>: Interview</li>
-      <li><b>PAM-Wert_FG</b>: Freudesgespräch</li>
-      <li><b>PAM-Wert_WSD</b>: Übersetzung in das Standarddeutsche</li>
+        <li><b>PAM-Wert_WSS</b>: Übersetzung in den Dialekt</li>
+        <li><b>PAM-Wert_NOSO</b>: Vorlesen</li>
+        <li><b>PAM-Wert_NOT</b>: Notruf</li>
+        <li><b>PAM-Wert_INT</b>: Interview</li>
+        <li><b>PAM-Wert_FG</b>: Freudesgespräch</li>
+        <li><b>PAM-Wert_WSD</b>: Übersetzung in das Standarddeutsche</li>
     </ul>
 
-</p>
-<p style="font-size: 18px;"> Diese Webseite verwendet für die Datenvisualisierung die Open-Source-Bibliotheken <a href="https://www.chartjs.org/" target=_blank> Chart.js</a>, <a href="https://plotly.com/python/" target=_blank>Plotly</a> und <a href="https://leafletjs.com/" target=_blank>Leaflet</a>.<br>
-Diese Webseite wurde designt und entwickelt von Marlon-Benedikt George.</p>
+    </p>
+    <p style="font-size: 18px;"> Diese Webseite verwendet für die Datenvisualisierung die Open-Source-Bibliotheken <a
+            href="https://www.chartjs.org/" target=_blank> Chart.js</a>, <a href="https://plotly.com/python/"
+                                                                            target=_blank>Plotly</a> und <a
+            href="https://leafletjs.com/" target=_blank>Leaflet</a>.<br>
+        Diese Webseite wurde designt und entwickelt von Marlon-Benedikt George.</p>
 </div>
 <footer>
     <div class="social-media">

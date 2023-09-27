@@ -1,132 +1,174 @@
 <!DOCTYPE html>
-    <html lang="de">
-    <head>
-      <meta charset="UTF-8">
-      <title>Tabelle</title>
-      <link rel="icon" href="{{ base_url }}/favicon" type="image/x-icon">
-      <style>
-        table {
-          border-collapse: collapse;
-          width: 100%;
-          text-align: left;
-        }
-        th {
-          background-color: #f2f2f2;
-          text-align: center;
-          position: sticky;
-          top: 95px;
-        }
-        th, td {
-          border: 1px solid #ddd;
-          padding: 8px;
-        }
-        tr:nth-child(even) {
-          background-color: #f2f2f2;
-        }
-        body {
-            font-family: Arial, sans-serif;
-        }
-        body, html {
-          margin: 0;
-          padding: 0;
-        }
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabelle</title>
+  <link rel="icon" href="{{ base_url }}/favicon" type="image/x-icon">
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      text-align: center;
+      position: sticky;
+      top: 95px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+    }
+
     .header {
-        background-color: #174d88;
-        height: 95px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
-        position: fixed;
-        z-index: 1;
-        }
-        .header img {
-        margin-left: 10px;
-        }
-        .nav-container {
-        display: flex;
-        justify-content: space-around;
-        flex-grow: 1;
-        padding: 0 20px;
-        align-items: center;
-        }
-        .nav-container a {
-        background-color: #f8f9fa;
-        text-decoration: none;
-        color: black;
-        font-size: 20px;
-        padding: 10px 20px;
-        border: 1px solid #333;
-        border-radius: 5px;
-        transition: 0.3s;
-        align-items: center
-        }
-        .nav-container a:hover {
-        color: #fff;
-        background-color: #333;
-        }
+      background-color: #174d88;
+      height: 95px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+      position: fixed;
+      z-index: 1;
+    }
+
+    .header img {
+      margin-left: 10px;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-around;
+      flex-grow: 1;
+      padding: 0 20px;
+      align-items: center;
+    }
+
+    .nav-container a {
+      background-color: #f8f9fa;
+      text-decoration: none;
+      color: black;
+      font-size: 20px;
+      padding: 10px 20px;
+      border: 1px solid #333;
+      border-radius: 5px;
+      transition: 0.3s;
+      align-items: center
+    }
+
+    .nav-container a:hover {
+      color: #fff;
+      background-color: #333;
+    }
 
     .awesomplete > ul {
-    z-index: 1000;
-    position: relative;
+      z-index: 1000;
+      position: relative;
     }
+
     input.awesomplete {
-    margin: 0;
-    height: 35px;
-    vertical-align: middle;
+      margin: 0;
+      height: 35px;
+      vertical-align: middle;
     }
+
     footer {
-    background-color: #174d88;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-    width: 100%;
-    position: relative;
-    z-index: 1;
-    left: 0;
+      background-color: #174d88;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      left: 0;
     }
+
     .social-media {
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
     }
+
     footer a, .social-media a {
-        color: white;
-        text-decoration: none;
-        margin-right: 10px;
+      color: white;
+      text-decoration: none;
+      margin-right: 10px;
     }
+
     footer a:hover, .social-media a:hover {
-        text-decoration: underline;
-        color: black;
+      text-decoration: underline;
+      color: black;
     }
+
     .social-media i {
-        color: white;
+      color: white;
     }
+
     .social-media i:hover {
-        color: black;
+      color: black;
     }
-      </style>
 
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.css" />
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.js" async></script>
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-    </head>
-    <body>
-    <div class="header">
-      <img src="{{ base_url }}/logo_90.png" alt="Logo">
-      <div class="nav-container">
-        <input type="text" id="search-input" placeholder="Region oder Ort suchen..."/>
-        <a rel="preload" href="{{ base_url }}/karte"><i class="fa-solid fa-map"></i> Karte</a>
-        <a rel="preload" href="{{ base_url }}/ueber"><i class="fa-solid fa-book"></i> Über</a>
-        <a rel="preload" href="{{ base_url }}/datenuebersicht"><i class="fa-solid fa-magnifying-glass-chart"></i> Datenübersicht</a>
-        <a rel="preload" href="{{ base_url }}/konfigurator"><i class="fa-solid fa-chart-column"></i> Konfigurator</a>
-        <a rel="preload" href="{{ base_url }}/tabular"><i class="fa-solid fa-table"></i> Tabelle</a>
-      </div>
-    </div>
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 1);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-    <br><br><br><br><br>
-    <table border="1" class="dataframe">
+  </style>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.js" async></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="loading-screen" class="loading-screen">
+  <p style="font-size: 18px;"><i class="fa-solid fa-spinner fa-spin"></i></p>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(function() {
+      var loadingScreen = document.getElementById("loading-screen");
+      loadingScreen.style.display = "none";
+    }, 800);
+  });
+</script>
+<div class="header">
+  <img src="{{ base_url }}/logo_90.png" alt="Logo">
+  <div class="nav-container">
+    <input type="text" id="search-input" placeholder="Region oder Ort suchen..."/>
+    <a rel="preload" href="{{ base_url }}/karte"><i class="fa-solid fa-map"></i> Karte</a>
+    <a rel="preload" href="{{ base_url }}/ueber"><i class="fa-solid fa-book"></i> Über</a>
+    <a rel="preload" href="{{ base_url }}/datenuebersicht"><i class="fa-solid fa-magnifying-glass-chart"></i>Datenübersicht</a>
+    <a rel="preload" href="{{ base_url }}/konfigurator"><i class="fa-solid fa-chart-column"></i> Konfigurator</a>
+    <a rel="preload" href="{{ base_url }}/tabular"><i class="fa-solid fa-table"></i> Tabelle</a>
+  </div>
+</div>
+
+<br><br><br><br><br>
+<table border="1" class="dataframe">
       <thead>
       <tr style="text-align: right;">
         <th>Region</th>
@@ -5052,68 +5094,68 @@
         <td>1.6</td>
       </tr>
       </tbody>
-    </table>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        let searchInput = document.getElementById('search-input');
-        let tableRows = document.querySelectorAll("tbody tr");
+</table>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    let searchInput = document.getElementById('search-input');
+    let tableRows = document.querySelectorAll("tbody tr");
 
-        let list = [];
-        tableRows.forEach(row => {
-          let region = row.querySelector('td:nth-child(1)').textContent;
-          let ort = row.querySelector('td:nth-child(2)').textContent;
-          if (!list.includes(region)) list.push(region);
-          if (!list.includes(ort)) list.push(ort);
-        });
+    let list = [];
+    tableRows.forEach(row => {
+      let region = row.querySelector('td:nth-child(1)').textContent;
+      let ort = row.querySelector('td:nth-child(2)').textContent;
+      if (!list.includes(region)) list.push(region);
+      if (!list.includes(ort)) list.push(ort);
+    });
 
-        new Awesomplete(searchInput, {list: list});
+    new Awesomplete(searchInput, {list: list});
 
-        const headerHeight = document.querySelector('.header').offsetHeight;
-        const additionalSpacing = 5 * 11; // Höhe der Leerzeilen (angenommen jede <br> erzeugt 16px Abstand)
+    const headerHeight = document.querySelector('.header').offsetHeight;
+    const additionalSpacing = 5 * 11; // Höhe der Leerzeilen (angenommen jede <br> erzeugt 16px Abstand)
 
-        const scrollToRow = (row) => {
-          let rect = row.getBoundingClientRect();
-          let scrollOffset = window.pageYOffset || document.documentElement.scrollTop;
-          let targetPosition = rect.top + scrollOffset - headerHeight - additionalSpacing;
-          window.scrollTo({top: targetPosition, behavior: 'smooth'});
-        };
+    const scrollToRow = (row) => {
+      let rect = row.getBoundingClientRect();
+      let scrollOffset = window.pageYOffset || document.documentElement.scrollTop;
+      let targetPosition = rect.top + scrollOffset - headerHeight - additionalSpacing;
+      window.scrollTo({top: targetPosition, behavior: 'smooth'});
+    };
 
-        const findAndScrollToRow = (value) => {
-          for (let row of tableRows) {
-            let region = row.querySelector('td:nth-child(1)').textContent;
-            let ort = row.querySelector('td:nth-child(2)').textContent;
-            if (region === value || ort === value) {
-              scrollToRow(row);
-              return;
-            }
-          }
-        };
+    const findAndScrollToRow = (value) => {
+      for (let row of tableRows) {
+        let region = row.querySelector('td:nth-child(1)').textContent;
+        let ort = row.querySelector('td:nth-child(2)').textContent;
+        if (region === value || ort === value) {
+          scrollToRow(row);
+          return;
+        }
+      }
+    };
 
-        searchInput.addEventListener('awesomplete-selectcomplete', function () {
-          let value = this.value;
-          findAndScrollToRow(value);
-        });
+    searchInput.addEventListener('awesomplete-selectcomplete', function () {
+      let value = this.value;
+      findAndScrollToRow(value);
+    });
 
-        searchInput.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter' || e.keyCode === 13) {
-            let value = this.value;
-            findAndScrollToRow(value);
-          }
-        });
-      });
+    searchInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.keyCode === 13) {
+        let value = this.value;
+        findAndScrollToRow(value);
+      }
+    });
+  });
 
-    </script>
+</script>
 
-    <footer>
-      <div class="social-media">
-        <a href="{{ base_url }}/impressum">Impressum</a>
-      </div>
-      <a href="{{ x_url }}" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-      <a href="{{ instagram_url }}" target="_blank"><i
-              class="fa-brands fa-instagram"></i></a>
-      <a href="{{ facebook_url }}" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-    </footer>
+<footer>
+  <div class="social-media">
+    <a href="{{ base_url }}/impressum">Impressum</a>
+  </div>
+  <a href="{{ x_url }}" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+  <a href="{{ instagram_url }}" target="_blank"><i
+          class="fa-brands fa-instagram"></i></a>
+  <a href="{{ facebook_url }}" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+</footer>
 
 
-    </body>
+</body>
 </html>

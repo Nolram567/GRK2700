@@ -6,15 +6,6 @@
     <link rel="icon" href="{{ base_url }}/favicon" type="image/x-icon">
 
     <style>
-        .chart-container {
-            display: grid;
-            width: 85%;
-            margin: 0 auto;
-            padding: 10px;
-            grid-template-columns: 1fr;
-            grid-auto-rows: auto;
-            gap: 10px;
-        }
 
         .special-container {
             display: grid;
@@ -24,8 +15,9 @@
             margin: 10px;
             gap: 10px;
         }
+
         .first-row {
-            margin-bottom: 60px; /* Oder ein anderer Wert Ihrer Wahl */
+            margin-bottom: 60px;
         }
 
         body {
@@ -47,14 +39,14 @@
         }
 
         .header img {
-            margin-left: 10px; /* Abstand zum linken Rand */
+            margin-left: 10px;
         }
 
         .nav-container {
             display: flex;
             justify-content: space-around;
-            flex-grow: 1; /* Nimmt den verfügbaren Platz im Header auf */
-            padding: 0 20px; /* Raum um die Links */
+            flex-grow: 1;
+            padding: 0 20px;
         }
 
         .nav-container a {
@@ -93,32 +85,58 @@
         footer a, .social-media a {
             color: white;
             text-decoration: none;
-            margin-right: 10px; /* Etwas Abstand zwischen den Symbolen */
+            margin-right: 10px;
         }
 
         footer a:hover, .social-media a:hover {
             text-decoration: underline;
-            color: black; /* Ändern Sie die Farbe beim Überfahren in schwarz */
+            color: black;
         }
 
-        .social-media i { /* Ändern Sie die Farbe des Symbols selbst, nicht nur des Links */
+        .social-media i {
             color: white;
         }
 
         .social-media i:hover {
             color: black;
         }
+
+        .loading-screen {
+                  position: fixed;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-color: rgba(255, 255, 255, 1);
+                  z-index: 9999;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+        }
+
     </style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 
 </head>
 <body>
+<div id="loading-screen" class="loading-screen">
+    <p style="font-size: 18px;"><i class="fa-solid fa-spinner fa-spin"></i></p>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+            const loadingScreen = document.getElementById("loading-screen");
+            loadingScreen.style.display = "none";
+        }, 1000);
+    });
+
+</script>
 <div class="header">
     <img src="{{ base_url }}/logo_90.png" alt="Logo">
     <div class="nav-container">
         <a rel="preload" href="{{ base_url }}/karte"><i class="fa-solid fa-map"></i> Karte</a>
         <a rel="preload" href="{{ base_url }}/ueber"><i class="fa-solid fa-book"></i> Über</a>
-        <a rel="preload" href="{{ base_url }}/datenuebersicht"><i class="fa-solid fa-magnifying-glass-chart"></i> Datenübersicht</a>
+        <a rel="preload" href="{{ base_url }}/datenuebersicht"><i class="fa-solid fa-magnifying-glass-chart"></i>Datenübersicht</a>
         <a rel="preload" href="{{ base_url }}/konfigurator"><i class="fa-solid fa-chart-column"></i> Konfigurator</a>
         <a rel="preload" href="{{ base_url }}/tabular"><i class="fa-solid fa-table"></i> Tabelle</a>
     </div>
@@ -169,18 +187,18 @@
     }
 
     function getPamValuesByGeneration(data, generation) {
-    const filteredData = data.filter(item => item.GENERATION === generation);
+        const filteredData = data.filter(item => item.GENERATION === generation);
 
-    const pamValues = [];
-    filteredData.forEach(item => {
-        for (const key in item) {
-            if (key.startsWith("PAM-Wert_") && !isNaN(item[key])) {
-                pamValues.push(item[key]);
+        const pamValues = [];
+        filteredData.forEach(item => {
+            for (const key in item) {
+                if (key.startsWith("PAM-Wert_") && !isNaN(item[key])) {
+                    pamValues.push(item[key]);
+                }
             }
-        }
-    });
+        });
 
-    return pamValues;
+        return pamValues;
     }
 
 
@@ -200,7 +218,7 @@
                     [getPAMFromGeneration("alt", "PAM-Wert_WSS"), getPAMFromGeneration("alt", "PAM-Wert_NOSO"),
                         getPAMFromGeneration("alt", "PAM-Wert_NOT"), getPAMFromGeneration("alt", "PAM-Wert_INT"),
                         getPAMFromGeneration("alt", "PAM-Wert_FG"), getPAMFromGeneration("alt", "PAM-Wert_WSD")],
-                    ],
+                ],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.5)',
                     'rgba(54, 162, 235, 0.5)',
@@ -247,7 +265,7 @@
                 data: [getPamValuesByGeneration(regional_dataset, "jung"),
                     getPamValuesByGeneration(regional_dataset, "mittel"),
                     getPamValuesByGeneration(regional_dataset, "alt"),
-                    ],
+                ],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.5)',
                     'rgba(54, 162, 235, 0.5)',
@@ -383,164 +401,164 @@
             }
         }
     });
-  </script>
-  <script>
-      var ctx5 = document.getElementById('diagramm5').getContext('2d');
-      var myBubbleChart = new Chart(ctx5, {
-          type: 'radar',
-          data: {
-              labels: ['Übersetzung in den Dialekt', 'Vorlesen', 'Notruf', 'Interview', 'Freudesgespräch', 'Übersetzung in das Standarddeutsche'],
-              datasets: [
-              {
-                  label: 'Jung',
-                  data: [getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_NOSO"),
-                      getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_INT"),
-                      getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_WSD")],
-                  fill: true,
-                  backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                  borderColor: 'rgb(255, 99, 132)',
-                  pointBackgroundColor: 'rgb(255, 99, 132)',
-                  pointBorderColor: '#fff',
-                  pointHoverBackgroundColor: '#fff',
-                  pointHoverBorderColor: 'rgb(255, 99, 132)'
-              },
-              {
-                  label: 'Mittel',
-                  data: [getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_NOSO"),
-                      getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_INT"),
-                      getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_WSD")],
-                  fill: true,
-                  backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                  borderColor: 'rgb(54, 162, 235)',
-                  pointBackgroundColor: 'rgb(54, 162, 235)',
-                  pointBorderColor: '#fff',
-                  pointHoverBackgroundColor: '#fff',
-                  pointHoverBorderColor: 'rgb(54, 162, 235)'
-              },{
-                  label: 'Alt',
-                  data: [getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_NOSO"),
-                      getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_INT"),
-                      getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_WSD")],
-                  fill: true,
-                  backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                  borderColor: 'rgb(255, 206, 86)',
-                  pointBackgroundColor: 'rgb(255, 206, 86)',
-                  pointBorderColor: '#fff',
-                  pointHoverBackgroundColor: '#fff',
-                  pointHoverBorderColor: 'rgb(255, 206, 86)'
-              },   {
-                  label: 'Intergenerational',
-                  data: [
-                      mean_region_intergenerational["PAM-Wert_WSS"],
-                      mean_region_intergenerational["PAM-Wert_NOSO"],
-                      mean_region_intergenerational["PAM-Wert_NOT"],
-                      mean_region_intergenerational["PAM-Wert_INT"],
-                      mean_region_intergenerational["PAM-Wert_FG"],
-                      mean_region_intergenerational["PAM-Wert_WSD"]
-                  ],
-                  fill: true,
-                  backgroundColor: 'rgba(152,152,152,0.2)',
-                  borderColor: 'rgb(152,152,152)',
-                  pointBackgroundColor: 'rgb(152,152,152)',
-                  pointBorderColor: '#fff',
-                  pointHoverBackgroundColor: '#fff',
-                  pointHoverBorderColor: 'rgb(152,152,152)',
-                  borderDash: [5, 5]
-              }]
-          },
-          options: {
-              elements: {
-                  line: {
-                      borderWidth: 3
-                  }
-              },
-              scale: {
-                  ticks: {
-                      beginAtZero: true,
-                      max: 3.5,
-                      stepSize: 0.5
-                  }
-              },
-              title: {
-                  display: true,
-                  text: `Radardiagramm der ${region}en Region`
-              }
-          }
-      });
+</script>
+<script>
+    var ctx5 = document.getElementById('diagramm5').getContext('2d');
+    var myBubbleChart = new Chart(ctx5, {
+        type: 'radar',
+        data: {
+            labels: ['Übersetzung in den Dialekt', 'Vorlesen', 'Notruf', 'Interview', 'Freudesgespräch', 'Übersetzung in das Standarddeutsche'],
+            datasets: [
+                {
+                    label: 'Jung',
+                    data: [getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_NOSO"),
+                        getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_INT"),
+                        getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("jung", "PAM-Wert_WSD")],
+                    fill: true,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    pointBackgroundColor: 'rgb(255, 99, 132)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(255, 99, 132)'
+                },
+                {
+                    label: 'Mittel',
+                    data: [getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_NOSO"),
+                        getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_INT"),
+                        getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("mittel", "PAM-Wert_WSD")],
+                    fill: true,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgb(54, 162, 235)',
+                    pointBackgroundColor: 'rgb(54, 162, 235)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(54, 162, 235)'
+                }, {
+                    label: 'Alt',
+                    data: [getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_WSS"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_NOSO"),
+                        getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_NOT"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_INT"),
+                        getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_FG"), getIntragenerationalRegionalPAMFromGeneration("alt", "PAM-Wert_WSD")],
+                    fill: true,
+                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    borderColor: 'rgb(255, 206, 86)',
+                    pointBackgroundColor: 'rgb(255, 206, 86)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(255, 206, 86)'
+                }, {
+                    label: 'Intergenerational',
+                    data: [
+                        mean_region_intergenerational["PAM-Wert_WSS"],
+                        mean_region_intergenerational["PAM-Wert_NOSO"],
+                        mean_region_intergenerational["PAM-Wert_NOT"],
+                        mean_region_intergenerational["PAM-Wert_INT"],
+                        mean_region_intergenerational["PAM-Wert_FG"],
+                        mean_region_intergenerational["PAM-Wert_WSD"]
+                    ],
+                    fill: true,
+                    backgroundColor: 'rgba(152,152,152,0.2)',
+                    borderColor: 'rgb(152,152,152)',
+                    pointBackgroundColor: 'rgb(152,152,152)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(152,152,152)',
+                    borderDash: [5, 5]
+                }]
+        },
+        options: {
+            elements: {
+                line: {
+                    borderWidth: 3
+                }
+            },
+            scale: {
+                ticks: {
+                    beginAtZero: true,
+                    max: 3.5,
+                    stepSize: 0.5
+                }
+            },
+            title: {
+                display: true,
+                text: `Radardiagramm der ${region}en Region`
+            }
+        }
+    });
 
 
-      var ctx6 = document.getElementById('diagramm6').getContext('2d');
-      var myRadarChart = new Chart(ctx6, {
-          type: 'radar',
-          data: {
-              labels: ['Übersetzung in den Dialekt', 'Vorlesen', 'Notruf', 'Interview', 'Freudesgespräch', 'Übersetzung in das Standarddeutsche'],
-              datasets: [{
-                  label: 'Jung',
-                  data: [getPAMFromGeneration("jung", "PAM-Wert_WSS"), getPAMFromGeneration("jung", "PAM-Wert_NOSO"),
-                      getPAMFromGeneration("jung", "PAM-Wert_NOT"), getPAMFromGeneration("jung", "PAM-Wert_INT"),
-                      getPAMFromGeneration("jung", "PAM-Wert_FG"), getPAMFromGeneration("jung", "PAM-Wert_WSD")],
-                  fill: true,
-                  backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                  borderColor: 'rgb(255, 99, 132)',
-                  pointBackgroundColor: 'rgb(255, 99, 132)',
-                  pointBorderColor: '#fff',
-                  pointHoverBackgroundColor: '#fff',
-                  pointHoverBorderColor: 'rgb(255, 99, 132)'
-              }, {
-                  label: 'Mittel',
-                  data: [getPAMFromGeneration("mittel", "PAM-Wert_WSS"), getPAMFromGeneration("mittel", "PAM-Wert_NOSO"),
-                      getPAMFromGeneration("mittel", "PAM-Wert_NOT"), getPAMFromGeneration("mittel", "PAM-Wert_INT"),
-                      getPAMFromGeneration("mittel", "PAM-Wert_FG"), getPAMFromGeneration("mittel", "PAM-Wert_WSD")],
-                  fill: true,
-                  backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                  borderColor: 'rgb(54, 162, 235)',
-                  pointBackgroundColor: 'rgb(54, 162, 235)',
-                  pointBorderColor: '#fff',
-                  pointHoverBackgroundColor: '#fff',
-                  pointHoverBorderColor: 'rgb(54, 162, 235)'
-              }, {
-                  label: 'Alt',
-                  data: [getPAMFromGeneration("alt", "PAM-Wert_WSS"), getPAMFromGeneration("alt", "PAM-Wert_NOSO"),
-                      getPAMFromGeneration("alt", "PAM-Wert_NOT"), getPAMFromGeneration("alt", "PAM-Wert_INT"),
-                      getPAMFromGeneration("alt", "PAM-Wert_FG"), getPAMFromGeneration("alt", "PAM-Wert_WSD")],
-                  fill: true,
-                  backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                  borderColor: 'rgb(255, 206, 86)',
-                  pointBackgroundColor: 'rgb(255, 206, 86)',
-                  pointBorderColor: '#fff',
-                  pointHoverBackgroundColor: '#fff',
-                  pointHoverBorderColor: 'rgb(255, 206, 86)'
-              }]
-          },
-          options: {
-              elements: {
-                  line: {
-                      borderWidth: 3
-                  }
-              },
-              scale: {
-                  ticks: {
-                      beginAtZero: true,
-                      max: 3.5,
-                      stepSize: 0.5
-                  }
-              },
-              title: {
-                  display: true,
-                  text: `Radardiagramm der phonetischen Abstandsmessungen nach Erhebungssituation und Generation von ${city}`
-              }
-          }
-      });
+    var ctx6 = document.getElementById('diagramm6').getContext('2d');
+    var myRadarChart = new Chart(ctx6, {
+        type: 'radar',
+        data: {
+            labels: ['Übersetzung in den Dialekt', 'Vorlesen', 'Notruf', 'Interview', 'Freudesgespräch', 'Übersetzung in das Standarddeutsche'],
+            datasets: [{
+                label: 'Jung',
+                data: [getPAMFromGeneration("jung", "PAM-Wert_WSS"), getPAMFromGeneration("jung", "PAM-Wert_NOSO"),
+                    getPAMFromGeneration("jung", "PAM-Wert_NOT"), getPAMFromGeneration("jung", "PAM-Wert_INT"),
+                    getPAMFromGeneration("jung", "PAM-Wert_FG"), getPAMFromGeneration("jung", "PAM-Wert_WSD")],
+                fill: true,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgb(255, 99, 132)',
+                pointBackgroundColor: 'rgb(255, 99, 132)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(255, 99, 132)'
+            }, {
+                label: 'Mittel',
+                data: [getPAMFromGeneration("mittel", "PAM-Wert_WSS"), getPAMFromGeneration("mittel", "PAM-Wert_NOSO"),
+                    getPAMFromGeneration("mittel", "PAM-Wert_NOT"), getPAMFromGeneration("mittel", "PAM-Wert_INT"),
+                    getPAMFromGeneration("mittel", "PAM-Wert_FG"), getPAMFromGeneration("mittel", "PAM-Wert_WSD")],
+                fill: true,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgb(54, 162, 235)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(54, 162, 235)'
+            }, {
+                label: 'Alt',
+                data: [getPAMFromGeneration("alt", "PAM-Wert_WSS"), getPAMFromGeneration("alt", "PAM-Wert_NOSO"),
+                    getPAMFromGeneration("alt", "PAM-Wert_NOT"), getPAMFromGeneration("alt", "PAM-Wert_INT"),
+                    getPAMFromGeneration("alt", "PAM-Wert_FG"), getPAMFromGeneration("alt", "PAM-Wert_WSD")],
+                fill: true,
+                backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                borderColor: 'rgb(255, 206, 86)',
+                pointBackgroundColor: 'rgb(255, 206, 86)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(255, 206, 86)'
+            }]
+        },
+        options: {
+            elements: {
+                line: {
+                    borderWidth: 3
+                }
+            },
+            scale: {
+                ticks: {
+                    beginAtZero: true,
+                    max: 3.5,
+                    stepSize: 0.5
+                }
+            },
+            title: {
+                display: true,
+                text: `Radardiagramm der phonetischen Abstandsmessungen nach Erhebungssituation und Generation von ${city}`
+            }
+        }
+    });
 
-  </script>
-  <br><br><br><br>
-  <footer>
-      <div class="social-media">
-          <a href="{{ base_url }}/Impressum">Impressum</a>
-      </div>
-      <a href="{{ x_url }}" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-      <a href="{{ instagram_url }}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-      <a href="{{ facebook_url }}" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-  </footer>
+</script>
+<br><br><br><br>
+<footer>
+    <div class="social-media">
+        <a href="{{ base_url }}/Impressum">Impressum</a>
+    </div>
+    <a href="{{ x_url }}" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+    <a href="{{ instagram_url }}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    <a href="{{ facebook_url }}" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+</footer>
 </body>
 </html>
