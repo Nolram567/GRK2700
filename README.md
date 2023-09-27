@@ -13,15 +13,24 @@ Dieses Projekt nutzt die Open-Source-Bilbliotheken [Chart.js](https://www.chartj
 Die Ordnerstruktur des Projekts sieht folgendermaßen aus:
 
 Rede-Dashboard/
-├── .gitignore           # Git-Ignore-Datei zum Ausschließen bestimmter Dateien \n
-├── README.md            # Projektdokumentation und -beschreibung \n
-├── requirements.txt     # Die Abhängigkeiten des Python-Projekts \n
-├──config.ini               # Die Konfigurationsdatei, die die finale URL der Webseite enthalten sollte. \n
-├── Dockerfile           ' \n 
-├── data/             # Die Rohdaten und die verarbeiteten Daten liegen in diesem Verzeichnis. \n
+├── .gitignore           # Git-Ignore-Datei zum Ausschließen bestimmter Dateien
+
+├── README.md            # Projektdokumentation und -beschreibung
+
+├── requirements.txt     # Die Abhängigkeiten des Python-Projekts
+
+├──config.ini               # Die Konfigurationsdatei, die die finale URL der Webseite enthalten sollte.
+
+├── Dockerfile        
+
+├── data/             # Die Rohdaten und die verarbeiteten Daten liegen in diesem Verzeichnis.
+
 │   └── ...
+
 ├── public/              # In diesem Ordner liegen die HTML-Dateien, die Grafiken, das Favicon. [^2]
+
 │   ├── ...         # Haupt-Server-Datei (oder wie auch immer sie heißt)
+
 ├── scripts/              # Dieser Ordner enthält einige Helferskripte: Einen Performance-Tester und einige Skripte,
 │   └── ...                       mit denen ich die plotly-Grafiken erzeugt habe.
 ├── Statistics.py    # Das Skript für die Datenverarbeitung. 
