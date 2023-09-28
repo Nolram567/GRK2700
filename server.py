@@ -14,7 +14,46 @@ class ThreadingSimpleServer(ThreadingMixIn, HTTPServer):
     pass
 
 
+def format_header(html_content: str) -> str:
+    """
+    Formats all hyperlinks to the link specified in config.ini.
+
+    :param html_content
+    :return:
+    """
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    base_url = config.get('Settings', 'base_url')
+    return html_content.replace("{{ base_url }}", base_url)
+
+
+def format_footer(html_content: str) -> str:
+    """
+    Formats all hyperlinks to the link specified in config.ini.
+
+    :param html_content:
+    :return:
+    """
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    x_url = config.get('Settings', 'x_url')
+    instagram_url = config.get('Settings', 'instagram_url')
+    facebook_url = config.get('Settings', 'facebook_url')
+    return html_content.replace("{{ x_url }}", x_url) \
+        .replace("{{ instagram_url }}", instagram_url) \
+        .replace("{{ facebook_url }}", facebook_url)
+
+
 class MyHTTPRequestHandler(BaseHTTPRequestHandler):
+    """
+    My original plan was to build a prototype with a simple http server and request handler and port it to flask later on.
+    But since I was short on time and the whole webpage is rather simple I decided to leave the backend like that since it's
+    fully functional.
+
+    Nevertheless, the code is a little messy...
+
+    """
+
     endpoints_to_files = {
         "/karte": "leaflat.nex.html",
         "/tabular": "tabular.html",
@@ -39,14 +78,14 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         if self.path == "/favicon":
             self.send_favicon()
         if self.path == "/konfigurator":
-            self.handle_Konfigurator()
+            self.handle_konfigurator()
         if self.path in self.endpoints_to_files:
             file_name = self.endpoints_to_files[self.path]
             with open(f"public/{file_name}", "r", encoding="utf-8") as f:
                 content = f.read()
 
-            content = self.format_header(content)
-            content = self.format_footer(content)
+            content = format_header(content)
+            content = format_footer(content)
             self.send_response(200)
             self.send_header('Content-type', 'text/html; charset=utf-8')
             self.end_headers()
@@ -85,8 +124,8 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             with open("public/chart_template.html", "r", encoding="utf-8") as f:
                 html_template = f.read()
 
-            html_content = self.format_header(html_template)
-            html_content = self.format_footer(html_content)
+            html_content = format_header(html_template)
+            html_content = format_footer(html_content)
             html_content = html_content.replace("{{city}}", f"\"{city_name}\"") \
                 .replace("{{title}}", city_name) \
                 .replace("{{current_dataset}}", json.dumps(filtered_df_ort.to_dict('records'), ensure_ascii=False)) \
@@ -109,47 +148,19 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(html_content.encode('utf-8'))
 
-    def format_header(self, html_content: str) -> str:
-        """
-        Formats all hyperlinks to the link specified in config.ini.
-
-        :param html_content
-        :return:
-        """
-        config = configparser.ConfigParser()
-        config.read('config.ini')
-        base_url = config.get('Settings', 'base_url')
-        return html_content.replace("{{ base_url }}", base_url)
-
-    def format_footer(self, html_content: str) -> str:
-        config = configparser.ConfigParser()
-        config.read('config.ini')
-        x_url = config.get('Settings', 'x_url')
-        instagram_url = config.get('Settings', 'instagram_url')
-        facebook_url = config.get('Settings', 'facebook_url')
-        return html_content.replace("{{ x_url }}", x_url)\
-            .replace("{{ instagram_url }}", instagram_url)\
-            .replace("{{ facebook_url }}", facebook_url)
-
-    def handle_Konfigurator(self) -> None:
-        '''
-        Handler for requests for the konfigurator page
-
-        '''
+    def handle_konfigurator(self) -> None:
         with open("public/Konfigurator.html", 'r', encoding='utf-8') as f:
             html_template = f.read()
 
-        html_content = html_template.replace("{{full_dataset}}",
-                                             json.dumps(self.df.to_dict("records"), ensure_ascii=False))
-        html_content = self.format_header(html_content)
-        html_content = self.format_footer(html_content)
+        html_content = format_header(html_template)
+        html_content = format_footer(html_content)
 
         self.send_response(200)
         self.send_header('Content-type', 'text/html; charset=utf-8')
         self.end_headers()
         self.wfile.write(html_content.encode('utf-8'))
 
-    def send_image_response(self):
+    def send_image_response(self) -> None:
         image_path = 'public/logo_90.png'
         if os.path.exists(image_path):
             with open(image_path, 'rb') as file:
@@ -160,7 +171,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         else:
             self.send_error(404, 'File Not Found')
 
-    def send_favicon(self):
+    def send_favicon(self) -> None:
         image_path = 'public/favicon.ico'
         if os.path.exists(image_path):
             with open(image_path, 'rb') as file:
@@ -170,6 +181,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
                 self.wfile.write(file.read())
         else:
             self.send_error(404, 'File Not Found')
+
 
 def run_server():
     server_address = ('', 8000)
@@ -186,5 +198,4 @@ def run_server():
 
 
 if __name__ == '__main__':
-
     run_server()

@@ -1,9 +1,20 @@
 import math
 import json
+from typing import Tuple, Any, List
+
 import pandas as pd
 
 
 class Statistics:
+    '''
+    I decided to conduct all Calculations without excessive use of pandas or numpy since all calculations are rather basic
+     and working with standard python contributes to traceability and understandability (at least for me since iam more used to it).
+     Regular users of pandas and numpy probably perceive this class as cumbersome and bulky.
+
+     This class can be reused if the dataset enlarges. Just call Statistics.serialize(). The correct functioning of the
+      class assumes the unchanged file names and the original folder structure.
+
+    '''
 
     df = pd.read_csv('data/d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
     mydata = df.to_dict("records")
@@ -42,7 +53,6 @@ class Statistics:
             if i['ort'] not in ticked:
                 ort_to_filter = i['ort']
                 filtered_list = [entry for entry in intragenerationalMeans if entry['ort'] == ort_to_filter]
-                #print(filtered_list)
                 mean_pam_values = [entry['Mean_PAM'] for entry in filtered_list if not math.isnan(entry['Mean_PAM'])]
                 if len(mean_pam_values) > 0:
                     average_mean_pam = sum(mean_pam_values) / len(mean_pam_values)
@@ -159,9 +169,7 @@ class Statistics:
         for i in local_means:
             if i['Region'] not in ticked:
                 filtered_list = [entry for entry in local_means if entry['Region'] == i['Region']]
-                #print(filtered_list)
                 mean_pam_values = [entry['Mean_PAM'] for entry in filtered_list if not math.isnan(entry['Mean_PAM'])]
-                #print(mean_pam_values)
                 if r:
                     if len(mean_pam_values) > 0:
                         regional_values.append({'Region': i['Region'], 'Mean_PAM': round(sum(mean_pam_values) / len(mean_pam_values), 3)})
@@ -201,11 +209,9 @@ class Statistics:
                     for d in filtered_list:
                         temp[f'values_{j}'].append({k: v for k, v in d.items() if k.startswith(j)}[j])
 
-                # print(temp)
                 for key, value_list in temp.items():
                     if isinstance(value_list, list):
                         temp[key] = [v for v in value_list if not math.isnan(v)]
-                # print(temp)
                 if r:
                     regional_situational_means.append({'Region': i['Region'],
                                                     'PAM-Wert_WSS': round(sum(temp['values_PAM-Wert_WSS']) / len(
@@ -255,8 +261,8 @@ class Statistics:
 
             for d in regional_situational_means:
                 region = d['Region']
-                restliche_daten = {k: v for k, v in d.items() if k != 'Region'}
-                return_set[region] = restliche_daten
+                remainder = {k: v for k, v in d.items() if k != 'Region'}
+                return_set[region] = remainder
 
             return return_set
 
@@ -269,10 +275,8 @@ class Statistics:
         for i in Statistics.mydata:
             if i['Region'] not in ticked:
                 filtered_list = [entry for entry in Statistics.mydata if entry['Region'] == i['Region']]
-                #print(filtered_list)
                 for n in ['jung', 'mittel', 'alt']:
                     filtered_list2 = [entry for entry in filtered_list if entry['GENERATION'] == n]
-                    #print(filtered_list2)
                     PAM_Variations = ['PAM-Wert_WSS', 'PAM-Wert_NOSO', 'PAM-Wert_NOT', 'PAM-Wert_INT', 'PAM-Wert_FG',
                                       'PAM-Wert_WSD']
 
@@ -282,11 +286,9 @@ class Statistics:
                         for d in filtered_list2:
                             temp[f'values_{j}'].append({k: v for k, v in d.items() if k.startswith(j)}[j])
 
-                    # print(temp)
                     for key, value_list in temp.items():
                         if isinstance(value_list, list):
                             temp[key] = [v for v in value_list if not math.isnan(v)]
-                    #print(temp)
 
                     if r:
                         regional_situational_means_intra.append({'Region': i['Region'], 'Generation': n,
@@ -350,7 +352,7 @@ class Statistics:
                 json.dump(v, f, ensure_ascii=False)
 
     @staticmethod
-    def deserialization():
+    def deserialization() -> tuple[json, ...]:
         local_means_intergenerational = json.load(
             open("data/local_means_intergenerational.json", 'r', encoding='utf-8'))
         local_mean_intragenerational = json.load(open("data/local_means_intragenerational.json", 'r', encoding='utf-8'))
@@ -367,7 +369,8 @@ class Statistics:
             regional_means_intergenerational, regional_situational_means, regional_situational_means_intragenerational
     @staticmethod
     def pick_runtime_data(city_name, region, local_means_intergenerational, local_mean_intragenerational,
-                         regional_means_intergenerational, regional_situational_means_intragenerational):
+                         regional_means_intergenerational, regional_situational_means_intragenerational) -> tuple[
+        Any, Any, Any, Any, Any, list[Any]]:
        local_mean = local_means_intergenerational[city_name]['Mean_PAM']
        local_mean_young = \
        [entry for entry in local_mean_intragenerational if entry['ort'] == city_name and entry['Generation'] == 'jung'][
@@ -385,13 +388,5 @@ class Statistics:
 
 if __name__ == '__main__':
 
-    #print(Statistics.calculate_local_mean_intergenerational()['Alt Duvenstedt']['Mean_PAM'])
-    #print([entry for entry in Statistics.calculate_local_means_intragenerational() if entry['ort'] == 'Alt Duvenstedt'])
-    #print(Statistics.calculate_regional_means_intergenerational()['Nordniederdeutsch']['Mean_PAM'])
-    #print(Statistics.calculate_regional_situational_means(internal=False))
-    '''for e in [entry for entry in Statistics.calculate_regional_situational_means_intragenerational(r=False) if entry['Region'] == 'Ripuarisch-Niederfränkisch']:
-        print(f"{e}\n")'''
-    #print(Statistics.calculate_regional_situational_means_intragenerational(r=False))
-    #print(Statistics.calculate_regional_situational_means())
-    #Statistics.serialize()
+    Statistics.serialize()
 
