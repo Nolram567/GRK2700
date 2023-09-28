@@ -59,7 +59,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         "/tabular": "tabular.html",
         "/": "leaflat.nex.html",
         "/impressum": "impressum.html",
-        "/datenuebersicht": "Datenübersicht.html",
+        "/datenuebersicht": "Datenuebersicht.html",
         "/ueber": "Ueber.html"
     }
 
@@ -103,7 +103,6 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         filtered_df_ort = self.df[self.df['ort'] == city_name]
         region = self.df[self.df['ort'] == city_name]['Region'].iloc[0]
         filtered_df_region = self.df[self.df['Region'] == region]
-        print(filtered_df_region.to_dict('records'))
 
         (local_mean, local_mean_young, local_mean_intermediate, local_mean_old,
          regional_mean, regional_mean_intra) = Statistics.pick_runtime_data(

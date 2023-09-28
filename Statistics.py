@@ -6,7 +6,7 @@ import pandas as pd
 
 
 class Statistics:
-    '''
+    """
     I decided to conduct all Calculations without excessive use of pandas or numpy since all calculations are rather basic
      and working with standard python contributes to traceability and understandability (at least for me since iam more used to it).
      Regular users of pandas and numpy probably perceive this class as cumbersome and bulky.
@@ -14,7 +14,7 @@ class Statistics:
      This class can be reused if the dataset enlarges. Just call Statistics.serialize(). The correct functioning of the
       class assumes the unchanged file names and the original folder structure.
 
-    '''
+    """
 
     df = pd.read_csv('data/d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])
     mydata = df.to_dict("records")
