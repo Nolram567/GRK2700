@@ -16,6 +16,14 @@ Für die Installation clonen sie das Repo und installieren sie die Abhängigkeit
 cd GRK2700 && pip3 install -r requirements.txt
 python3 server.py</code>
 
+Als Docker-Container (eine funktionierende Installation von Docker wird vorausgesetzt):
+
+<code>git clone [https://github.com/Nolram567/GRK2700](https://github.com/Nolram567/GRK2700.git)
+cd GRK2700 && docker build -t dsa_dashboard:latest .
+docker run -p 8000:8000 dsa_dashboard</code>
+
+Das Data-Dashboard ist nun unter http://localhost:8000 erreichbar, oder unter der URL, die in der config.ini-Datei spezifiziert wurde.
+
 Die Ordnerstruktur des Projekts sieht folgendermaßen aus:
 
 Rede-Dashboard/
