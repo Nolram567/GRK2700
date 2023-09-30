@@ -57,7 +57,6 @@ Rede-Dashboard/
 
 Um die Webseite zu starten muss nur server.py ausgeführt werden.
 
-To-Do an Herrn Engsterhold:
+To-Do:
 - Ein gültiges Impressum einfügen. 
 - Die finale URL des Dashboard muss in der config.ini-Datei eingetragen werden.
-- Dei Dockerfile muss getestet und ggf. überabeitet werden.
