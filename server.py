@@ -16,7 +16,7 @@ class ThreadingSimpleServer(ThreadingMixIn, HTTPServer):
 
 def format_header(html_content: str) -> str:
     """
-    Formats all hyperlinks to the link specified in config.ini.
+    Formats all hyperlinks according to the link specified in config.ini.
 
     :param html_content
     :return:
@@ -29,7 +29,7 @@ def format_header(html_content: str) -> str:
 
 def format_footer(html_content: str) -> str:
     """
-    Formats all hyperlinks to the link specified in config.ini.
+    Formats all hyperlinks according to the link specified in config.ini.
 
     :param html_content:
     :return:
