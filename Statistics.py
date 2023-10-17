@@ -13,7 +13,6 @@ class Statistics:
 
      This class can be reused if the dataset enlarges. Just call Statistics.serialize(). The correct functioning of the
       class assumes the unchanged file names and the original folder structure.
-
     """
 
     df = pd.read_csv('data/d-mess-sel-2.csv', sep=';', na_values=['-', 'n.d.'])

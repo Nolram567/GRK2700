@@ -3,32 +3,40 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Impressum</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.css"/>
+    <title>Über</title>
     <link rel="icon" href="{{ base_url }}/favicon" type="image/x-icon">
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script> -->
     <style>
         body {
-                    font-family: sans-serif;
-                    margin: 0;
-                    padding: 0;
-                    display: flex;
-                    flex-direction: column;
-                    min-height: 100vh;
-                }
-                .content {
-                    flex: 1;
-                }
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .content {
+            flex: 1;
+        }
 
 
         body, html {
             margin: 0;
             padding: 0;
         }
+
         p {
             margin: 20px;
             text-align: justify;
         }
+
         .header {
             background-color: #174d88;
             height: 95px;
@@ -67,10 +75,6 @@
             background-color: #333;
         }
 
-        .awesomplete {
-            z-index: 1000 !important;
-        }
-
         footer {
             background-color: #174d88;
             color: white;
@@ -80,7 +84,6 @@
             position: relative;
             z-index: 1;
         }
-
 
 
         .social-media {
@@ -108,28 +111,145 @@
         .social-media i:hover {
             color: black;
         }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 1);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 
 </head>
 
 <body>
-    <div class="header">
-        <img src="{{ base_url }}/logo_90.png" alt="Logo">
-        <div class="nav-container">
-            <a href="{{ base_url }}/karte"><i class="fa-solid fa-map"></i> Karte</a>
-            <a rel="preload" href="{{ base_url }}/ueber"><i class="fa-solid fa-book"></i> Über</a>
-            <a rel="preload" href="{{ base_url }}/datenuebersicht"><i class="fa-solid fa-magnifying-glass-chart"></i> Datenübersicht</a>
-            <a rel="preload" href="{{ base_url }}/konfigurator"><i class="fa-solid fa-chart-column"></i> Konfigurator</a>
-            <a rel="preload" href="{{ base_url }}/tabular"><i class="fa-solid fa-table"></i> Tabelle</a>
-        </div>
+<div id="loading-screen" class="loading-screen">
+    <p style="font-size: 18px;"><i class="fa-solid fa-spinner fa-spin"></i></p>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+            var loadingScreen = document.getElementById("loading-screen");
+            loadingScreen.style.display = "none";
+        }, 1000);
+    });
+
+</script>
+<div class="header">
+    <img src="{{ base_url }}/logo_90.png" alt="Logo">
+    <div class="nav-container">
+        <a href="{{ base_url }}/karte"><i class="fa-solid fa-map"></i> Karte</a>
+        <a rel="preload" href="{{ base_url }}/ueber"><i class="fa-solid fa-book"></i> Über</a>
+        <a rel="preload" href="{{ base_url }}/datenuebersicht"><i class="fa-solid fa-magnifying-glass-chart"></i>
+            Datenübersicht</a>
+        <a rel="preload" href="{{ base_url }}/konfigurator"><i class="fa-solid fa-chart-column"></i> Konfigurator</a>
+        <a rel="preload" href="{{ base_url }}/tabular"><i class="fa-solid fa-table"></i> Tabelle</a>
     </div>
-    <div class="content">
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-    </div>
-        <footer>
+</div>
+<div class="content">
+    <section class="section">
+      <p class="title is-1">Impressum</p>
+    </section>
+    <section class="section">
+      <p class="subtitle is-2">Anbieter</p>
+      <p class="block">
+        Anbieter dieser Internetpräsenz ist im Rechtssinne das Forschungszentrum
+        Deutscher Sprachatlas vertreten durch seinen Direktor
+      </p>
+      <p class="block">
+        Philipps-Universität Marburg<br />Forschungszentrum Deutscher
+        Sprachatlas<br />
+        Prof. Dr. Alfred Lameli<br />
+        Pilgrimstein 16 35032 Marburg<br />
+        Tel.: +49 6421 28 22483 <br />E‑Mail: dsa@uni-marburg.de
+      </p>
+      <p class="subtitle is-2">Management</p>
+
+      <p class="block">
+        Philipps-Universität Marburg<br />
+        Forschungszentrum Deutscher Sprachatlas<br />
+        Robert Engsterhold<br />
+        Pilgrimstein 16<br />
+        35032 Marburg<br />
+        Tel. +49 6421 28 24981<br />
+        E‑Mail: engsterhold@uni-marburg.de<br />
+      </p>
+      <p class="subtitle is-2">Haftung für Inhalte</p>
+
+      <p class="block">
+        Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf
+        diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8
+        bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet,
+        übermittelte oder gespeicherte fremde Informationen zu überwachen oder
+        nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit
+        hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von
+        Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.
+        Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der
+        Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von
+        entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend
+        entfernen.
+      </p>
+      <p class="subtitle is-2">Haftung für Links</p>
+
+      <p class="block">
+        Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren
+        Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden
+        Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten
+        Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten
+        verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der
+        Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte
+        waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente
+        inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete
+        Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden
+        von Rechtsverletzungen werden wir derartige Links umgehend entfernen.
+      </p>
+      <p class="subtitle is-2">Urheberrecht</p>
+
+      <p class="block">
+        Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen
+        Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung,
+        Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der
+        Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des
+        jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite
+        sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
+        Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden,
+        werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte
+        Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine
+        Urheberrechtsverletzung aufmerksam werden, bitten wir um einen
+        entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden
+        wir derartige Inhalte umgehend entfernen.
+      </p>
+      <p class="subtitle is-2">Datenschutz</p>
+
+      <p class="block">
+        Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name,
+        Anschrift oder E‑Mail-Adressen) erhoben werden, erfolgt dies soweit
+        möglich stets auf freiwilliger Basis. Die Nutzung der Angebote und
+        Dienste ist, soweit möglich, stets ohne Angabe personenbezogener Daten
+        möglich. Der Nutzung von im Rahmen der Impressumspflicht
+        veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht
+        ausdrücklich angeforderter Werbung und Informationsmaterialien wird
+        hiermit ausdrücklich widersprochen. Die Betreiber der Seiten behalten
+        sich ausdrücklich rechtliche Schritte im Falle der unverlangten
+        Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.
+      </p>
+      <p class="block">
+        Quelle: (<a href="https://www.e-recht24.de/muster-disclaimer.html"
+          >https://www.e-recht24.de/muster-disclaimer.html</a
+        >)
+      </p>
+    </section>
+</div>
+<footer>
     <div class="social-media">
-        <a href="{{ base_url }}/Impressum">Impressum</a>
+        <a href="{{ base_url }}/impressum">Impressum</a>
     </div>
     <a href="{{ x_url }}" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
     <a href="{{ instagram_url }}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
