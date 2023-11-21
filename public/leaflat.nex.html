@@ -133,6 +133,18 @@
 <div id="loading-screen" class="loading-screen">
     <p style="font-size: 18px;"><i class="fa-solid fa-spinner fa-spin"></i></p>
 </div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+            var userAgent = navigator.userAgent.toLowerCase();
+
+            if (userAgent.match(/android|webos|iphone|ipad|ipod|blackberry|windows phone/i)) {
+                alert("Diese Webseite ist aufgrund von technischen Limitationen nicht für mobile Endgeräte optimiert. Bitte nutzen Sie für die vollständig funktionale Webseite ihren Rechner.");
+            }
+        })
+</script>
+
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         setTimeout(function () {
