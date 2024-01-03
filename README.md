@@ -56,10 +56,10 @@ Rede-Dashboard/
 
 Einige Eindrücke des UI:
 
-![](Karte.PNG)
+![](data/Karte.PNG)
 
-![](Socials.PNG)
+![](data/Socials.PNG)
 
-![](Datenübersciht.PNG)
+![](data/Datenübersciht.PNG)
 
-![](Konfigurator.PNG)
+![](data/Konfigurator.PNG)
