@@ -53,3 +53,13 @@ Rede-Dashboard/
 ├── Statistics.py    # Das Skript für die Datenverarbeitung. 
 
 ├── server.py        # Der Server.
+
+Einige Eindrücke des UI:
+
+![](Karte.PNG)
+
+![](Socials.PNG)
+
+![](Datenübersciht.PNG)
+
+![](Konfigurator.PNG)
