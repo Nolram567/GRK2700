@@ -1,12 +1,12 @@
-# Daten-Dashboard für das Rede-Projekt
+# Daten-Dashboard für das REDE-Projekt
 
-Dieses Dashboard veranschaulicht den zur Verfügung gestellten Datnesatz des Redeprojekts, in dem phonetische Abstandsmessungen in verschiedenen Regionen Deutschlands durchgeführt wurden. 
+Dieses Dashboard veranschaulicht den zur Verfügung gestellten Datensatz des [REDE-Projekts](https://www.regionalsprache.de/), in dem phonetische Abstandsmessungen in verschiedenen Regionen Deutschlands durchgeführt wurden. 
 
 Das Backend umfasst einen multithreaded Python-Server, einige Skripte für die (statistische) Datenverarbeitung, sowie einige HTML-Dokumente, welche zur Laufzeit mit Daten formatiert werden. [^1]
 
 Dieses Projekt nutzt die Open-Source-Bilbliotheken [Chart.js](https://www.chartjs.org/), [Plotly](https://plotly.com/python/) und [Leaflet](https://leafletjs.com/). 
 
-[^1]: Grundsätzlich wäre ein Port auf modernes Framwork wie Flask sinnvoll. Zu Beginn dachte ich jedoch noch, dass dies aufgrund der eigentlichen Einfachheit nicht nötig sei und dann fehlte mir die Zeit, um das Projekt noch einmal mit Flask zu realisieren.
+[^1]: Grundsätzlich wäre ein Port auf moderne Framworks wie Flask + React sinnvoll. Zu Beginn dachte ich jedoch noch, dass dies aufgrund der eigentlichen Einfachheit nicht nötig sei und dann fehlte mir die Zeit, um das Projekt noch einmal zu überarbeiten. Leider funktioniert die Webseite deshalb nicht auf Smartphones. Auf Laptop und Monitoren unterschiedlicher Diagonalen fuktioniert das Dashboard einwandfrei.
 
 # Übersicht und Benutzung
 
